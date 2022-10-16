@@ -1,17 +1,33 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
+using PlayLogic;
 using UnityEngine;
 
-public class Player : Character
+namespace Characters
 {
-    
-    private void LevelUp()
+    public class Player : Character
     {
-        
-    }
-    
-    protected override void Death()
-    {
-        
+        private JoyStick _joyStick;
+
+        protected override void Awake()
+        {
+            base.Awake();
+            _joyStick = GameObject.Find("JoyStick").GetComponent<JoyStick>();
+        }
+
+        private void Update()
+        {
+            Move(_joyStick.JoyDirection);
+        }
+
+        private void LevelUp()
+        {
+            
+        }
+
+        protected override void Death()
+        {
+            base.Death();
+            
+        }
     }
 }

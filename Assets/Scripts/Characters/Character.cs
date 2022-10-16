@@ -1,30 +1,58 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
 
-public abstract class Character : MonoBehaviour
+namespace Characters
 {
-    private string _name;
-    private int _maxHp;
-    private int _hp;
-    private int _power;
-    private int _level;
-    private float _moveSpeed;
-    private float _protectionTime;
-    private float _lastProtectionTime;
-    private bool _isAlive;
+    public abstract class Character : MonoBehaviour
+    {
+        // 캐릭터 별 속성 (구조체로?)
+        private string _name = "Character Name";
+        private int _maxHp = 10;
+        private int _hp = 10;
+        private int _power = 1;
+        private int _level = 1;
+        private float _moveSpeed = 1;
+       
+        private readonly float _protectionTime = 0.1f;
+        private float _lastProtectionTime = 0;
+        private bool _isAlive = true;
     
-    private Vector3 _moveDelta;
+        protected virtual void Awake()
+        {
+            Initialize();
+        }
 
-    protected void Initialize()
-    {
+        private void Initialize()
+        {
+            _isAlive = true;
+            _lastProtectionTime = 0;
         
-    }
+            // 어떤 방법으로 (ScriptableObject, DataTable 등)
+            // 초기화 해야할지 고민중 . . . 
+        }
 
-    protected void Move(Vector3 input)
-    {
-        
-    }
+        protected void ReceiveDamage(int damage)
+        {
+            _hp -= damage;
+            if (_hp <= 0)
+            {
+                Death();
+            }
+        }
+    
+        protected void Move(Vector2 input)
+        {
+            if (_isAlive)
+            {
+                Vector2 dir = input.normalized;
+                transform.Translate(dir * (_moveSpeed * Time.deltaTime));
+            }
+        }
 
-    protected abstract void Death();
+        protected virtual void Death()
+        {
+            _hp = 0;
+            _isAlive = false;
+        }
+    }
 }
