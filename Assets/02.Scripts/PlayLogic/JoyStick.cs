@@ -31,6 +31,7 @@ namespace PlayLogic
         private void Start()
         {
             Initialize();
+            LastJoyDirection = Vector2.up;
         }
 
         private void Initialize()

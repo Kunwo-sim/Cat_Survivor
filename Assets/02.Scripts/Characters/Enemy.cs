@@ -10,6 +10,9 @@ namespace Characters
         {
             base.Awake();
             _playerTransform = GameObject.FindWithTag("Player").transform;
+            
+            // Test code
+            MoveSpeed = Random.Range(1.0f, 4.0f);
         }
 
         private void Update()
@@ -25,7 +28,8 @@ namespace Characters
         protected override void Death()
         {
             base.Death();
-            // ObjectPool Queue에 반환
+            Destroy(gameObject);
+            // 오브젝트 풀링 예정
         }
     }
 }
