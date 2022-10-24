@@ -5,23 +5,16 @@ namespace Characters
 {
     public abstract class Character : MonoBehaviour
     {
-        // 캐릭터 별 속성 (구조체로?)
+        // 구조체로?
         private string _name = "Character Name";
         private int _maxHp = 10;
         private int _hp = 10;
         private int _power = 1;
+        protected float MoveSpeed = 3.0f;
         private int _level = 1;
-       
         private readonly float _protectionTime = 0.1f;
         private float _lastProtectionTime = 0;
         private bool _isAlive = true;
-
-        protected float MoveSpeed { get; set; } = 3.0f;
-
-        protected virtual void Awake()
-        {
-            Initialize();
-        }
 
         private void Initialize()
         {
@@ -31,17 +24,12 @@ namespace Characters
             // 어떤 방법으로 (ScriptableObject, DataTable 등)
             // 초기화 해야할지 고민중 . . . 
         }
-
-        public void ReceiveDamage(int damage)
+        
+        protected virtual void Awake()
         {
-            _hp -= damage;
-            Debug.Log($"{name} hp : {_hp}");
-            if (_hp <= 0)
-            {
-                Death();
-            }
+            Initialize();
         }
-    
+        
         protected void Move(Vector2 input)
         {
             if (_isAlive)
@@ -50,11 +38,21 @@ namespace Characters
                 transform.Translate(dir * (MoveSpeed * Time.deltaTime));
             }
         }
-
+        
         protected virtual void Death()
         {
             _hp = 0;
             _isAlive = false;
+        }
+        
+        public void ReceiveDamage(int damage)
+        {
+            _hp -= damage;
+            Debug.Log($"{name} hp : {_hp}");
+            if (_hp <= 0)
+            {
+                Death();
+            }
         }
     }
 }

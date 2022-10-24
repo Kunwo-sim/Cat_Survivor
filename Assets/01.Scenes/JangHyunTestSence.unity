@@ -1289,7 +1289,7 @@ MonoBehaviour:
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 11400000, guid: 2024872f2c12690469a7b5825263578c, type: 2}
-          m_ObjectArgumentAssemblyTypeName: PlayLogic.Skills.Skill, Assembly-CSharp
+          m_ObjectArgumentAssemblyTypeName: PlayLogic.Skill, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -1811,7 +1811,7 @@ MonoBehaviour:
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 11400000, guid: bfda6154b3ca62644bd0e08b22eff239, type: 2}
-          m_ObjectArgumentAssemblyTypeName: PlayLogic.Skills.Skill, Assembly-CSharp
+          m_ObjectArgumentAssemblyTypeName: PlayLogic.Skill, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 

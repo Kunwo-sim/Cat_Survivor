@@ -8,23 +8,13 @@ namespace Characters
     {
         private JoyStick _joyStick;
         private SkillHolder _skillHolder;
-
-        protected override void Awake()
-        {
-            base.Awake();
-            _joyStick = GameObject.Find("JoyStick").GetComponent<JoyStick>();
-            _skillHolder = GetComponentInChildren<SkillHolder>();
-            
-            // Test code
-            MoveSpeed = 5.0f;
-        }
-
+        
         private void Update()
         {
             Move(_joyStick.JoyDirection);
             TurnSkillHolder();
         }
-
+        
         private void TurnSkillHolder()
         {
             float rot = Mathf.Atan2(_joyStick.LastJoyDirection.y, _joyStick.LastJoyDirection.x) * Mathf.Rad2Deg;
@@ -35,11 +25,21 @@ namespace Characters
         {
             
         }
-
+        
+        protected override void Awake()
+        {
+            base.Awake();
+            _joyStick = GameObject.Find("JoyStick").GetComponent<JoyStick>();
+            _skillHolder = GetComponentInChildren<SkillHolder>();
+            
+            // Test code
+            MoveSpeed = 5.0f;
+        }
+        
         protected override void Death()
         {
             base.Death();
-            
         }
+        
     }
 }

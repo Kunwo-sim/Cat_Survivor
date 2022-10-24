@@ -9,6 +9,11 @@ namespace PlayLogic
 
         private void Update()
         {
+            CheckCoolDown();
+        }
+
+        private void CheckCoolDown()
+        {
             foreach (var skill in Skills)
             {
                 bool coolDownComplete = (Time.time > skill.NextCoolDown);
@@ -18,11 +23,11 @@ namespace PlayLogic
                 }
             }
         }
-        
+
         private void ActiveSkill(Skill skill)
         {
             skill.NextCoolDown = skill.BaseCoolDown + Time.time;
-            skill.Activate(this);
+            skill.Activate(transform);
         }
     }
 }
