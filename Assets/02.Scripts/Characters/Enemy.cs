@@ -1,35 +1,44 @@
+using PlayLogic;
 using UnityEngine;
 
 namespace Characters
 {
     public class Enemy : Character
     {
-        private Transform _playerTransform;
-
+        private Player _player;
+        
+        // Test
+        public GameObject expGameObject;
         
         private void Update()
         {
-            Move(GetDirection(_playerTransform));
+            Move(GetDirection(_player.transform));
         }
         
         private Vector2 GetDirection(Transform target)
         {
             return target.position - transform.position;
         }
-        
+
+        private void CreatExpObject()
+        {
+            // 오브젝트 풀 예정
+            Instantiate(expGameObject, transform);
+            expGameObject.GetComponent<ExpObject>().Initialize(Level);
+        }
+
         protected override void Awake()
         {
             base.Awake();
-            _playerTransform = GameObject.FindWithTag("Player").transform;
+            _player = GameObject.FindWithTag("Player").GetComponent<Player>();
             
             // Test code
             MoveSpeed = Random.Range(1.0f, 4.0f);
         }
-        
         protected override void Death()
         {
             base.Death();
-            // 오브젝트 풀링 예정
+            // 오브젝트 풀 예정
             Destroy(gameObject);
         }
     

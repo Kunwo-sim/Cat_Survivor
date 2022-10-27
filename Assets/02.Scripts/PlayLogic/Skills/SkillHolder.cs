@@ -5,7 +5,7 @@ namespace PlayLogic
 {
     public class SkillHolder : MonoBehaviour
     {
-        public List<Skill> Skills = new List<Skill>();
+        public List<Skill> skills = new List<Skill>();
 
         private void Update()
         {
@@ -14,7 +14,7 @@ namespace PlayLogic
 
         private void CheckCoolDown()
         {
-            foreach (var skill in Skills)
+            foreach (var skill in skills)
             {
                 bool coolDownComplete = (Time.time > skill.NextCoolDown);
                 if (coolDownComplete)

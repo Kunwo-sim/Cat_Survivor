@@ -8,6 +8,9 @@ namespace Characters
     {
         private JoyStick _joyStick;
         private SkillHolder _skillHolder;
+        private float _maxExp = 10;
+        private float _exp = 0;
+        
         
         private void Update()
         {
@@ -23,7 +26,9 @@ namespace Characters
         
         private void LevelUp()
         {
-            
+            _exp -= _maxExp;
+            _maxExp *= 1.5f;
+            Level++;
         }
         
         protected override void Awake()
@@ -41,5 +46,14 @@ namespace Characters
             base.Death();
         }
         
+        public void ReceiveExp(float exp)
+        {
+            _exp += exp;
+            if (_exp >= _maxExp)
+            {
+                LevelUp();
+                ReceiveExp(0f);
+            }
+        }
     }
 }

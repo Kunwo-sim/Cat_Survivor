@@ -11,7 +11,7 @@ namespace Characters
         private int _hp = 10;
         private int _power = 1;
         protected float MoveSpeed = 3.0f;
-        private int _level = 1;
+        protected int Level = 1;
         private readonly float _protectionTime = 0.1f;
         private float _lastProtectionTime = 0;
         private bool _isAlive = true;
@@ -20,6 +20,7 @@ namespace Characters
         {
             _isAlive = true;
             _lastProtectionTime = 0;
+            _hp = _maxHp;
             
             // 어떤 방법으로 (ScriptableObject, DataTable 등)
             // 초기화 해야할지 고민중 . . . 
@@ -48,7 +49,6 @@ namespace Characters
         public void ReceiveDamage(int damage)
         {
             _hp -= damage;
-            Debug.Log($"{name} hp : {_hp}");
             if (_hp <= 0)
             {
                 Death();
