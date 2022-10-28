@@ -10,7 +10,8 @@ namespace PlayLogic
 
         [SerializeField] protected GameObject projectilePrefab;
 
-        public float BaseCoolDown { get; set; } = 1;
+        
+        [field: SerializeField] public float BaseCoolDown { get; set; } = 1;
         public float NextCoolDown { get; set; } = 0;
 
         public abstract void Activate(Transform holderTrans);
