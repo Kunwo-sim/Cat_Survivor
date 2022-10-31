@@ -1,5 +1,7 @@
+using System;
 using PlayLogic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace Characters
 {
@@ -41,6 +43,13 @@ namespace Characters
             // 오브젝트 풀 예정
             Destroy(gameObject);
         }
-    
+
+        private void OnCollisionEnter2D(Collision2D col)
+        {
+            if (col.collider.CompareTag("Player"))
+            {
+                _player.ReceiveDamage(Power);
+            }
+        }
     }
 }

@@ -1,4 +1,5 @@
 using System;
+using UI;
 using UnityEngine;
 
 namespace Characters
@@ -9,19 +10,21 @@ namespace Characters
         private string _name = "Character Name";
         private int _maxHp = 10;
         private int _hp = 10;
-        private int _power = 1;
+        protected int Power = 1;
         protected float MoveSpeed = 3.0f;
         protected int Level = 1;
         private readonly float _protectionTime = 0.1f;
         private float _lastProtectionTime = 0;
         private bool _isAlive = true;
+        private HpBar _hpBar;
 
         private void Initialize()
         {
             _isAlive = true;
             _lastProtectionTime = 0;
             _hp = _maxHp;
-            
+            _hpBar = GetComponentInChildren<HpBar>();
+
             // 어떤 방법으로 (ScriptableObject, DataTable 등)
             // 초기화 해야할지 고민중 . . . 
         }
@@ -49,6 +52,7 @@ namespace Characters
         public void ReceiveDamage(int damage)
         {
             _hp -= damage;
+            _hpBar.SetHpBar(_maxHp, _hp);
             if (_hp <= 0)
             {
                 Death();
