@@ -41,11 +41,6 @@ namespace Characters
             MoveSpeed = 5.0f;
         }
         
-        protected override void Death()
-        {
-            base.Death();
-        }
-        
         public void ReceiveExp(float exp)
         {
             _exp += exp;
@@ -54,6 +49,12 @@ namespace Characters
                 LevelUp();
                 ReceiveExp(0f);
             }
+        }
+
+        public override void ReceiveDamage(int damage)
+        {
+            SetHpUI();
+            base.ReceiveDamage(damage);
         }
     }
 }

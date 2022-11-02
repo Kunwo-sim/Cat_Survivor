@@ -48,11 +48,14 @@ namespace Characters
             _hp = 0;
             _isAlive = false;
         }
-        
-        public void ReceiveDamage(int damage)
+
+        protected void SetHpUI()
+        {
+            _hpBar.SetHpBar(_maxHp, _hp);
+        }
+        public virtual void ReceiveDamage(int damage)
         {
             _hp -= damage;
-            _hpBar.SetHpBar(_maxHp, _hp);
             if (_hp <= 0)
             {
                 Death();
