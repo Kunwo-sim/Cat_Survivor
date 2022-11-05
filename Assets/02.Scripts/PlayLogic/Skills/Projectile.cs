@@ -10,6 +10,7 @@ namespace PlayLogic
         protected float Speed;
 
         protected Rigidbody2D Rigidbody2D;
+        private EPoolObjectType _poolType;
 
         private void Awake()
         {
@@ -27,15 +28,15 @@ namespace PlayLogic
         
         private void Delete()
         {
-            // 오브젝트 풀링 예정
-            Destroy(gameObject);
+            ObjectPoolManager.ReturnObject(gameObject, _poolType);
         }
         
-        public void Initialize(Vector2 spawnPos, Quaternion spawnRot, int damage, float activeTime)
+        public void Initialize(Vector2 spawnPos, Quaternion spawnRot, int damage, float activeTime, EPoolObjectType poolType)
         {
             transform.SetPositionAndRotation(spawnPos, spawnRot);
             Rigidbody2D.velocity = Vector2.zero;
             _damage = damage;
+            _poolType = poolType;
             Invoke(nameof(Delete), activeTime);
             StartCoroutine(Move());
         }

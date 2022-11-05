@@ -14,7 +14,7 @@ namespace PlayLogic
 
         private void CheckCoolDown()
         {
-            foreach (var skill in skills)
+            foreach (Skill skill in skills)
             {
                 bool coolDownComplete = (Time.time > skill.NextCoolDown);
                 if (coolDownComplete)
