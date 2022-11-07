@@ -15,6 +15,5 @@ MonoBehaviour:
   name: New Skill
   damage: 1
   activeTime: 3
-  poolType: 1
+  force: 10
   projectilePrefab: {fileID: 6287145931260991781, guid: 6b20acbf57f0cf24aa4efe46800ad1f6, type: 3}
-  <BaseCoolDown>k__BackingField: 0.5

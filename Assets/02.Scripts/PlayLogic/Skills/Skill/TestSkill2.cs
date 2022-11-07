@@ -14,9 +14,9 @@ namespace PlayLogic
             float rot = Mathf.Atan2(Random.Range(-1f, 1f), Random.Range(-1f, 1f)) * Mathf.Rad2Deg;
             Quaternion spawnRot = Quaternion.Euler(0, 0, rot - 90);
             
-            // 오브젝트 생성
-            Projectile cloneProjectile = ObjectPoolManager.GetObject(poolType).GetComponent<Projectile>();
-            cloneProjectile.Initialize(spawnPos, spawnRot, damage, activeTime, poolType);
+            // 오브젝트 생성 (오브젝트풀링 예정)
+            Projectile cloneProjectile = Instantiate(projectilePrefab).GetComponent<Projectile>();
+            cloneProjectile.Initialize(spawnPos, spawnRot, damage, activeTime);
         }
     }
 }
