@@ -8,6 +8,7 @@ namespace PlayLogic
         [SerializeField] protected int damage = 1;
         [SerializeField] protected float activeTime = 3f;
 
+        [SerializeField] protected EPoolObjectType poolType;
         [SerializeField] protected GameObject projectilePrefab;
 
         
