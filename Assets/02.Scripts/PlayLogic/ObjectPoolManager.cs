@@ -8,7 +8,8 @@ namespace PlayLogic
     public enum EPoolObjectType
     {
         Skill1,
-        Skill2
+        Skill2,
+        Enemy1
     }
     // 오브젝트 풀
     [Serializable]
