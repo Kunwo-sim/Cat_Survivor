@@ -1,6 +1,6 @@
-using PlayLogic;
 using UnityEngine;
-using Random = UnityEngine.Random;
+using Characters;
+using System.Collections.Generic;
 
 namespace PlayLogic
 {
@@ -8,36 +8,38 @@ namespace PlayLogic
     {
         private Transform _playerTransform;
 
+        [SerializeField]
+        private List<Enemy> enemyList = new List<Enemy>();
+        
         private void Awake()
         {
             _playerTransform = GameObject.FindWithTag("Player").GetComponent<Transform>();
+            foreach (Enemy enemy in enemyList)
+            {
+                enemy.NextSpawnTime = 0;
+            }
         }
-
-        private void Start()
+        
+        private void Update()
         {
-            InvokeRepeating(nameof(SpawnEnemy), 0f, 0.5f);
-            InvokeRepeating(nameof(SpawnEnemy), 0f, 0.5f);
+            CheckSpawnTime();
         }
-
-        private void SpawnEnemy()
+        
+        private void CheckSpawnTime()
         {
-            // Enemy ScriptableObject화에 따른 확장 구조화 필요
-            GameObject enemy = ObjectPoolManager.GetObject(EPoolObjectType.Enemy1);
-            enemy.transform.position = GetRandomPosition();
+            foreach (Enemy enemy in enemyList)
+            {
+                bool coolDownComplete = (Time.time > enemy.NextSpawnTime);
+                if (coolDownComplete)
+                {
+                    SpawnEnemy(enemy);
+                }
+            }
         }
-    
-        public Vector3 GetRandomPosition()
+        
+        private void SpawnEnemy(Enemy enemy)
         {
-            // 생성 위치 관련 수정 필요
-            float radius = Random.Range(23f, 25f);
-            
-            Vector3 playerPosition = _playerTransform.position;
-            float x = Random.Range(-radius + playerPosition.x, radius + playerPosition.x);
-            float y = Mathf.Sqrt(Mathf.Pow(radius, 2) - Mathf.Pow(x - playerPosition.x, 2)) + playerPosition.y;
-            y *= Random.Range(0, 2) == 0 ? -1 : 1;
- 
-            Vector3 randomPosition = new Vector3(x, y, 0);
-            return randomPosition;
+            enemy.Spawn(_playerTransform);
         }
     }
 }

@@ -1,55 +1,44 @@
-using System;
+﻿using UnityEngine;
 using PlayLogic;
-using UnityEngine;
-using Random = UnityEngine.Random;
 
 namespace Characters
 {
-    public class Enemy : Character
+    [CreateAssetMenu(fileName = "Enemy1", menuName = "Enemy/Enemy1")]
+    public class Enemy : ScriptableObject
     {
-        private Player _player;
-        
-        // Test
-        public GameObject expGameObject;
-        
-        private void Update()
-        {
-            Move(GetDirection(_player.transform));
-        }
-        
-        private Vector2 GetDirection(Transform target)
-        {
-            return target.position - transform.position;
-        }
+        [SerializeField] private new string name = "Character Name";
+        [SerializeField] private int hp = 10;
+        [SerializeField] private int power = 1;
+        [SerializeField] private float moveSpeed = 3.0f;
+        [SerializeField] private int level = 1;
+        [SerializeField] private float baseSpawnTime = 0.5f;
+        public float NextSpawnTime { get; set; } = 0f;
 
-        private void CreatExpObject()
-        {
-            // 오브젝트 풀 예정
-            Instantiate(expGameObject, transform);
-            expGameObject.GetComponent<ExpObject>().Initialize(Level);
-        }
+        [SerializeField] private EPoolObjectType poolType = EPoolObjectType.Enemy1;
 
-        protected override void Awake()
+        public virtual void Spawn(Transform playerTransform)
         {
-            base.Awake();
-            _player = GameObject.FindWithTag("Player").GetComponent<Player>();
-            
-            // Test code
-            MoveSpeed = Random.Range(1.0f, 4.0f);
-        }
-        protected override void Death()
-        {
-            base.Death();
-            // 오브젝트 풀 예정
-            Destroy(gameObject);
-        }
-
-        private void OnCollisionEnter2D(Collision2D col)
-        {
-            if (col.collider.CompareTag("Player"))
+            if (ObjectPoolManager.HasObject(poolType))
             {
-                _player.ReceiveDamage(Power);
+                NextSpawnTime = baseSpawnTime + Time.time;
+                
+                GameObject enemy = ObjectPoolManager.GetObject(poolType);
+                enemy.transform.position = GetRandomPosition(playerTransform);
             }
+        }
+        
+        private Vector3 GetRandomPosition(Transform playerTransform)
+        {
+            // 생성 위치 관련 수정 필요
+            float radius = Random.Range(19f, 20f);
+            
+            Vector3 playerPosition = playerTransform.position;
+            float x = Random.Range(-radius + playerPosition.x, radius + playerPosition.x);
+            float y = Mathf.Sqrt(Mathf.Pow(radius, 2) - Mathf.Pow(x - playerPosition.x, 2)) + playerPosition.y;
+            y *= Random.Range(0, 2) == 0 ? -1 : 1;
+ 
+            Vector3 randomPosition = new Vector3(x, y, 0);
+            return randomPosition;
         }
     }
 }

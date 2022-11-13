@@ -73,7 +73,7 @@ namespace PlayLogic
         {
             PoolInfo poolInfo = Instance.GetPoolByType(type);
             GameObject objInstance = null;
-            if (poolInfo.poolQueue.Count > 0)
+            if (HasObject(type))
             {
                 objInstance = poolInfo.poolQueue.Dequeue();
             }
@@ -91,6 +91,14 @@ namespace PlayLogic
             PoolInfo poolInfo = Instance.GetPoolByType(type);
             poolInfo.poolQueue.Enqueue(obj);
             obj.SetActive(false);
+        }
+
+        public static bool HasObject(EPoolObjectType type)
+        {
+            PoolInfo poolInfo = Instance.GetPoolByType(type);
+            bool hasObject = poolInfo.poolQueue.Count != 0;
+
+            return hasObject;
         }
     }
 }

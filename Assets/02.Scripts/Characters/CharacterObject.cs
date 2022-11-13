@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Characters
 {
-    public abstract class Character : MonoBehaviour
+    public abstract class CharacterObject : MonoBehaviour
     {
         // 구조체로?
         private string _name = "Character Name";
@@ -18,7 +18,7 @@ namespace Characters
         private bool _isAlive = true;
         private HpBar _hpBar;
 
-        private void Initialize()
+        public void Initialize()
         {
             _isAlive = true;
             _lastProtectionTime = 0;
@@ -39,7 +39,7 @@ namespace Characters
             if (_isAlive)
             {
                 Vector2 dir = input.normalized;
-                transform.Translate(dir * (MoveSpeed * Time.deltaTime));
+                transform.Translate(dir * (MoveSpeed * 0.03f));
             }
         }
         

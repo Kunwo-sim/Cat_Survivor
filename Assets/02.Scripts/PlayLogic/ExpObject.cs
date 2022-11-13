@@ -1,4 +1,3 @@
-using System;
 using Characters;
 using UnityEngine;
 
@@ -7,7 +6,7 @@ namespace PlayLogic
     public class ExpObject : MonoBehaviour
     {
         private SpriteRenderer _renderer;
-        private Player _player;
+        private PlayerObject _playerObject;
         private float _exp;
 
         // Test
@@ -16,7 +15,7 @@ namespace PlayLogic
         private void Awake()
         {
             _renderer = GetComponent<SpriteRenderer>();
-            _player = GameObject.FindWithTag("Player").GetComponent<Player>();
+            _playerObject = GameObject.FindWithTag("Player").GetComponent<PlayerObject>();
             
             // Test
             Initialize(TestExp);
@@ -45,7 +44,7 @@ namespace PlayLogic
         {
             if (col.CompareTag("Player"))
             {
-                _player.ReceiveExp(_exp);
+                _playerObject.ReceiveExp(_exp);
                 // 오브젝트 풀 필요
                 Destroy(gameObject);
             }

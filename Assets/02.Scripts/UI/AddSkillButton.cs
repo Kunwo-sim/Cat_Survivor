@@ -15,7 +15,7 @@ namespace UI
         public void AddSkill(Skill skill)
         {
             skill.NextCoolDown = 0;
-            _skillHolder.skills.Add(skill);
+            _skillHolder.skillList.Add(skill);
         }
         
         

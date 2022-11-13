@@ -4,15 +4,23 @@ using UnityEngine;
 
 namespace Characters
 {
-    public class Player : Character
+    public class PlayerObject : CharacterObject
     {
         private JoyStick _joyStick;
         private SkillHolder _skillHolder;
         private float _maxExp = 10;
         private float _exp = 0;
         
-        
-        private void Update()
+        protected override void Awake()
+        {
+            base.Awake();
+            _joyStick = GameObject.Find("JoyStick").GetComponent<JoyStick>();
+            _skillHolder = GetComponentInChildren<SkillHolder>();
+            
+            // Test code
+            MoveSpeed = 5.0f;
+        }
+        private void FixedUpdate()
         {
             Move(_joyStick.JoyDirection);
             TurnSkillHolder();
@@ -29,16 +37,6 @@ namespace Characters
             _exp -= _maxExp;
             _maxExp *= 1.5f;
             Level++;
-        }
-        
-        protected override void Awake()
-        {
-            base.Awake();
-            _joyStick = GameObject.Find("JoyStick").GetComponent<JoyStick>();
-            _skillHolder = GetComponentInChildren<SkillHolder>();
-            
-            // Test code
-            MoveSpeed = 5.0f;
         }
         
         public void ReceiveExp(float exp)
