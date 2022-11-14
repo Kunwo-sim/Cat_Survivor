@@ -17,3 +17,5 @@ MonoBehaviour:
   power: 1
   moveSpeed: 3
   level: 1
+  baseSpawnTime: 0.5
+  poolType: 2

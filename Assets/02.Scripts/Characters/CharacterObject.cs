@@ -1,4 +1,3 @@
-using System;
 using UI;
 using UnityEngine;
 
@@ -6,7 +5,6 @@ namespace Characters
 {
     public abstract class CharacterObject : MonoBehaviour
     {
-        // 구조체로?
         private string _name = "Character Name";
         private int _maxHp = 10;
         private int _hp = 10;
@@ -23,17 +21,22 @@ namespace Characters
             _isAlive = true;
             _lastProtectionTime = 0;
             _hp = _maxHp;
-            _hpBar = GetComponentInChildren<HpBar>();
-
-            // 어떤 방법으로 (ScriptableObject, DataTable 등)
-            // 초기화 해야할지 고민중 . . . 
         }
-        
+        public void Initialize(int hp, int power, float moveSpeed, int level)
+        {
+            Initialize();
+            _hp = _maxHp = hp;
+            Power = power;
+            MoveSpeed = moveSpeed;
+            Level = level;
+        }
+
         protected virtual void Awake()
         {
             Initialize();
+            _hpBar = GetComponentInChildren<HpBar>();
         }
-        
+
         protected void Move(Vector2 input)
         {
             if (_isAlive)
@@ -42,7 +45,7 @@ namespace Characters
                 transform.Translate(dir * (MoveSpeed * 0.03f));
             }
         }
-        
+
         protected virtual void Death()
         {
             _hp = 0;

@@ -24,6 +24,7 @@ namespace Characters
                 
                 GameObject enemy = ObjectPoolManager.GetObject(poolType);
                 enemy.transform.position = GetRandomPosition(playerTransform);
+                enemy.GetComponent<EnemyObject>().Initialize(hp, power, moveSpeed, level);
             }
         }
         
