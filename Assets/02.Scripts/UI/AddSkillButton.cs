@@ -12,10 +12,10 @@ namespace UI
             _skillHolder = GameObject.FindWithTag("Player").GetComponentInChildren<SkillHolder>();
         }
 
-        public void AddSkill(Skill skill)
+        public void AddSkill(SkillInfo skillInfo)
         {
-            skill.NextCoolDown = 0;
-            _skillHolder.skillList.Add(skill);
+            skillInfo.NextCoolDown = 0;
+            _skillHolder.skillList.Add(skillInfo);
         }
         
         

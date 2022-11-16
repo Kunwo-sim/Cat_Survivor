@@ -1,45 +1,55 @@
-﻿using UnityEngine;
+using System;
 using PlayLogic;
+using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace Characters
 {
-    [CreateAssetMenu(fileName = "Enemy1", menuName = "Enemy/Enemy1")]
-    public class Enemy : ScriptableObject
+    public class Enemy : Character
     {
-        [SerializeField] private new string name = "Character Name";
-        [SerializeField] private int hp = 10;
-        [SerializeField] private int power = 1;
-        [SerializeField] private float moveSpeed = 3.0f;
-        [SerializeField] private int level = 1;
-        [SerializeField] private float baseSpawnTime = 0.5f;
-        public float NextSpawnTime { get; set; } = 0f;
+        private Player _player;
 
-        [SerializeField] private EPoolObjectType poolType = EPoolObjectType.Enemy1;
-
-        public virtual void Spawn(Transform playerTransform)
+        // Test
+        public GameObject expGameObject;
+        
+        private void FixedUpdate()
         {
-            if (ObjectPoolManager.HasObject(poolType))
-            {
-                NextSpawnTime = baseSpawnTime + Time.time;
-                
-                GameObject enemy = ObjectPoolManager.GetObject(poolType);
-                enemy.transform.position = GetRandomPosition(playerTransform);
-                enemy.GetComponent<EnemyObject>().Initialize(hp, power, moveSpeed, level);
-            }
+            Move(GetDirection(_player.transform));
         }
         
-        private Vector3 GetRandomPosition(Transform playerTransform)
+        private Vector2 GetDirection(Transform target)
         {
-            // 생성 위치 관련 수정 필요
-            float radius = Random.Range(19f, 20f);
+            return target.position - transform.position;
+        }
+
+        private void CreatExpObject()
+        {
+            // 오브젝트 풀 예정
+            Instantiate(expGameObject, transform);
+            expGameObject.GetComponent<ExpObject>().Initialize(Level);
+        }
+
+        protected override void Awake()
+        {
+            base.Awake();
+            _player = GameObject.FindWithTag("Player").GetComponent<Player>();
             
-            Vector3 playerPosition = playerTransform.position;
-            float x = Random.Range(-radius + playerPosition.x, radius + playerPosition.x);
-            float y = Mathf.Sqrt(Mathf.Pow(radius, 2) - Mathf.Pow(x - playerPosition.x, 2)) + playerPosition.y;
-            y *= Random.Range(0, 2) == 0 ? -1 : 1;
- 
-            Vector3 randomPosition = new Vector3(x, y, 0);
-            return randomPosition;
+            // Test code
+            MoveSpeed = Random.Range(1.0f, 4.0f);
+        }
+        protected override void Death()
+        {
+            base.Death();
+            // 오브젝트 풀 예정
+            Destroy(gameObject);
+        }
+
+        private void OnCollisionEnter2D(Collision2D col)
+        {
+            if (col.collider.CompareTag("Player"))
+            {
+                _player.ReceiveDamage(Power);
+            }
         }
     }
 }

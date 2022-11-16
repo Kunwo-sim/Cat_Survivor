@@ -3,7 +3,7 @@ using UnityEngine;
 namespace PlayLogic
 {
     [CreateAssetMenu(fileName = "TestSkill2", menuName = "Skills/TestSkill2")]
-    public class TestSkill2 : Skill
+    public class TestSkill2 : SkillInfo
     {
         public override void Activate(Transform holderTrans)
         {

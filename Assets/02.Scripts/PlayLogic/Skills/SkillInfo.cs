@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace PlayLogic
 {
-    public abstract class Skill : ScriptableObject
+    public abstract class SkillInfo : ScriptableObject
     {
         [SerializeField] private new string name = "New Skill";
         [SerializeField] protected int damage = 1;

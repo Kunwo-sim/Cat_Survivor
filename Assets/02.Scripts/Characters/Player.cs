@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Characters
 {
-    public class PlayerObject : CharacterObject
+    public class Player : Character
     {
         private JoyStick _joyStick;
         private SkillHolder _skillHolder;

@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Characters
 {
-    public abstract class CharacterObject : MonoBehaviour
+    public abstract class Character : MonoBehaviour
     {
         private string _name = "Character Name";
         private int _maxHp = 10;

@@ -6,11 +6,11 @@ namespace PlayLogic
     using System;
     public class SkillHolder : MonoBehaviour
     {
-        public List<Skill> skillList = new List<Skill>();
+        public List<SkillInfo> skillList = new List<SkillInfo>();
 
         private void Awake()
         {
-            foreach (Skill skill in skillList)
+            foreach (SkillInfo skill in skillList)
             {
                 skill.NextCoolDown = 0;
             }
@@ -23,7 +23,7 @@ namespace PlayLogic
 
         private void CheckCoolDown()
         {
-            foreach (Skill skill in skillList)
+            foreach (SkillInfo skill in skillList)
             {
                 bool coolDownComplete = (Time.time > skill.NextCoolDown);
                 if (coolDownComplete)
@@ -33,10 +33,10 @@ namespace PlayLogic
             }
         }
 
-        private void ActiveSkill(Skill skill)
+        private void ActiveSkill(SkillInfo skillInfo)
         {
-            skill.NextCoolDown = skill.BaseCoolDown + Time.time;
-            skill.Activate(transform);
+            skillInfo.NextCoolDown = skillInfo.BaseCoolDown + Time.time;
+            skillInfo.Activate(transform);
         }
     }
 }

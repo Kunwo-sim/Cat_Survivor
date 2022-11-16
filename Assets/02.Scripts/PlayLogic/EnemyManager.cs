@@ -9,12 +9,12 @@ namespace PlayLogic
         private Transform _playerTransform;
 
         [SerializeField]
-        private List<Enemy> enemyList = new List<Enemy>();
+        private List<EnemyInfo> enemyList = new List<EnemyInfo>();
         
         private void Awake()
         {
             _playerTransform = GameObject.FindWithTag("Player").GetComponent<Transform>();
-            foreach (Enemy enemy in enemyList)
+            foreach (EnemyInfo enemy in enemyList)
             {
                 enemy.NextSpawnTime = 0;
             }
@@ -27,7 +27,7 @@ namespace PlayLogic
         
         private void CheckSpawnTime()
         {
-            foreach (Enemy enemy in enemyList)
+            foreach (EnemyInfo enemy in enemyList)
             {
                 bool coolDownComplete = (Time.time > enemy.NextSpawnTime);
                 if (coolDownComplete)
@@ -37,9 +37,9 @@ namespace PlayLogic
             }
         }
         
-        private void SpawnEnemy(Enemy enemy)
+        private void SpawnEnemy(EnemyInfo enemyInfo)
         {
-            enemy.Spawn(_playerTransform);
+            enemyInfo.Spawn(_playerTransform);
         }
     }
 }
