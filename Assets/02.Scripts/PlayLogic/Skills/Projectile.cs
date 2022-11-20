@@ -26,6 +26,7 @@ public abstract class Projectile : MonoBehaviour
 
     private void Delete()
     {
+        StopCoroutine(Move());
         ObjectPoolManager.ReturnObject(gameObject, _poolType);
     }
 
