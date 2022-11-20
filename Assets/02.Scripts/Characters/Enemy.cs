@@ -51,11 +51,11 @@ namespace Characters
             ObjectPoolManager.ReturnObject(gameObject, _poolType);
         }
 
-        private void OnCollisionEnter2D(Collision2D col)
+        private void OnCollisionStay2D(Collision2D col)
         {
             if (col.collider.CompareTag("Player"))
             {
-                _player.ReceiveDamage(Power);
+                _player.ReceiveDamage(Power * Time.fixedDeltaTime);
             }
         }
     }

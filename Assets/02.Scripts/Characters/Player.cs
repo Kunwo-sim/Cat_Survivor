@@ -49,10 +49,18 @@ namespace Characters
             }
         }
 
-        public override void ReceiveDamage(int damage)
+        public override void ReceiveDamage(float damage)
         {
             SetHpUI();
             base.ReceiveDamage(damage);
+        }
+
+        protected override void Death()
+        {
+            base.Death();
+            // Test
+            Debug.Log("Game Over !");
+            Time.timeScale = 0;
         }
     }
 }

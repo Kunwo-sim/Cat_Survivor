@@ -6,9 +6,9 @@ namespace Characters
     public abstract class Character : MonoBehaviour
     {
         private string _name = "Character Name";
-        protected int MaxHp = 10;
-        protected int Hp = 10;
-        protected int Power = 1;
+        protected float MaxHp = 10;
+        protected float Hp = 10;
+        protected float Power = 1;
         protected float MoveSpeed = 3.0f;
         protected int Level = 1;
         private readonly float _protectionTime = 0.1f;
@@ -48,7 +48,7 @@ namespace Characters
         {
             _hpBar.SetHpBar(MaxHp, Hp);
         }
-        public virtual void ReceiveDamage(int damage)
+        public virtual void ReceiveDamage(float damage)
         {
             Hp -= damage;
             if (Hp <= 0)
