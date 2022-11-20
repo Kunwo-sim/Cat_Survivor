@@ -19,6 +19,7 @@ public class GoogleTest : MonoBehaviour
 
     public void Login()
     {
+        _TMP_Google.text = "로그인 시도";
         if (PlayGamesPlatform.Instance.localUser.authenticated == false)
         {
             Social.localUser.Authenticate((bool success) =>
@@ -29,7 +30,7 @@ public class GoogleTest : MonoBehaviour
                 }
                 else
                 {
-                    _TMP_Google.text = "Login Failed";
+                    _TMP_Google.text = "로그인 실패";
                 }
             });
         }
