@@ -951,8 +951,8 @@ MonoBehaviour:
         m_MethodName: AddSkill
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 11400000, guid: 2024872f2c12690469a7b5825263578c, type: 2}
-          m_ObjectArgumentAssemblyTypeName: PlayLogic.Skill, Assembly-CSharp
+          m_ObjectArgument: {fileID: 11400000, guid: 7f7b61d99ea7b584880854d98420a394, type: 2}
+          m_ObjectArgumentAssemblyTypeName: PlayLogic.SkillInfo, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -1219,9 +1219,9 @@ MonoBehaviour:
     initCount: 100
     prefab: {fileID: 2037071088904110108, guid: d83c99bd8503d074baad93e5a9f21123, type: 3}
     container: {fileID: 614974668}
-  - type: 2
+  - type: 3
     initCount: 10
-    prefab: {fileID: 2037071088904110108, guid: d83c99bd8503d074baad93e5a9f21123, type: 3}
+    prefab: {fileID: 2037071088904110108, guid: ca0925487986a8343842729b13ebb55a, type: 3}
     container: {fileID: 614974668}
 --- !u!1 &1860694259
 GameObject:
