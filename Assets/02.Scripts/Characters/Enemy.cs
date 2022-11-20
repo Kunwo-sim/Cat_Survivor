@@ -10,10 +10,6 @@ namespace Characters
         private Player _player;
         private EPoolObjectType _poolType;
 
-        // Test
-        public GameObject expGameObject;
-        
-        
         public void Initialize(int hp, int power, float moveSpeed, int level, EPoolObjectType poolType)
         {
             Initialize();
@@ -36,9 +32,8 @@ namespace Characters
 
         private void CreatExpObject()
         {
-            // 오브젝트 풀 예정
-            Instantiate(expGameObject, transform);
-            expGameObject.GetComponent<ExpObject>().Initialize(Level);
+            ExpObject expObject = ObjectPoolManager.GetObject(EPoolObjectType.ExpObject).GetComponent<ExpObject>();
+            expObject.Initialize(Level, transform.position);
         }
 
         protected override void Awake()
@@ -52,6 +47,7 @@ namespace Characters
         protected override void Death()
         {
             base.Death();
+            CreatExpObject();
             ObjectPoolManager.ReturnObject(gameObject, _poolType);
         }
 

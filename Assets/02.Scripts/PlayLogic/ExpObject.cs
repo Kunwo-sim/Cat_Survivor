@@ -8,20 +8,15 @@ namespace PlayLogic
         private SpriteRenderer _renderer;
         private Player _player;
         private float _exp;
-
-        // Test
-        public float TestExp;
+        private readonly EPoolObjectType _poolType = EPoolObjectType.ExpObject;
         
         private void Awake()
         {
             _renderer = GetComponent<SpriteRenderer>();
             _player = GameObject.FindWithTag("Player").GetComponent<Player>();
-            
-            // Test
-            Initialize(TestExp);
         }
 
-        public void Initialize(float exp)
+        public void Initialize(float exp, Vector3 position)
         {
             _exp = exp;
             float size = _exp * 0.02f + 0.3f;
@@ -38,6 +33,7 @@ namespace PlayLogic
             {
                 _renderer.color = Color.yellow;
             }
+            transform.position = position;
         }
 
         private void OnTriggerEnter2D(Collider2D col)
@@ -45,8 +41,7 @@ namespace PlayLogic
             if (col.CompareTag("Player"))
             {
                 _player.ReceiveExp(_exp);
-                // 오브젝트 풀 필요
-                Destroy(gameObject);
+                ObjectPoolManager.ReturnObject(gameObject,_poolType);
             }
         }
     }
