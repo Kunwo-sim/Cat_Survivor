@@ -1,45 +1,40 @@
 using UnityEngine;
-using Characters;
 using System.Collections.Generic;
 
-namespace PlayLogic
+public class EnemyManager : MonoBehaviour
 {
-    public class EnemyManager : MonoBehaviour
-    {
-        private Transform _playerTransform;
+    private Transform _playerTransform;
 
-        [SerializeField]
-        private List<EnemyInfo> enemyList = new List<EnemyInfo>();
-        
-        private void Awake()
+    [SerializeField] private List<EnemyInfo> enemyList = new List<EnemyInfo>();
+
+    private void Awake()
+    {
+        _playerTransform = GameObject.FindWithTag("Player").GetComponent<Transform>();
+        foreach (EnemyInfo enemy in enemyList)
         {
-            _playerTransform = GameObject.FindWithTag("Player").GetComponent<Transform>();
-            foreach (EnemyInfo enemy in enemyList)
+            enemy.Initialize();
+        }
+    }
+
+    private void Update()
+    {
+        CheckSpawnTime();
+    }
+
+    private void CheckSpawnTime()
+    {
+        foreach (EnemyInfo enemy in enemyList)
+        {
+            bool coolDownComplete = (Time.time > enemy.NextSpawnTime);
+            if (coolDownComplete)
             {
-                enemy.Initialize();
+                SpawnEnemy(enemy);
             }
         }
-        
-        private void Update()
-        {
-            CheckSpawnTime();
-        }
-        
-        private void CheckSpawnTime()
-        {
-            foreach (EnemyInfo enemy in enemyList)
-            {
-                bool coolDownComplete = (Time.time > enemy.NextSpawnTime);
-                if (coolDownComplete)
-                {
-                    SpawnEnemy(enemy);
-                }
-            }
-        }
-        
-        private void SpawnEnemy(EnemyInfo enemyInfo)
-        {
-            enemyInfo.Spawn(_playerTransform);
-        }
+    }
+
+    private void SpawnEnemy(EnemyInfo enemyInfo)
+    {
+        enemyInfo.Spawn(_playerTransform);
     }
 }
