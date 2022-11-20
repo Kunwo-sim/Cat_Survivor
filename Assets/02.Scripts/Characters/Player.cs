@@ -1,6 +1,7 @@
 using System;
 using PlayLogic;
 using UnityEngine;
+using UI;
 
 namespace Characters
 {
@@ -10,13 +11,15 @@ namespace Characters
         private SkillHolder _skillHolder;
         private float _maxExp = 10;
         private float _exp = 0;
-        
+        private Bar _expBar;
         protected override void Awake()
         {
             base.Awake();
             _joyStick = GameObject.Find("JoyStick").GetComponent<JoyStick>();
             _skillHolder = GetComponentInChildren<SkillHolder>();
-            
+            _expBar = GameObject.Find("Exp Bar").GetComponent<Bar>();
+            _expBar.SetBar(_maxExp, _exp);
+            _expBar.SetText(Level);
             // Test code
             MoveSpeed = 5.0f;
         }
@@ -37,15 +40,16 @@ namespace Characters
             _exp -= _maxExp;
             _maxExp *= 1.5f;
             Level++;
+            _expBar.SetText(Level);
         }
         
         public void ReceiveExp(float exp)
         {
             _exp += exp;
+            _expBar.SetBar(_maxExp, _exp);
             if (_exp >= _maxExp)
             {
                 LevelUp();
-                ReceiveExp(0f);
             }
         }
 

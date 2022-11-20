@@ -14,7 +14,7 @@ namespace Characters
         private readonly float _protectionTime = 0.1f;
         private float _lastProtectionTime = 0;
         private bool _isAlive = true;
-        private HpBar _hpBar;
+        private Bar _hpBar;
 
         public void Initialize()
         {
@@ -26,7 +26,11 @@ namespace Characters
         protected virtual void Awake()
         {
             Initialize();
-            _hpBar = GetComponentInChildren<HpBar>();
+            _hpBar = GetComponentInChildren<Bar>();
+            if (_hpBar != null)
+            {
+                SetHpUI();
+            }
         }
 
         protected void Move(Vector2 input)
@@ -46,7 +50,8 @@ namespace Characters
 
         protected void SetHpUI()
         {
-            _hpBar.SetHpBar(MaxHp, Hp);
+            _hpBar.SetBar(MaxHp, Hp);
+            _hpBar.SetText(Mathf.FloorToInt(Hp));
         }
         public virtual void ReceiveDamage(float damage)
         {
