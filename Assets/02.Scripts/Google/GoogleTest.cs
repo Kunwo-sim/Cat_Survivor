@@ -22,6 +22,7 @@ public class GoogleTest : MonoBehaviour
         _TMP_Google.text = "로그인 시도";
         if (PlayGamesPlatform.Instance.localUser.authenticated == false)
         {
+            _TMP_Google.text = "로그인 중...";
             Social.localUser.Authenticate((bool success) =>
             {
                 if (success)
@@ -33,6 +34,11 @@ public class GoogleTest : MonoBehaviour
                     _TMP_Google.text = "로그인 실패";
                 }
             });
+            _TMP_Google.text = "로그인 끝!";
+        }
+        else
+        {
+            _TMP_Google.text = "이미 로그인 됨";
         }
     }
 
