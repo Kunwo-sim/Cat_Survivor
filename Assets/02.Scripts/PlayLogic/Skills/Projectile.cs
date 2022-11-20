@@ -22,6 +22,7 @@ namespace PlayLogic
             if (col.CompareTag("Enemy"))
             {
                 col.GetComponent<Enemy>().ReceiveDamage(_damage);
+                CancelInvoke(nameof(Delete));
                 Delete();
             }
         }

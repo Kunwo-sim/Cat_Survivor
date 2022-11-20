@@ -8,9 +8,21 @@ namespace Characters
     public class Enemy : Character
     {
         private Player _player;
+        private EPoolObjectType _poolType;
 
         // Test
         public GameObject expGameObject;
+        
+        
+        public void Initialize(int hp, int power, float moveSpeed, int level, EPoolObjectType poolType)
+        {
+            Initialize();
+            Hp = MaxHp = hp;
+            Power = power;
+            MoveSpeed = moveSpeed;
+            Level = level;
+            _poolType = poolType;
+        }
         
         private void FixedUpdate()
         {
@@ -40,8 +52,7 @@ namespace Characters
         protected override void Death()
         {
             base.Death();
-            // 오브젝트 풀 예정
-            Destroy(gameObject);
+            ObjectPoolManager.ReturnObject(gameObject, _poolType);
         }
 
         private void OnCollisionEnter2D(Collision2D col)

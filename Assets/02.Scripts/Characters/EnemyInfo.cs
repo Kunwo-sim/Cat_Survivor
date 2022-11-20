@@ -16,7 +16,12 @@ namespace Characters
 
         [SerializeField] private EPoolObjectType poolType = EPoolObjectType.Enemy1;
 
-        public virtual void Spawn(Transform playerTransform)
+        public void Initialize()
+        {
+            NextSpawnTime = baseSpawnTime;
+        }
+        
+        public void Spawn(Transform playerTransform)
         {
             if (ObjectPoolManager.HasObject(poolType))
             {
@@ -24,7 +29,7 @@ namespace Characters
                 
                 GameObject enemy = ObjectPoolManager.GetObject(poolType);
                 enemy.transform.position = GetRandomPosition(playerTransform);
-                enemy.GetComponent<Enemy>().Initialize(hp, power, moveSpeed, level);
+                enemy.GetComponent<Enemy>().Initialize(hp, power, moveSpeed, level, poolType);
             }
         }
         

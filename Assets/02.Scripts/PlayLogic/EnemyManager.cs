@@ -16,7 +16,7 @@ namespace PlayLogic
             _playerTransform = GameObject.FindWithTag("Player").GetComponent<Transform>();
             foreach (EnemyInfo enemy in enemyList)
             {
-                enemy.NextSpawnTime = 0;
+                enemy.Initialize();
             }
         }
         

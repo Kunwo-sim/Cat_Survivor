@@ -10,7 +10,8 @@ namespace PlayLogic
         Skill1,
         Skill2,
         Enemy1,
-        Enemy2
+        Enemy2,
+        ExpObject
     }
     // 오브젝트 풀
     [Serializable]

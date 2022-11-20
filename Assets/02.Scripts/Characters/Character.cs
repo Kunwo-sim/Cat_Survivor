@@ -6,8 +6,8 @@ namespace Characters
     public abstract class Character : MonoBehaviour
     {
         private string _name = "Character Name";
-        private int _maxHp = 10;
-        private int _hp = 10;
+        protected int MaxHp = 10;
+        protected int Hp = 10;
         protected int Power = 1;
         protected float MoveSpeed = 3.0f;
         protected int Level = 1;
@@ -20,15 +20,7 @@ namespace Characters
         {
             _isAlive = true;
             _lastProtectionTime = 0;
-            _hp = _maxHp;
-        }
-        public void Initialize(int hp, int power, float moveSpeed, int level)
-        {
-            Initialize();
-            _hp = _maxHp = hp;
-            Power = power;
-            MoveSpeed = moveSpeed;
-            Level = level;
+            Hp = MaxHp;
         }
 
         protected virtual void Awake()
@@ -48,18 +40,18 @@ namespace Characters
 
         protected virtual void Death()
         {
-            _hp = 0;
+            Hp = 0;
             _isAlive = false;
         }
 
         protected void SetHpUI()
         {
-            _hpBar.SetHpBar(_maxHp, _hp);
+            _hpBar.SetHpBar(MaxHp, Hp);
         }
         public virtual void ReceiveDamage(int damage)
         {
-            _hp -= damage;
-            if (_hp <= 0)
+            Hp -= damage;
+            if (Hp <= 0)
             {
                 Death();
             }
