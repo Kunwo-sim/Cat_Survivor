@@ -15,7 +15,7 @@ MonoBehaviour:
   name: Character Name
   hp: 20
   power: 2
-  moveSpeed: 1
+  moveSpeed: 5
   level: 2
   baseSpawnTime: 5
   poolType: 3

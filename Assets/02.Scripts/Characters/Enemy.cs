@@ -50,7 +50,7 @@ public class Enemy : Character
     {
         if (col.collider.CompareTag("Player"))
         {
-            _player.ReceiveDamage(Power * Time.fixedDeltaTime);
+            _player.ReceiveDamage(Power * Time.fixedDeltaTime * 10);
         }
     }
 }
