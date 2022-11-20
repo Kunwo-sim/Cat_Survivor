@@ -25,12 +25,12 @@ namespace Characters
 
         protected virtual void Awake()
         {
-            Initialize();
             _hpBar = GetComponentInChildren<Bar>();
-            if (_hpBar != null)
-            {
-                SetHpUI();
-            }
+        }
+        
+        protected virtual void Start()
+        {
+            Initialize();
         }
 
         protected void Move(Vector2 input)

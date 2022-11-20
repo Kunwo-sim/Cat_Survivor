@@ -18,10 +18,16 @@ namespace Characters
             _joyStick = GameObject.Find("JoyStick").GetComponent<JoyStick>();
             _skillHolder = GetComponentInChildren<SkillHolder>();
             _expBar = GameObject.Find("Exp Bar").GetComponent<Bar>();
-            _expBar.SetBar(_maxExp, _exp);
-            _expBar.SetText(Level);
+
             // Test code
             MoveSpeed = 5.0f;
+        }
+        protected override void Start()
+        {
+            base.Start();
+            SetHpUI();
+            _expBar.SetBar(_maxExp, _exp);
+            _expBar.SetText(Level);
         }
         private void FixedUpdate()
         {
