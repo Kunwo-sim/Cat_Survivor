@@ -32,15 +32,38 @@ public class EnemyInfo : ScriptableObject
 
     private Vector3 GetRandomPosition(Transform playerTransform)
     {
-        // 생성 위치 관련 수정 필요
-        float radius = Random.Range(19f, 20f);
+        // 가로20, 세로 10 기준 모서리에서 나오도록 수정
+        int flag = Random.Range(0, 2);
+
+        // 나중에 하드코딩 수정
+        float xOffset = 20.0f;
+        float yOffset = 10.0f;
 
         Vector3 playerPosition = playerTransform.position;
-        float x = Random.Range(-radius + playerPosition.x, radius + playerPosition.x);
-        float y = Mathf.Sqrt(Mathf.Pow(radius, 2) - Mathf.Pow(x - playerPosition.x, 2)) + playerPosition.y;
-        y *= Random.Range(0, 2) == 0 ? -1 : 1;
+        Vector3 randomPosition = Vector3.zero;
 
-        Vector3 randomPosition = new Vector3(x, y, 0);
+        float x = 0.0f;
+        float y = 0.0f;
+        
+        // x 경계에서 생성
+        if (flag == 0)
+        {
+            x = playerPosition.x;
+            x += Random.Range(0, 2) == 0 ? -xOffset : xOffset;
+            y = Random.Range(playerPosition.y - yOffset, playerPosition.y + yOffset);
+        }
+        // y 경게에서 생성
+        else
+        {
+            x = Random.Range(playerPosition.x - xOffset, playerPosition.x + xOffset);
+            y = playerPosition.y;
+            y += Random.Range(0, 2) == 0 ? -yOffset : yOffset;
+        }
+
+        Debug.Log($"Player Pos : {playerPosition.x}, {playerPosition.y}");
+        Debug.Log($"Xpos : {x}, Ypos : {y}");
+        randomPosition = new Vector3(x, y, 0);
+
         return randomPosition;
     }
 }
