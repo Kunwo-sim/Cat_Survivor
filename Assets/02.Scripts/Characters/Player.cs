@@ -15,8 +15,8 @@ public class Player : Character
         _expBar = GameObject.Find("Exp Bar").GetComponent<Bar>();
 
         // Test code
-        MoveSpeed = 5.0f;
-        MaxHp = 500;
+        MoveSpeed = 3.0f;
+        MaxHp = 100;
     }
     protected override void Start()
     {
