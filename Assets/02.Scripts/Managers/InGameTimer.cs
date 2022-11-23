@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-public class InGameManager : MonoBehaviour
+public class InGameTimer : MonoBehaviour
 {
     private float _time;
     private readonly float _endTime = 60 * 5;
