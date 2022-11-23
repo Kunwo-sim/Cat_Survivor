@@ -7,12 +7,16 @@ public class Player : Character
     private float _maxExp = 10;
     private float _exp = 0;
     private Bar _expBar;
+    private Animator _animator;
+    private SpriteRenderer _renderer;
     protected override void Awake()
     {
         base.Awake();
         _joyStick = GameObject.Find("JoyStick").GetComponent<JoyStick>();
         _skillHolder = GetComponentInChildren<SkillHolder>();
         _expBar = GameObject.Find("Exp Bar").GetComponent<Bar>();
+        _animator = GetComponent<Animator>();
+        _renderer = GetComponent<SpriteRenderer>();
 
         // Test code
         MoveSpeed = 3.0f;
@@ -29,8 +33,29 @@ public class Player : Character
     {
         Move(_joyStick.JoyDirection);
         TurnSkillHolder();
+        SetAnimation();
     }
 
+    private void SetAnimation()
+    {
+        if (_joyStick.JoyDirection == Vector2.zero)
+        {
+            _animator.SetBool("isMove", false);
+        }
+        else
+        {
+            _animator.SetBool("isMove", true);
+            if (_joyStick.JoyDirection.x < 0)
+            {
+                _renderer.flipX = true;
+            }
+            else
+            {
+                _renderer.flipX = false;
+            }
+        }
+    }
+    
     private void TurnSkillHolder()
     {
         float rot = Mathf.Atan2(_joyStick.LastJoyDirection.y, _joyStick.LastJoyDirection.x) * Mathf.Rad2Deg;
