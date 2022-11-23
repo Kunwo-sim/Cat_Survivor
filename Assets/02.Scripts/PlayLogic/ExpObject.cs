@@ -18,11 +18,11 @@ public class ExpObject : MonoBehaviour
         _exp = exp;
         float size = _exp * 0.02f + 0.3f;
         transform.localScale = new Vector3(size, size, 1);
-        if (_exp < 5)
+        if (_exp < 2)
         {
             _renderer.color = Color.white;
         }
-        else if (_exp < 10)
+        else if (_exp < 5)
         {
             _renderer.color = Color.green;
         }
