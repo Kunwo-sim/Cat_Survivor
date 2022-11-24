@@ -32,40 +32,29 @@ public class EnemyInfo : ScriptableObject
 
     private Vector3 GetRandomPosition(Transform playerTransform)
     {
-        
-        // 가로20, 세로 10 기준 모서리에서 나오도록 수정
-        int flag = Random.Range(0, 2);
 
-        // 나중에 하드코딩 수정
-        Vector3 offset = Camera.main.ScreenToWorldPoint(new Vector2(Screen.width, Screen.height));
-        int shiftValue = 2;
-        offset += new Vector3(shiftValue, shiftValue, 0);
-        
-        Vector3 playerPosition = playerTransform.position;
         Vector3 randomPosition = Vector3.zero;
-
-        float x = 0.0f;
-        float y = 0.0f;
-        
-        // x 경계에서 생성
-        if (flag == 0)
+        float min = -0.1f;
+        float max = 1.1f;
+        float zPos = 10;
+            
+        int flag = Random.Range(0, 4);
+        switch (flag)
         {
-            x = playerPosition.x;
-            x += Random.Range(0, 2) == 0 ? -offset.x : offset.x;
-            y = Random.Range(playerPosition.y - offset.y, playerPosition.y + offset.y);
+            case 0:
+                randomPosition = new Vector3(max, Random.Range(min, max), zPos);
+                break;
+            case 1:
+                randomPosition = new Vector3(min, Random.Range(min, max), zPos);
+                break;
+            case 2:
+                randomPosition = new Vector3(Random.Range(min, max), max, zPos);
+                break;
+            case 3:
+                randomPosition = new Vector3(Random.Range(min, max), min, zPos);
+                break;
         }
-        // y 경게에서 생성
-        else
-        {
-            x = Random.Range(playerPosition.x - offset.x, playerPosition.x + offset.x);
-            y = playerPosition.y;
-            y += Random.Range(0, 2) == 0 ? -offset.y : offset.y;
-        }
-
-        //Debug.Log($"Player Pos : {playerPosition.x}, {playerPosition.y}");
-        //Debug.Log($"Xpos : {x}, Ypos : {y}");
-        randomPosition = new Vector3(x, y, 0);
-
+        randomPosition = Camera.main.ViewportToWorldPoint(randomPosition);
         return randomPosition;
     }
 }
