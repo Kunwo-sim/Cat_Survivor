@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public abstract class Character : MonoBehaviour
@@ -12,6 +13,7 @@ public abstract class Character : MonoBehaviour
     private float _lastProtectionTime = 0;
     private bool _isAlive = true;
     private Bar _hpBar;
+    private SpriteRenderer _renderer;
 
     public void Initialize()
     {
@@ -23,6 +25,7 @@ public abstract class Character : MonoBehaviour
     protected virtual void Awake()
     {
         _hpBar = GetComponentInChildren<Bar>();
+        _renderer = GetComponent<SpriteRenderer>();
     }
 
     protected virtual void Start()
@@ -53,9 +56,22 @@ public abstract class Character : MonoBehaviour
     public virtual void ReceiveDamage(float damage)
     {
         Hp -= damage;
+        StopCoroutine(ReceiveDamageFX());
+        StartCoroutine(ReceiveDamageFX());
         if (Hp <= 0)
         {
             Death();
+        }
+    }
+
+    private IEnumerator ReceiveDamageFX()
+    {
+        int max = 1;
+        _renderer.color = new Color(max,0,0);
+        for (float i = 0.1f; i <= max; i += 0.01f)
+        {
+            _renderer.color = new Color(max,i,i);
+            yield return new WaitForSeconds(0.01f);
         }
     }
 }
