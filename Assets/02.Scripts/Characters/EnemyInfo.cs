@@ -32,13 +32,15 @@ public class EnemyInfo : ScriptableObject
 
     private Vector3 GetRandomPosition(Transform playerTransform)
     {
+        
         // 가로20, 세로 10 기준 모서리에서 나오도록 수정
         int flag = Random.Range(0, 2);
 
         // 나중에 하드코딩 수정
-        float xOffset = 20.0f;
-        float yOffset = 10.0f;
-
+        Vector3 offset = Camera.main.ScreenToWorldPoint(new Vector2(Screen.width, Screen.height));
+        int shiftValue = 2;
+        offset += new Vector3(shiftValue, shiftValue, 0);
+        
         Vector3 playerPosition = playerTransform.position;
         Vector3 randomPosition = Vector3.zero;
 
@@ -49,19 +51,19 @@ public class EnemyInfo : ScriptableObject
         if (flag == 0)
         {
             x = playerPosition.x;
-            x += Random.Range(0, 2) == 0 ? -xOffset : xOffset;
-            y = Random.Range(playerPosition.y - yOffset, playerPosition.y + yOffset);
+            x += Random.Range(0, 2) == 0 ? -offset.x : offset.x;
+            y = Random.Range(playerPosition.y - offset.y, playerPosition.y + offset.y);
         }
         // y 경게에서 생성
         else
         {
-            x = Random.Range(playerPosition.x - xOffset, playerPosition.x + xOffset);
+            x = Random.Range(playerPosition.x - offset.x, playerPosition.x + offset.x);
             y = playerPosition.y;
-            y += Random.Range(0, 2) == 0 ? -yOffset : yOffset;
+            y += Random.Range(0, 2) == 0 ? -offset.y : offset.y;
         }
 
-        Debug.Log($"Player Pos : {playerPosition.x}, {playerPosition.y}");
-        Debug.Log($"Xpos : {x}, Ypos : {y}");
+        //Debug.Log($"Player Pos : {playerPosition.x}, {playerPosition.y}");
+        //Debug.Log($"Xpos : {x}, Ypos : {y}");
         randomPosition = new Vector3(x, y, 0);
 
         return randomPosition;
