@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using UnityEngine;
+using static Define;
 
 public abstract class Character : MonoBehaviour
 {
@@ -11,16 +13,9 @@ public abstract class Character : MonoBehaviour
     protected int Level = 1;
     private readonly float _protectionTime = 0.1f;
     private float _lastProtectionTime = 0;
-    private bool _isAlive = true;
     private Bar _hpBar;
     private SpriteRenderer _renderer;
-
-    public void Initialize()
-    {
-        _isAlive = true;
-        _lastProtectionTime = 0;
-        Hp = MaxHp;
-    }
+    public CharacterState state;
 
     protected virtual void Awake()
     {
@@ -32,46 +27,54 @@ public abstract class Character : MonoBehaviour
     {
         Initialize();
     }
+    
+    protected void Initialize()
+    {
+        state = CharacterState.Idle;
+        _lastProtectionTime = 0;
+        Hp = MaxHp;
+    }
 
     protected void Move(Vector2 input)
     {
-        if (_isAlive)
-        {
-            Vector2 dir = input.normalized;
-            transform.Translate(dir * (MoveSpeed * 0.03f));
-        }
+        if (state == CharacterState.Dead) return;
+        state = input == Vector2.zero ? CharacterState.Idle : CharacterState.Move;
+        Vector2 dir = input.normalized;
+        transform.Translate(dir * (MoveSpeed * 0.03f));
     }
 
     protected virtual void Death()
     {
+        state = CharacterState.Dead;
         Hp = 0;
-        _isAlive = false;
     }
 
-    protected void SetHpUI()
-    {
-        _hpBar.SetBar(MaxHp, Hp);
-        _hpBar.SetText(Mathf.FloorToInt(Hp));
-    }
     public virtual void ReceiveDamage(float damage)
     {
         Hp -= damage;
-        StopCoroutine(ReceiveDamageFX());
-        StartCoroutine(ReceiveDamageFX());
         if (Hp <= 0)
-        {
             Death();
-        }
+        
+        if (state is CharacterState.Hit or CharacterState.Dead) return;
+        state = CharacterState.Hit;
+        StartCoroutine(ReceiveDamageFX());
     }
 
     private IEnumerator ReceiveDamageFX()
     {
         int max = 1;
-        _renderer.color = new Color(max,0,0);
+        _renderer.color = new Color(max, 0, 0);
         for (float i = 0.1f; i <= max; i += 0.01f)
         {
-            _renderer.color = new Color(max,i,i);
-            yield return new WaitForSeconds(0.01f);
+            _renderer.color = new Color(max, i, i);
+            yield return new WaitForSeconds(0.001f);
         }
+        state = CharacterState.Idle;
+    }
+    
+    protected void SetHpUI()
+    {
+        _hpBar.SetBar(MaxHp, Hp);
+        _hpBar.SetText(Mathf.FloorToInt(Hp));
     }
 }

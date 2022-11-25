@@ -1,4 +1,7 @@
+using System;
+using System.Collections;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class Enemy : Character
 {
@@ -39,6 +42,7 @@ public class Enemy : Character
         // Test code
         MoveSpeed = Random.Range(1.0f, 4.0f);
     }
+
     protected override void Death()
     {
         base.Death();

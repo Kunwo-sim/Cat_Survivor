@@ -33,4 +33,13 @@ public class Define
     {
         QuaterView,
     }
+    
+    public enum CharacterState
+    {
+        Idle,
+        Move,
+        Attack,
+        Hit,
+        Dead
+    }
 }
