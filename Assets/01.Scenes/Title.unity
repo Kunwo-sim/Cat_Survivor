@@ -349,7 +349,7 @@ MonoBehaviour:
   masterVolumeSFX: 1
   masterVolumeBGM: 1
   menuBgmClip: {fileID: 8300000, guid: cacac3cd3ae564543b5f8c6b80d44343, type: 3}
-  inGameBgmClip: {fileID: 8300000, guid: cacac3cd3ae564543b5f8c6b80d44343, type: 3}
+  inGameBgmClip: {fileID: 8300000, guid: d57970564e99d1d418c7df60ae082941, type: 3}
   sfxAudioClips:
   - {fileID: 8300000, guid: c387f373d9f1847449302fc0c0ed1197, type: 3}
   - {fileID: 8300000, guid: 4c67a1b4a8f9c3f46a9c5180d248663a, type: 3}

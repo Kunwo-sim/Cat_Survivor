@@ -64,7 +64,7 @@ public class SoundManager : MonoBehaviour
         bgmPlayer.loop = true; 
         bgmPlayer.volume = volume * masterVolumeBGM;
 
-        if (SceneManager.GetActiveScene().name == "Menu")
+        if (SceneManager.GetActiveScene().name == "Lobby")
         {
             bgmPlayer.clip = menuBgmClip;
             bgmPlayer.Play();

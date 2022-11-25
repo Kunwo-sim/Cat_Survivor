@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,7 +12,11 @@ public class InGameCamera : MonoBehaviour
         _playerTransform = GameObject.FindWithTag("Player").transform;
     }
 
-    // Update is called once per frame
+    private void Start()
+    {
+        SoundManager.Instance.PlayBGMSound();
+    }
+
     void FixedUpdate()
     {
         Vector3 playerPos = _playerTransform.transform.position;
