@@ -37,6 +37,6 @@ public class TitleManager : MonoBehaviour
     }
     public void Button_Start_Clicked()
     {
-        CatSceneManager.Instance.ChangeScene("Lobby");
+        SceneManager.LoadScene("Lobby");
     }
 }

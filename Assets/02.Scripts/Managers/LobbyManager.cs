@@ -12,6 +12,6 @@ public class LobbyManager : MonoBehaviour
     }
     public void Button_GameStart_Clicked()
     {
-        SceneManager.LoadScene("InGame");
+        CatSceneManager.Instance.ChangeScene("InGame");
     }
 }
