@@ -56,7 +56,7 @@ public abstract class Character : MonoBehaviour
         return (b - a).normalized;
     }
     
-    public virtual void ReceiveDamage(float damage)
+    public virtual void ReceiveDamage(float damage, Vector3 knockBackDir = default)
     {
         Hp -= damage;
         if (Hp <= 0)
@@ -65,11 +65,7 @@ public abstract class Character : MonoBehaviour
         if (state is CharacterState.Hit or CharacterState.Dead) return;
         state = CharacterState.Hit;
         StartCoroutine(ReceiveDamageFX());
-    }
-    public void ReceiveDamage(float damage, Vector3 attackDir)
-    {
-        ReceiveDamage(damage);
-        KnockBack(attackDir);
+        KnockBack(knockBackDir);
     }
     
     private IEnumerator ReceiveDamageFX()

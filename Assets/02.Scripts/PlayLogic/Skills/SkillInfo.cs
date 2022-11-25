@@ -22,6 +22,7 @@ public class SkillInfo : ScriptableObject
         // 오브젝트 생성
         Projectile cloneProjectile = ObjectPoolManager.GetObject(poolType).GetComponent<Projectile>();
         cloneProjectile.Initialize(spawnTransform.position, spawnTransform.rotation, damage, activeTime, poolType);
+        SoundManager.Instance.PlaySFXSound("SkillShot");
     }
 
     // public override void Activate(Transform holderTrans)

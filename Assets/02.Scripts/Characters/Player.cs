@@ -86,7 +86,7 @@ public class Player : Character
         }
     }
 
-    public override void ReceiveDamage(float damage)
+    public override void ReceiveDamage(float damage, Vector3  knockBackDir = default)
     {
         base.ReceiveDamage(damage);
         SetHpUI();

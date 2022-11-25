@@ -45,7 +45,15 @@ public class Enemy : Character
         CreatExpObject();
         ObjectPoolManager.ReturnObject(gameObject, _poolType);
     }
-    
+
+    public override void ReceiveDamage(float damage, Vector3 knockBackDir = default)
+    {
+        SoundManager.Instance.PlaySFXSound("SkillHit");
+        base.ReceiveDamage(damage, knockBackDir);
+        
+    }
+
+
     private void OnCollisionStay2D(Collision2D col)
     {
         if (col.collider.CompareTag("Player"))
