@@ -42,10 +42,11 @@ public class CatSceneManager : MonoBehaviour
         _fadeImg.DOFade(0, _fadeDuration)
         .OnStart(() => {
             _loadingText.gameObject.SetActive(false);
+            _fadeImg.blocksRaycasts = false;
             // _loadingObject.SetActive(false);
         })
         .OnComplete(() => {
-            _fadeImg.blocksRaycasts = false;
+            //_fadeImg.blocksRaycasts = false;
         });
     }
 
