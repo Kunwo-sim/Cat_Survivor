@@ -77,6 +77,7 @@ public abstract class Character : MonoBehaviour
             _renderer.color = new Color(max, i, i);
             yield return new WaitForSeconds(0.01f);
         }
+        _renderer.color = Color.white;
         _rigidbody.velocity= Vector2.zero;
         state = CharacterState.Idle;
     }
