@@ -18,7 +18,7 @@ public abstract class Projectile : MonoBehaviour
     {
         if (col.CompareTag("Enemy"))
         {
-            col.GetComponent<Enemy>().ReceiveDamage(_damage);
+            col.GetComponent<Enemy>().ReceiveDamage(_damage, transform.right);
             CancelInvoke(nameof(Delete));
             Delete();
         }

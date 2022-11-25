@@ -16,11 +16,13 @@ public abstract class Character : MonoBehaviour
     private Bar _hpBar;
     private SpriteRenderer _renderer;
     public CharacterState state;
+    private Rigidbody2D _rigidbody;
 
     protected virtual void Awake()
     {
         _hpBar = GetComponentInChildren<Bar>();
         _renderer = GetComponent<SpriteRenderer>();
+        _rigidbody = GetComponent<Rigidbody2D>();
     }
 
     protected virtual void Start()
@@ -48,7 +50,12 @@ public abstract class Character : MonoBehaviour
         state = CharacterState.Dead;
         Hp = 0;
     }
-
+    
+    protected Vector2 GetDirection(Vector2 a,Vector2 b)
+    {
+        return (b - a).normalized;
+    }
+    
     public virtual void ReceiveDamage(float damage)
     {
         Hp -= damage;
@@ -59,19 +66,28 @@ public abstract class Character : MonoBehaviour
         state = CharacterState.Hit;
         StartCoroutine(ReceiveDamageFX());
     }
-
+    public void ReceiveDamage(float damage, Vector3 attackDir)
+    {
+        ReceiveDamage(damage);
+        KnockBack(attackDir);
+    }
+    
     private IEnumerator ReceiveDamageFX()
     {
         int max = 1;
         _renderer.color = new Color(max, 0, 0);
-        for (float i = 0.1f; i <= max; i += 0.01f)
+        for (float i = 0.1f; i <= max; i += 0.1f)
         {
             _renderer.color = new Color(max, i, i);
-            yield return new WaitForSeconds(0.001f);
+            yield return new WaitForSeconds(0.01f);
         }
+        _rigidbody.velocity= Vector2.zero;
         state = CharacterState.Idle;
     }
-    
+    private void KnockBack(Vector3 attackDir)
+    {
+        _rigidbody.AddForce(attackDir.normalized * 3, ForceMode2D.Impulse);
+    }
     protected void SetHpUI()
     {
         _hpBar.SetBar(MaxHp, Hp);

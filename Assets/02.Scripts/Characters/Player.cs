@@ -82,8 +82,8 @@ public class Player : Character
 
     public override void ReceiveDamage(float damage)
     {
-        SetHpUI();
         base.ReceiveDamage(damage);
+        SetHpUI();
     }
 
     protected override void Death()

@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using UnityEngine;
 using Random = UnityEngine.Random;
+using static Define;
 
 public class Enemy : Character
 {
@@ -20,12 +21,7 @@ public class Enemy : Character
 
     private void FixedUpdate()
     {
-        Move(GetDirection(_player.transform));
-    }
-
-    private Vector2 GetDirection(Transform target)
-    {
-        return target.position - transform.position;
+        Move(GetDirection(transform.position, _player.transform.position));
     }
 
     private void CreatExpObject()
@@ -49,7 +45,7 @@ public class Enemy : Character
         CreatExpObject();
         ObjectPoolManager.ReturnObject(gameObject, _poolType);
     }
-
+    
     private void OnCollisionStay2D(Collision2D col)
     {
         if (col.collider.CompareTag("Player"))
