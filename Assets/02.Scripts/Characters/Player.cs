@@ -79,11 +79,11 @@ public class Player : Character
     public void ReceiveExp(float exp)
     {
         _exp += exp;
-        _expBar.SetBar(_maxExp, _exp);
         if (_exp >= _maxExp)
         {
             LevelUp();
         }
+        _expBar.SetBar(_maxExp, _exp);
     }
 
     public override void ReceiveDamage(float damage, Vector3  knockBackDir = default)
