@@ -9,6 +9,12 @@ public class Player : Character
     private Bar _expBar;
     private Animator _animator;
     private SpriteRenderer _renderer;
+
+    public JoyStick PjoyStick
+    {
+        get { return _joyStick; }
+    }
+
     protected override void Awake()
     {
         base.Awake();

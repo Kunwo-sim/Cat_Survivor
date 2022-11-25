@@ -1,11 +1,12 @@
 using UnityEngine;
-
+using DG.Tweening;
 public class ExpObject : MonoBehaviour
 {
     private SpriteRenderer _renderer;
     private Player _player;
     private float _exp;
     private readonly EPoolObjectType _poolType = EPoolObjectType.ExpObject;
+    private Tweener _backToPlayer;
 
     private void Awake()
     {
@@ -37,8 +38,21 @@ public class ExpObject : MonoBehaviour
     {
         if (col.CompareTag("Player"))
         {
-            _player.ReceiveExp(_exp);
-            ObjectPoolManager.ReturnObject(gameObject, _poolType);
+            Sequence sequence = DOTween.Sequence();
+            Vector2 curPos = transform.position;
+            Vector2 moveOffset = _player.PjoyStick.JoyDirection * 10;
+            Vector3 playerPos = _player.transform.position;
+
+            sequence.Append(transform.DOMove(curPos + moveOffset, 0.5f).SetEase(Ease.OutQuad))
+                .Append(transform.DOMove(playerPos, 0.5f).SetEase(Ease.InQuad))
+                .OnComplete(ExpCallback);
+            sequence.Play();
         }
+    }
+
+    public void ExpCallback()
+    {
+        ObjectPoolManager.ReturnObject(gameObject, _poolType);
+        _player.ReceiveExp(_exp);
     }
 }
