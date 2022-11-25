@@ -37,6 +37,7 @@ public class TitleManager : MonoBehaviour
     }
     public void Button_Start_Clicked()
     {
+        SoundManager.Instance.PlaySFXSound("UIClick");
         SceneManager.LoadScene("Lobby");
     }
 }

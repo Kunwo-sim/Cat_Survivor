@@ -75,4 +75,9 @@ public class SoundManager : MonoBehaviour
             bgmPlayer.Play();
         }
     }
+
+    public void StopBGMSound()
+    {
+        bgmPlayer.Stop();
+    }
 }

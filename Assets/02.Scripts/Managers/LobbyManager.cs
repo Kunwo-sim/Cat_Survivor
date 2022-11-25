@@ -12,6 +12,8 @@ public class LobbyManager : MonoBehaviour
     }
     public void Button_GameStart_Clicked()
     {
+        SoundManager.Instance.PlaySFXSound("UIClick");
+        SoundManager.Instance.StopBGMSound();
         CatSceneManager.Instance.ChangeScene("InGame");
     }
 }
