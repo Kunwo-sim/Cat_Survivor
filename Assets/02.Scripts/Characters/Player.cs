@@ -70,6 +70,9 @@ public class Player : Character
 
     private void LevelUp()
     {
+        // Test
+        GameObject.Find("Canvas").transform.Find("LevelUpPanel").gameObject.SetActive(true);
+        Time.timeScale = 0;
         _exp -= _maxExp;
         _maxExp *= 1.5f;
         Level++;
@@ -96,7 +99,7 @@ public class Player : Character
     {
         base.Death();
         // Test
-        Debug.Log("Game Over !");
+        GameObject.Find("Canvas").transform.Find("GameOverPanel").gameObject.SetActive(true);
         Time.timeScale = 0;
     }
 }
