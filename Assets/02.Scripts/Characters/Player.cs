@@ -23,13 +23,16 @@ public class Player : Character
         _expBar = GameObject.Find("Exp Bar").GetComponent<Bar>();
         _animator = GetComponent<Animator>();
         _renderer = GetComponent<SpriteRenderer>();
-
-        // Test code
-        MoveSpeed = 3.0f;
-        MaxHp = 100;
     }
     protected override void Start()
     {
+        // Test code
+        MoveSpeed = 3.0f;
+        MaxHp = 100;
+        Hp = 100; 
+        _exp = 100;
+        LevelUp();
+        
         base.Start();
         SetHpUI();
         _expBar.SetBar(_maxExp, _exp);
@@ -71,7 +74,9 @@ public class Player : Character
     private void LevelUp()
     {
         // Test
-        GameObject.Find("Canvas").transform.Find("LevelUpPanel").gameObject.SetActive(true);
+        GameObject temp = GameObject.Find("Canvas").transform.Find("LevelUpPanel").gameObject;
+        temp.SetActive(true);
+        temp.GetComponent<LevelUpPanel>().SetSkillPanels();
         Time.timeScale = 0;
         _exp -= _maxExp;
         _maxExp *= 1.5f;
@@ -89,7 +94,7 @@ public class Player : Character
         _expBar.SetBar(_maxExp, _exp);
     }
 
-    public override void ReceiveDamage(float damage, Vector3  knockBackDir = default)
+    public override void ReceiveDamage(float damage, Vector3 knockBackDir = default)
     {
         base.ReceiveDamage(damage);
         SetHpUI();
