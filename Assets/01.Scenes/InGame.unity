@@ -3322,6 +3322,50 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &596840054
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 596840056}
+  - component: {fileID: 596840057}
+  m_Layer: 0
+  m_Name: CSVReader
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &596840056
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 596840054}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &596840057
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 596840054}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10822d272194b514b9a551f06fb253a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &597865382
 GameObject:
   m_ObjectHideFlags: 0
@@ -3757,6 +3801,7 @@ GameObject:
   - component: {fileID: 681568328}
   - component: {fileID: 681568327}
   - component: {fileID: 681568329}
+  - component: {fileID: 681568330}
   m_Layer: 5
   m_Name: UpSkill3
   m_TagString: Untagged
@@ -3881,6 +3926,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &681568330
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 681568325}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9cc6f75daf844e61a5bd68e88a8736b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &684643862
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3888,10 +3945,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 736983449, guid: d2605fe86bd07d64589b02008b43750a, type: 3}
-      propertyPath: m_isRichText
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 471927365166706390, guid: d2605fe86bd07d64589b02008b43750a, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -3900,10 +3953,6 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 471927365540907312, guid: d2605fe86bd07d64589b02008b43750a, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: be89f06199de10d45aa2dd75b0e488b0, type: 3}
     - target: {fileID: 471927365540907313, guid: d2605fe86bd07d64589b02008b43750a, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -5917,6 +5966,7 @@ GameObject:
   - component: {fileID: 1073395878}
   - component: {fileID: 1073395877}
   - component: {fileID: 1073395879}
+  - component: {fileID: 1073395880}
   m_Layer: 5
   m_Name: UpSkill1
   m_TagString: Untagged
@@ -6041,6 +6091,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &1073395880
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1073395875}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9cc6f75daf844e61a5bd68e88a8736b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1105408395
 GameObject:
   m_ObjectHideFlags: 0
@@ -9092,31 +9154,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1 &1688947309 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 471927365540907319, guid: d2605fe86bd07d64589b02008b43750a, type: 3}
-  m_PrefabInstance: {fileID: 684643862}
-  m_PrefabAsset: {fileID: 0}
---- !u!95 &1688947315
-Animator:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1688947309}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 6aef0f3405775fc4a86688e2d42d1e2c, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1696826277
 GameObject:
   m_ObjectHideFlags: 0
@@ -10498,13 +10535,14 @@ GameObject:
   - component: {fileID: 1898681462}
   - component: {fileID: 1898681464}
   - component: {fileID: 1898681463}
+  - component: {fileID: 1898681465}
   m_Layer: 5
   m_Name: LevelUpPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1898681462
 RectTransform:
   m_ObjectHideFlags: 0
@@ -10566,6 +10604,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1898681461}
   m_CullTransparentMesh: 1
+--- !u!114 &1898681465
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1898681461}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d819d3b9d41286c4dbb14d4cfe6d2718, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1903496228
 GameObject:
   m_ObjectHideFlags: 0
@@ -10662,6 +10712,7 @@ GameObject:
   - component: {fileID: 1905757973}
   - component: {fileID: 1905757972}
   - component: {fileID: 1905757974}
+  - component: {fileID: 1905757975}
   m_Layer: 5
   m_Name: UpSkill2
   m_TagString: Untagged
@@ -10786,6 +10837,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &1905757975
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1905757970}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9cc6f75daf844e61a5bd68e88a8736b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1911825376
 GameObject:
   m_ObjectHideFlags: 0
