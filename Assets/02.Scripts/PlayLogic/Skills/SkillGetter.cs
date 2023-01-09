@@ -46,7 +46,7 @@ public static class SkillGetter
     {
         return _skillData.Count;
     }
-    public static SkillData GetSkillData(int key)
+    public static SkillData Get(int key)
     {
         return _skillData[key];
     }

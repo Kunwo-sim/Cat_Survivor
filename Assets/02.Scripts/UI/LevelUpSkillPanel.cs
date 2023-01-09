@@ -20,7 +20,7 @@ public class LevelUpSkillPanel : MonoBehaviour
     public void SetSkill(int index)
     {
         int key = Random.Range(0, SkillGetter.Count());
-        _skillName.text = SkillGetter.GetSkillData(key).Name;
-        _skillDescription.text = SkillGetter.GetSkillData(key).Description;
+        _skillName.text = SkillGetter.Get(key).Name;
+        _skillDescription.text = SkillGetter.Get(key).Description;
     }
 }
