@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using Random = UnityEngine.Random;
 public class LevelUpSkillPanel : MonoBehaviour
 {
     private TextMeshProUGUI _skillName;
@@ -18,7 +19,8 @@ public class LevelUpSkillPanel : MonoBehaviour
 
     public void SetSkill(int index)
     {
-        _skillName.text = SkillGetter.GetSkillData(4).Name;
-        _skillDescription.text = SkillGetter.GetSkillData(4).Description;
+        int key = Random.Range(0, SkillGetter.Count());
+        _skillName.text = SkillGetter.GetSkillData(key).Name;
+        _skillDescription.text = SkillGetter.GetSkillData(key).Description;
     }
 }

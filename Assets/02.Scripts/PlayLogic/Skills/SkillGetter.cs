@@ -6,7 +6,7 @@ using UnityEngine;
 public class SkillData
 {
     public int Key;
-    public  string Name;
+    public string Name;
     public string Description;
     public int Power;
     public float Cooldown;
@@ -27,7 +27,7 @@ public static class SkillGetter
     private static Dictionary<int, SkillData> _skillData;
     static SkillGetter()
     {
-        _skillCSV = CSVReader.Read ("Skills");
+        _skillCSV = CSVReader.Read("Skills");
         _skillData = new Dictionary<int, SkillData>();
         for (int i = 0; i < _skillCSV.Count; i++)
         {
@@ -42,6 +42,10 @@ public static class SkillGetter
         }
     }
 
+    public static int Count()
+    {
+        return _skillData.Count;
+    }
     public static SkillData GetSkillData(int key)
     {
         return _skillData[key];
