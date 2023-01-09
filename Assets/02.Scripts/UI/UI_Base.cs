@@ -4,10 +4,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using TMPro;
 
 public abstract class UI_Base : MonoBehaviour
 {
-    protected Dictionary<Type, UnityEngine.Object[]> _objects = new Dictionary<Type, UnityEngine.Object[]>();
+    // 리플렉션을 이용한 Dictinary, Type을 key값으로 Object 찾음
+    Dictionary<Type, UnityEngine.Object[]> _objects = new Dictionary<Type, UnityEngine.Object[]>();
 
     public abstract void Init();
 
@@ -17,16 +19,21 @@ public abstract class UI_Base : MonoBehaviour
         UnityEngine.Object[] objects = new UnityEngine.Object[names.Length];
         _objects.Add(typeof(T), objects);
 
-        for (int i = 0; i < names.Length; i++)
+        for (int i = 0; i < names.Length; ++i)
         {
             if (typeof(T) == typeof(GameObject))
-                objects[i] = Util.FindChild(gameObject, names[i], true);
+            {
+                objects[i] = Utils.FindChild(gameObject, names[i], true);
+            }
             else
             {
-                objects[i] = Util.FindChild<T>(gameObject, names[i], true);
+                objects[i] = Utils.FindChild<T>(gameObject, names[i], true);
             }
+
             if (objects[i] == null)
-                Debug.Log($"Failed to bind({names[i]})");
+            {
+                Debug.LogError($"{names[i]}를 찾지 못했습니다.");
+            }
         }
     }
 
@@ -35,48 +42,25 @@ public abstract class UI_Base : MonoBehaviour
         UnityEngine.Object[] objects = null;
         if (_objects.TryGetValue(typeof(T), out objects) == false)
             return null;
+
         return objects[idx] as T;
-    }
-
-    protected GameObject GetObject(int idx)
-    {
-        return Get<GameObject>(idx);
-    }
-    protected Text GetText(int idx)
-    {
-        return Get<Text>(idx);
-    }
-
-    protected Button GetButton(int idx)
-    {
-        return Get<Button>(idx);
-    }
-
-    protected Image GetImage(int idx)
-    {
-        return Get<Image>(idx);
     }
 
     public static void BindEvent(GameObject go, Action<PointerEventData> action, Define.UIEvent type = Define.UIEvent.Click)
     {
+        UI_EventHandler evt = Utils.GetOrAddComponent<UI_EventHandler>(go);
 
-        UI_EventHandler evt = go.AddComponent<UI_EventHandler>();
-
-        switch (type)
+        switch(type)
         {
             case Define.UIEvent.Click:
                 evt.OnClickHandler -= action;
                 evt.OnClickHandler += action;
                 break;
+
             case Define.UIEvent.Drag:
                 evt.OnDragHandler -= action;
                 evt.OnDragHandler += action;
                 break;
         }
-
-        if (evt == null)
-            evt = go.AddComponent<UI_EventHandler>();
-        evt.OnDragHandler += ((PointerEventData data) => { evt.gameObject.transform.position = data.position; });
-
     }
 }
