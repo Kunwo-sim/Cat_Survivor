@@ -13,6 +13,10 @@ public class UIManager : MonoBehaviour
             if (instance == null)
             {
                 instance = FindObjectOfType<UIManager>();
+                if (instance == null)
+                {
+                    Debug.LogError("UIManager Instance Init Failed");
+                }
             }
 
             return instance;
@@ -51,6 +55,7 @@ public class UIManager : MonoBehaviour
             
     }
 
+    // Scene, Popup이 아닌 UI를 만들기
     public T MakeSubUI<T>(string name = null) where T : UI_Base
     {
         if (string.IsNullOrEmpty(name))
@@ -62,6 +67,7 @@ public class UIManager : MonoBehaviour
 
         return go.GetOrAddComponent<T>();
     }
+    // 없어지지 않고 계속 배경으로 남는 UI 만들기
 
     public T ShowSceneUI<T>(string name = null) where T : UI_Scene
     {
@@ -78,7 +84,7 @@ public class UIManager : MonoBehaviour
 
         return sceneUI;
     }
-
+    // Popup UI 만들기
     public T ShowPopupUI<T>(string name = null) where T : UI_Popup
     {
         if(string.IsNullOrEmpty(name))
