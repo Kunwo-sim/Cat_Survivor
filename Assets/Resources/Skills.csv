@@ -1,4 +1,7 @@
-﻿index,name,description,power,cooldown
+﻿key,name,description,power,cooldown
 1,skill1,스킬1입니다. ㅎ,1,0.1
 2,skill2,스킬2입니다. ㅎㅎ,2,0.2
 3,skill3,스킬3입니다. ㅎㅎㅎ,3,0.3
+4,skill4,ㅅㅋ4,4,0.4
+5,skill5,ㅅㅋ5,5,0.5
+6,skill6,ㅅㅋ6,6,0.6

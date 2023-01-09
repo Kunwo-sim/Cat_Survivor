@@ -3332,6 +3332,7 @@ GameObject:
   m_Component:
   - component: {fileID: 596840056}
   - component: {fileID: 596840057}
+  - component: {fileID: 596840058}
   m_Layer: 0
   m_Name: CSVReader
   m_TagString: Untagged
@@ -3364,6 +3365,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 10822d272194b514b9a551f06fb253a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &596840058
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 596840054}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8038b80a9c222614fa0984d0702ca4dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &597865382
@@ -10542,7 +10555,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1898681462
 RectTransform:
   m_ObjectHideFlags: 0
