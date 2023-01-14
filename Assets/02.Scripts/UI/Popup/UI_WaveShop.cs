@@ -37,7 +37,7 @@ public class UI_WaveShop : UI_Popup
         {
             Destroy(child.gameObject);
         }
-        for (int i = 0; i < 8; i++)
+        for (int i = 0; i < 4; i++)
         {
             GameObject itemPanel = Instantiate(Resources.Load<GameObject>("Prefabs/UI/Sub/UI_ItemPanel"));
             itemPanel.transform.SetParent(ItemPanels.transform);
@@ -52,5 +52,6 @@ public class UI_WaveShop : UI_Popup
     void OnNextButtonClicked(PointerEventData data)
     {
         UIManager.Instance.ClosePopupUI();
+        Time.timeScale = 1.0f;
     }
 }
