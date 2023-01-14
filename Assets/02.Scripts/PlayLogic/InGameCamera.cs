@@ -6,6 +6,9 @@ using UnityEngine;
 public class InGameCamera : MonoBehaviour
 {
     private Transform _playerTransform;
+    private float _xOffest = 15;
+    private float _yOffest = 8;
+
     [SerializeField] private float camToPlayerSpeed = 0.01f;
     void Awake()
     {
@@ -20,7 +23,21 @@ public class InGameCamera : MonoBehaviour
     void FixedUpdate()
     {
         Vector3 playerPos = _playerTransform.transform.position;
-        Vector3 targetPos = new Vector3(playerPos.x, playerPos.y, -10);
+
+        float targetX = playerPos.x;
+        float targetY = playerPos.y;
+
+        if (targetX > _xOffest)
+            targetX = _xOffest;
+        else if (targetX < -_xOffest)
+            targetX = -_xOffest;
+
+        if (targetY > _yOffest)
+            targetY = _yOffest;
+        else if (targetY < -_yOffest)
+            targetY = -_yOffest;
+
+        Vector3 targetPos = new Vector3(targetX, targetY, -10);
         transform.position = Vector3.Lerp(transform.position, targetPos, camToPlayerSpeed);
     }
 }
