@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
@@ -42,6 +43,13 @@ public class UIManager : MonoBehaviour
         Canvas canvas = Utils.GetOrAddComponent<Canvas>(go);
         canvas.renderMode = RenderMode.ScreenSpaceOverlay;
         canvas.overrideSorting = true;
+
+        CanvasScaler canvasScaler = Utils.GetOrAddComponent<CanvasScaler>(go);
+        canvasScaler.uiScaleMode = CanvasScaler.ScaleMode.ScaleWithScreenSize;
+        canvasScaler.referenceResolution = new Vector2(1280, 1080);
+
+        GraphicRaycaster graphicRaycaster = Utils.GetOrAddComponent<GraphicRaycaster>(go);
+
 
         if (sort)
         {
