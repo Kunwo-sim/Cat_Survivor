@@ -21,7 +21,9 @@ public class Enemy : Character
 
     private void FixedUpdate()
     {
-        Move(GetDirection(transform.position, _player.transform.position));
+        Vector2 direction = GetDirection(transform.position, _player.transform.position);
+        Move(direction);
+        _renderer.flipX = direction.x < 0 ? true : false;
     }
 
     private void CreatExpObject()

@@ -14,7 +14,7 @@ public abstract class Character : MonoBehaviour
     private readonly float _protectionTime = 0.1f;
     private float _lastProtectionTime = 0;
     private Bar _hpBar;
-    private SpriteRenderer _renderer;
+    protected SpriteRenderer _renderer;
     public CharacterState state;
     private Rigidbody2D _rigidbody;
 
