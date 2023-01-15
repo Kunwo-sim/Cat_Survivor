@@ -6,8 +6,10 @@ using UnityEngine;
 public class InGameCamera : MonoBehaviour
 {
     private Transform _playerTransform;
-    private float _xOffest = 15;
-    private float _yOffest = 8;
+    [SerializeField]
+    private float _xOffest = 8;
+    [SerializeField]
+    private float _yOffest = 6;
 
     [SerializeField] private float camToPlayerSpeed = 0.01f;
     void Awake()
