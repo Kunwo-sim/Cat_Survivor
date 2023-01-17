@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1271952608863115384}
   - component: {fileID: 69744830812365752}
   m_Layer: 0
-  m_Name: TestProjectile1
+  m_Name: Projectile_NyanCat
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

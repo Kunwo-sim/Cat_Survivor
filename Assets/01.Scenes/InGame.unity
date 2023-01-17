@@ -1972,6 +1972,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 471927365093727487, guid: d2605fe86bd07d64589b02008b43750a, type: 3}
+      propertyPath: skillList.Array.data[0]
+      value: 
+      objectReference: {fileID: 2011456529535933757, guid: b6cf4533ffe0c2547b3cbe1a224d8fcb, type: 3}
     - target: {fileID: 471927365166706390, guid: d2605fe86bd07d64589b02008b43750a, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0

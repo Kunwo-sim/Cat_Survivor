@@ -4,16 +4,16 @@ using UnityEngine.UI;
 
 public class TestButtons : MonoBehaviour
 {
-    private SkillHolder _skillHolder;
+    private SkillCoolManager _skillCoolManager;
     private void Awake()
     {
-        _skillHolder = GameObject.FindWithTag("Player").GetComponentInChildren<SkillHolder>();
+        _skillCoolManager = GameObject.FindWithTag("Player").GetComponentInChildren<SkillCoolManager>();
     }
 
-    public void AddSkill(SkillInfo skillInfo)
+    public void AddSkill(Skill skill)
     {
-        skillInfo.NextCoolDown = 0;
-        _skillHolder.skillList.Add(skillInfo);
+        skill.NextCoolDown = 0;
+        _skillCoolManager.skillList.Add(skill);
     }
 
     public void TempAddSkillButton()

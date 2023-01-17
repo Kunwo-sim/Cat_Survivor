@@ -3,7 +3,7 @@ using UnityEngine;
 public class Player : Character
 {
     private JoyStick _joyStick;
-    private SkillHolder _skillHolder;
+    private SkillCoolManager _skillCoolManager;
     private float _maxExp = 10;
     private float _exp = 0;
     private Bar _expBar;
@@ -19,7 +19,7 @@ public class Player : Character
     {
         base.Awake();
         _joyStick = GameObject.Find("JoyStick").GetComponent<JoyStick>();
-        _skillHolder = GetComponentInChildren<SkillHolder>();
+        _skillCoolManager = GetComponentInChildren<SkillCoolManager>();
         _expBar = GameObject.Find("Exp Bar").GetComponent<Bar>();
         _animator = GetComponent<Animator>();
         _renderer = GetComponent<SpriteRenderer>();
@@ -68,7 +68,7 @@ public class Player : Character
     private void TurnSkillHolder()
     {
         float rot = Mathf.Atan2(_joyStick.LastJoyDirection.y, _joyStick.LastJoyDirection.x) * Mathf.Rad2Deg;
-        _skillHolder.transform.rotation = Quaternion.Euler(0, 0, rot - 90);
+        _skillCoolManager.transform.rotation = Quaternion.Euler(0, 0, rot - 90);
     }
 
     private void LevelUp()

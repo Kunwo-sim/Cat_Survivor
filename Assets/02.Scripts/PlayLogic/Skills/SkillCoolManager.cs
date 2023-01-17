@@ -1,12 +1,12 @@
 using System.Collections.Generic;
 using UnityEngine;
-public class SkillHolder : MonoBehaviour
+public class SkillCoolManager : MonoBehaviour
 {
-    public List<SkillInfo> skillList = new List<SkillInfo>();
+    public List<Skill> skillList = new List<Skill>();
 
     private void Awake()
     {
-        foreach (SkillInfo skill in skillList)
+        foreach (Skill skill in skillList)
         {
             skill.NextCoolDown = 0;
         }
@@ -19,7 +19,7 @@ public class SkillHolder : MonoBehaviour
 
     private void CheckCoolDown()
     {
-        foreach (SkillInfo skill in skillList)
+        foreach (Skill skill in skillList)
         {
             bool coolDownComplete = (Time.time > skill.NextCoolDown);
             if (coolDownComplete)
@@ -29,9 +29,9 @@ public class SkillHolder : MonoBehaviour
         }
     }
 
-    private void ActiveSkill(SkillInfo skillInfo)
+    private void ActiveSkill(Skill skill)
     {
-        skillInfo.NextCoolDown = skillInfo.BaseCoolDown + Time.time;
-        skillInfo.Activate(transform);
+        skill.NextCoolDown = skill.BaseCoolDown + Time.time;
+        skill.Activate(transform);
     }
 }
