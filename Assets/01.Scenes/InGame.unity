@@ -985,7 +985,7 @@ RectTransform:
   - {fileID: 125165855}
   - {fileID: 959470538}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1058,7 +1058,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &300896891
 GameObject:
@@ -1795,7 +1795,7 @@ GameObject:
   m_Component:
   - component: {fileID: 645344830}
   m_Layer: 0
-  m_Name: TestSkill1
+  m_Name: NyangCat
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1973,9 +1973,17 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 471927365093727487, guid: d2605fe86bd07d64589b02008b43750a, type: 3}
+      propertyPath: skillList.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 471927365093727487, guid: d2605fe86bd07d64589b02008b43750a, type: 3}
       propertyPath: skillList.Array.data[0]
       value: 
-      objectReference: {fileID: 2011456529535933757, guid: b6cf4533ffe0c2547b3cbe1a224d8fcb, type: 3}
+      objectReference: {fileID: 3918510143823448711, guid: e216d4d4123be2041995c68694b76508, type: 3}
+    - target: {fileID: 471927365093727487, guid: d2605fe86bd07d64589b02008b43750a, type: 3}
+      propertyPath: skillList.Array.data[1]
+      value: 
+      objectReference: {fileID: 3918510143823448711, guid: e216d4d4123be2041995c68694b76508, type: 3}
     - target: {fileID: 471927365166706390, guid: d2605fe86bd07d64589b02008b43750a, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -2109,7 +2117,7 @@ Transform:
   - {fileID: 833320328}
   - {fileID: 1356764744}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &764130512
 GameObject:
@@ -2429,7 +2437,7 @@ Transform:
   - {fileID: 929626848}
   - {fileID: 1603332356}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &833320327
 GameObject:
@@ -4281,7 +4289,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1768772841
 GameObject:
@@ -4604,7 +4612,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1792789837
 GameObject:
@@ -5545,7 +5553,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2027366744}
   m_Layer: 0
-  m_Name: TestSkill2
+  m_Name: NyangPunch
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
