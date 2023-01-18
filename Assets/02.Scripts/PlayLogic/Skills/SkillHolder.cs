@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
-public class SkillCoolManager : MonoBehaviour
+public class SkillHolder : MonoBehaviour
 {
     public List<Skill> skillList = new List<Skill>();
 
