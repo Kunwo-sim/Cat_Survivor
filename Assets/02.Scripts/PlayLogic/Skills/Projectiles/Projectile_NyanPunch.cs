@@ -14,7 +14,7 @@ public class Projectile_NyanPunch : Projectile
     {
         base.Initialize(spawnPos, spawnRot, damage, activeTime, poolType);
         // Test
-        gameObject.GetComponentsInChildren<Transform>()[1].localPosition += new Vector3(Random.Range(-0.7f, 0.7f), 0, 0);
+        // gameObject.transform.localPosition += new Vector3(Random.Range(-0.5f, 0.5f), 0, 0);
     }
 
     protected override void OnTriggerEnter2D(Collider2D col)
