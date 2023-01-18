@@ -22,7 +22,7 @@ public class PoolInfo
 
     public Queue<GameObject> poolQueue = new Queue<GameObject>();
     // 오브젝트 전체 회수를 위한 큐
-    public List<GameObject> poolDeQueue = new List<GameObject>();
+    public List<GameObject> usingList = new List<GameObject>();
 }
 public class ObjectPoolManager : MonoBehaviour
 {
@@ -77,9 +77,8 @@ public class ObjectPoolManager : MonoBehaviour
         GameObject objInstance = null;
         if (HasObject(type))
         {
-            poolInfo.poolDeQueue.Add(poolInfo.poolQueue.Dequeue());
-            objInstance = poolInfo.poolDeQueue[^1];
-            
+            objInstance = poolInfo.poolQueue.Dequeue();
+            poolInfo.usingList.Add(objInstance);
         }
         else
         {
@@ -94,7 +93,7 @@ public class ObjectPoolManager : MonoBehaviour
     {
         PoolInfo poolInfo = Instance.GetPoolByType(type);
         poolInfo.poolQueue.Enqueue(obj);
-        poolInfo.poolDeQueue.Remove(obj);
+        poolInfo.usingList.Remove(obj);
         obj.SetActive(false);
     }
 
@@ -102,9 +101,9 @@ public class ObjectPoolManager : MonoBehaviour
     public static void ReturnObjectAll(EPoolObjectType type)
     {
         PoolInfo poolInfo = Instance.GetPoolByType(type);
-        while (poolInfo.poolDeQueue.Count > 0)
+        while (poolInfo.usingList.Count > 0)
         {
-            ReturnObject(poolInfo.poolDeQueue[0], type);
+            ReturnObject(poolInfo.usingList[0], type);
         }
     }
     
