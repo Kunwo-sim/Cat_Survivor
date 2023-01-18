@@ -8,7 +8,6 @@ public class Player : Character
     private float _exp = 0;
     private Bar _expBar;
     private Animator _animator;
-    private SpriteRenderer _renderer;
 
     public JoyStick PjoyStick
     {
@@ -36,7 +35,7 @@ public class Player : Character
         base.Start();
         SetHpUI();
         _expBar.SetBar(_maxExp, _exp);
-        _expBar.SetText(Level);
+        _expBar.SetText(_level);
     }
     private void FixedUpdate()
     {
@@ -73,15 +72,10 @@ public class Player : Character
 
     private void LevelUp()
     {
-        // Test
-        GameObject temp = GameObject.Find("Canvas").transform.Find("LevelUpPanel").gameObject;
-        temp.SetActive(true);
-        temp.GetComponent<LevelUpPanel>().SetSkillPanels();
-        Time.timeScale = 0;
         _exp -= _maxExp;
-        _maxExp *= 1.5f;
-        Level++;
-        _expBar.SetText(Level);
+        _maxExp *= 1.2f;
+        _level++;
+        _expBar.SetText(_level);
     }
 
     public void ReceiveExp(float exp)
