@@ -34,27 +34,28 @@ public class EnemyInfo : ScriptableObject
     {
 
         Vector3 randomPosition = Vector3.zero;
-        float min = -0.1f;
-        float max = 1.1f;
+        float xPos = Random.Range(-Define.xSpawnLimit, Define.xSpawnLimit);
+        float yPos = Random.Range(-Define.ySpawnLimit, Define.ySpawnLimit);
         float zPos = 10;
-            
-        int flag = Random.Range(0, 4);
-        switch (flag)
-        {
-            case 0:
-                randomPosition = new Vector3(max, Random.Range(min, max), zPos);
-                break;
-            case 1:
-                randomPosition = new Vector3(min, Random.Range(min, max), zPos);
-                break;
-            case 2:
-                randomPosition = new Vector3(Random.Range(min, max), max, zPos);
-                break;
-            case 3:
-                randomPosition = new Vector3(Random.Range(min, max), min, zPos);
-                break;
-        }
-        randomPosition = Camera.main.ViewportToWorldPoint(randomPosition);
+
+        // 소환 로직 수정
+        //int flag = Random.Range(0, 4);
+        //switch (flag)
+        //{
+        //    case 0:
+        //        randomPosition = new Vector3(max, Random.Range(min, max), zPos);
+        //        break;
+        //    case 1:
+        //        randomPosition = new Vector3(min, Random.Range(min, max), zPos);
+        //        break;
+        //    case 2:
+        //        randomPosition = new Vector3(Random.Range(min, max), max, zPos);
+        //        break;
+        //    case 3:
+        //        randomPosition = new Vector3(Random.Range(min, max), min, zPos);
+        //        break;
+        //}
+        randomPosition = new Vector3(xPos, yPos, zPos);
         return randomPosition;
     }
 }

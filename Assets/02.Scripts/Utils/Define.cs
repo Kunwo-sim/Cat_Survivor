@@ -42,4 +42,7 @@ public class Define
         Hit,
         Dead
     }
+
+    public const float xSpawnLimit = 20;
+    public const float ySpawnLimit = 10;
 }

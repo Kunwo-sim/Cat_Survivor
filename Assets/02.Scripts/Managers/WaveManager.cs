@@ -8,7 +8,7 @@ public class WaveManager : MonoBehaviour
 {
     [SerializeField]
     TextMeshProUGUI _timeText;
-    float WaveRemainTime = 5.0f;
+    float WaveRemainTime = 10.0f;
 
     Player _player;
     // Start is called before the first frame update
