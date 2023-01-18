@@ -15,7 +15,7 @@ public class Enemy : Character
         Hp = MaxHp = hp;
         Power = power;
         MoveSpeed = moveSpeed;
-        Level = level;
+        _level = level;
         _poolType = poolType;
     }
 
@@ -29,7 +29,7 @@ public class Enemy : Character
     private void CreatExpObject()
     {
         ExpObject expObject = ObjectPoolManager.GetObject(EPoolObjectType.ExpObject).GetComponent<ExpObject>();
-        expObject.Initialize(Level, transform.position);
+        expObject.Initialize(_level, transform.position);
     }
 
     protected override void Awake()

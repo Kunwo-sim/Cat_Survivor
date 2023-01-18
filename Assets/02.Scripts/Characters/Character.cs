@@ -10,13 +10,17 @@ public abstract class Character : MonoBehaviour
     protected float Hp = 10;
     protected float Power = 1;
     protected float MoveSpeed = 3.0f;
-    protected int Level = 1;
+    protected int _level = 1;
+    protected int _curLevel = 1;
     private readonly float _protectionTime = 0.1f;
     private float _lastProtectionTime = 0;
     private Bar _hpBar;
     protected SpriteRenderer _renderer;
     public CharacterState state;
     private Rigidbody2D _rigidbody;
+
+    public int Level { get { return _level; } }
+    public int CurLevel { get { return _curLevel; } set { _curLevel = value; } }
 
     protected virtual void Awake()
     {
