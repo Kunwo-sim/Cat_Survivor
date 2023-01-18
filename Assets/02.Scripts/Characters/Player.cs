@@ -30,7 +30,6 @@ public class Player : Character
         MaxHp = 100;
         Hp = 100; 
         _exp = 100;
-        LevelUp();
         
         base.Start();
         SetHpUI();

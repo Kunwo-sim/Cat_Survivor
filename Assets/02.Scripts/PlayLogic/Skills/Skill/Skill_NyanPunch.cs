@@ -18,8 +18,7 @@ public class Skill_NyanPunch : Skill
 
         foreach (var projectile in cloneProjectile)
         {
-            Vector3 randomPos = new Vector3(Random.Range(-1.5f, 1.5f), 0, 0);
-            projectile.Initialize(spawnTransform.position + randomPos, spawnTransform.rotation, damage, activeTime, poolType);
+            projectile.Initialize(spawnTransform.position, spawnTransform.rotation, damage, activeTime, poolType);
             SoundManager.Instance.PlaySFXSound("SkillShot");
         }
     }
