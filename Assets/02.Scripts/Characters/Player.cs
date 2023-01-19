@@ -30,6 +30,7 @@ public class Player : Character
         MaxHp = 100;
         Hp = 100; 
         _exp = 100;
+        _skillHolder.skillList.Add(GetComponentInChildren<Skill_NyanPunch>());
         
         base.Start();
         SetHpUI();
