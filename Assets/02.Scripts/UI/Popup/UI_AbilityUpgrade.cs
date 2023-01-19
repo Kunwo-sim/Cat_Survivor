@@ -30,8 +30,11 @@ public class UI_AbilityUpgrade : UI_Popup
         for (int i = 0; i < 3; i++)
         {
             UI_AbilityPanel AbilityPanel = UIManager.Instance.MakeSubUI<UI_AbilityPanel>("UI_AbilityPanel");
+            AbilityData data = AbilityGetter.Get(Random.Range(0, AbilityGetter.Count()));
+
             AbilityPanel.transform.SetParent(AbilityPanels.transform);
             AbilityPanel.name = "AbilityPanel" + i;
+            AbilityPanel.SetAbilityPanel(data);
         }
     }
 }

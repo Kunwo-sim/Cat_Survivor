@@ -26,8 +26,12 @@ public class WaveManager : MonoBehaviour
 
         if (WaveRemainTime < 0.0f)
         {
-            WaveRemainTime = 5.0f;
+            WaveRemainTime = 10.0f;
             Time.timeScale = 0.0f;
+            ObjectPoolManager.ReturnObjectAll(EPoolObjectType.Enemy1);
+            ObjectPoolManager.ReturnObjectAll(EPoolObjectType.Enemy2);
+
+
             if (_player.Level > _player.CurLevel)
             {
                 _player.CurLevel++;

@@ -26,7 +26,7 @@ public class Player : Character
     protected override void Start()
     {
         // Test code
-        MoveSpeed = 3.0f;
+        MoveSpeed = 5.0f;
         MaxHp = 100;
         Hp = 100; 
         _exp = 100;

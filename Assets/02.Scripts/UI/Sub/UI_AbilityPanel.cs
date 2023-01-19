@@ -18,7 +18,7 @@ public class UI_AbilityPanel : UI_Base
         DescriptionText,
     }
 
-    void Start()
+    void Awake()
     {
         Init();
     }
@@ -34,5 +34,11 @@ public class UI_AbilityPanel : UI_Base
         Debug.Log("어빌리티 선택");
         UIManager.Instance.ClosePopupUI();
         UIManager.Instance.ShowPopupUI<UI_WaveShop>("UI_WaveShop");
+    }
+
+    public void SetAbilityPanel(AbilityData data)
+    {
+        Get<TextMeshProUGUI>((int)Texts.NameText).text = data.Name;
+        Get<TextMeshProUGUI>((int)Texts.DescriptionText).text = data.Description;
     }
 }
