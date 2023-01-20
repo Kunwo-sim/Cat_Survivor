@@ -22,10 +22,19 @@ public class Skill_NyanPunch : Skill
         for (int i = 0; i < 4; i++)
         {
             float alpha = (i == 0) ? 1f : 0.3f;
-            var pos = spawnTransform.position + spawnTransform.up * 2.5f + spawnTransform.right * Random.Range(-0.8f, 0.8f);
+            // var pos = spawnTransform.position + spawnTransform.up * 2.5f + spawnTransform.right * Random.Range(-0.8f, 0.8f);
+            var pos = spawnTransform.position;
+            GameObject targetObject = Targeting.GetNearGameObject(pos);
+            if (targetObject == null) continue;
+            Vector3 targetPos = targetObject.transform.position;
+            Vector3 dir = Targeting.GetDirection(pos, targetPos);
+            Vector3 spawnPos = (Vector3)pos + dir * 5;
+            Quaternion rot = Targeting.GetLookAtQuaternion(dir);
+
             cloneProjectile.Add(ObjectPoolManager.GetObject(poolType).GetComponent<Projectile_NyanPunch>());
-            cloneProjectile[i].Initialize(pos, spawnTransform.rotation, damage, activeTime, poolType, alpha);
+            cloneProjectile[i].Initialize(spawnPos, rot, damage, activeTime, poolType, alpha);
             SoundManager.Instance.PlaySFXSound("SkillShot");
+            
             yield return new WaitForSeconds(0.05f);
         }
     }

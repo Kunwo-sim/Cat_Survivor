@@ -114,6 +114,12 @@ public class ObjectPoolManager : MonoBehaviour
 
         return hasObject;
     }
+
+    public static List<PoolInfo> GetPoolList()
+    {
+        return Instance.poolInfoList;
+    }
+    
     
     
 }

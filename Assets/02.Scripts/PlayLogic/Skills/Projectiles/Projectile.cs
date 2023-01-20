@@ -31,9 +31,10 @@ public abstract class Projectile : MonoBehaviour
         ObjectPoolManager.ReturnObject(gameObject, _poolType);
     }
 
-    public virtual void Initialize(Vector2 spawnPos, Quaternion spawnRot, int damage, float activeTime, EPoolObjectType poolType)
+    public virtual void Initialize(Vector2 playerPos, Quaternion spawnRot, int damage, float activeTime, EPoolObjectType poolType)
     {
-        transform.SetPositionAndRotation(spawnPos, spawnRot);
+        // transform.SetPositionAndRotation(spawnPos, spawnRot);
+        transform.SetPositionAndRotation(playerPos, spawnRot);
         rigidbody2D.velocity = Vector2.zero;
         this.damage = damage;
         _poolType = poolType;
