@@ -5,7 +5,7 @@ using UnityEngine;
 
 public static class Targeting
 {
-    public static List<GameObject> GetEnemyList()
+    private static List<GameObject> GetEnemyList()
     {
         List<PoolInfo> poolList = ObjectPoolManager.GetPoolList();
         List<GameObject> objectList = new List<GameObject>();
@@ -19,7 +19,7 @@ public static class Targeting
         }
         return objectList;
     }
-    public static List<GameObject> SortByDistance(Vector3 spawnPos, List<GameObject> list)
+    private static List<GameObject> SortByDistance(Vector3 spawnPos, List<GameObject> list)
     {
         return list.OrderBy(x => Vector3.Distance(x.transform.position, spawnPos)).ToList();
     }
@@ -40,6 +40,7 @@ public static class Targeting
     public static Vector3 GetDirection(Vector3 pivot, Vector3 target)
     {
         Vector3 dir = target - pivot;
+        dir.z = 0;
         return dir.normalized;
     }
 

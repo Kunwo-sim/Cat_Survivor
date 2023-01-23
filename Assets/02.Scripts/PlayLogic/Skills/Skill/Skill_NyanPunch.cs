@@ -19,18 +19,19 @@ public class Skill_NyanPunch : Skill
 
     IEnumerator Pattern()
     {
+        Vector3 pos = spawnTransform.position;
+        GameObject targetObject = Targeting.GetNearGameObject(pos);
+        if (targetObject == null) yield break;
+        Vector3 targetPos = targetObject.transform.position;
+        Vector3 firstDir = Targeting.GetDirection(pos, targetPos);
+
         for (int i = 0; i < 4; i++)
         {
             float alpha = (i == 0) ? 1f : 0.3f;
-            // var pos = spawnTransform.position + spawnTransform.up * 2.5f + spawnTransform.right * Random.Range(-0.8f, 0.8f);
-            var pos = spawnTransform.position;
-            GameObject targetObject = Targeting.GetNearGameObject(pos);
-            if (targetObject == null) continue;
-            Vector3 targetPos = targetObject.transform.position;
-            Vector3 dir = Targeting.GetDirection(pos, targetPos);
-            Vector3 spawnPos = (Vector3)pos + dir * 5;
+            Vector3 dir = Quaternion.AngleAxis(i*10 - 15, Vector3.forward) * firstDir; 
             Quaternion rot = Targeting.GetLookAtQuaternion(dir);
-
+            Vector3 spawnPos = (Vector3)pos + dir * 3;
+            
             cloneProjectile.Add(ObjectPoolManager.GetObject(poolType).GetComponent<Projectile_NyanPunch>());
             cloneProjectile[i].Initialize(spawnPos, rot, damage, activeTime, poolType, alpha);
             SoundManager.Instance.PlaySFXSound("SkillShot");
