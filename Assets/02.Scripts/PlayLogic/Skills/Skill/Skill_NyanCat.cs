@@ -1,15 +1,20 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 public class Skill_NyanCat : Skill
 {
-    public override void Activate(Transform holderTrans)
+    private List<Projectile_NyanCat> cloneProjectile = new List<Projectile_NyanCat>();
+    protected override void Initialize(Transform holderTrans)
     {
-        // 스킬 생성 위치 설정 (무기)
-        spawnTransform = holderTrans;
+        base.Initialize(holderTrans);
+    }
 
-        cloneProjectile.Clear();
-        // 오브젝트 생성
-        cloneProjectile.Add(ObjectPoolManager.GetObject(poolType).GetComponent<Projectile>());
+
+    protected override IEnumerator Pattern()
+    {
+        cloneProjectile.Add(ObjectPoolManager.GetObject(poolType).GetComponent<Projectile_NyanCat>());
         cloneProjectile[0].Initialize(spawnTransform.position, spawnTransform.rotation, damage, activeTime, poolType);
         SoundManager.Instance.PlaySFXSound("SkillShot");
+        yield break;
     }
 }
