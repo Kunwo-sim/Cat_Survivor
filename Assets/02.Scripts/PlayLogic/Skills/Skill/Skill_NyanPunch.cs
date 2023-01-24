@@ -12,10 +12,11 @@ public class Skill_NyanPunch : Skill
         {
             // float alpha = (i == 0) ? 1f : 0.3f;
             // alpha = 1f;
-            
-            var dir = Quaternion.AngleAxis(i*20 - 30, Vector3.forward) * nearDir;
+
+            int space = 30;
+            var dir = Quaternion.AngleAxis(i*space - space*1.5f, Vector3.forward) * nearDir;
             var pos = holderPos + targeting.GetToNearPosition(dir);
-            var rot = targeting.DirectToRotate(dir);
+            var rot = targeting.GetToNearRotate(dir);
 
             cloneProjectile.Add(ObjectPoolManager.GetObject(poolType).GetComponent<Projectile_NyanPunch>());
             cloneProjectile[i].Initialize(pos, rot, damage, activeTime, poolType);

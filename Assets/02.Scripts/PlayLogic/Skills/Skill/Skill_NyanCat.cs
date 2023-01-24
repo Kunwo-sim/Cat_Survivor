@@ -7,7 +7,7 @@ public class Skill_NyanCat : Skill
     {
         var dir = targeting.GetToNearDirection(holderPos);
         var pos = holderPos + targeting.GetToNearPosition(dir, 1);
-        var rot = targeting.GetToNearRotate(holderPos);
+        var rot = targeting.GetToNearRotate(dir);
         
         cloneProjectile.Add(ObjectPoolManager.GetObject(poolType).GetComponent<Projectile_NyanCat>());
         cloneProjectile[0].Initialize(pos, rot, damage, activeTime, poolType);

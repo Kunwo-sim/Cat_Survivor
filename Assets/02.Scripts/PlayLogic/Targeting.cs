@@ -38,26 +38,20 @@ public class Targeting
         return dir.normalized;
     }
 
-    public Quaternion DirectToRotate(Vector3 dir)
-    {
-        float rot = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
-        return Quaternion.Euler(0, 0, rot - 90);
-    }
     public Vector3 GetToNearDirection(Vector3 holderPos)
     {
         Vector3 targetPos = GetNearPosition(holderPos);
         Vector3 dir = GetDirection(holderPos, targetPos);
         return dir;
     }
-    public Quaternion GetToNearRotate(Vector3 holderPos)
-    {
-        Vector3 dir = GetToNearDirection(holderPos);
-        Quaternion rot = DirectToRotate(dir);
-        return rot;
-    }
-    public Vector3 GetToNearPosition(Vector3 dir, float distance = 3)
+    public Vector3 GetToNearPosition(Vector3 dir, float distance = 2)
     {
         Vector3 pos = dir * distance;
         return pos;
+    }
+    public Quaternion GetToNearRotate(Vector3 dir)
+    {
+        float rot = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+        return Quaternion.Euler(0, 0, rot);
     }
 }
