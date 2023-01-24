@@ -8,13 +8,14 @@ public abstract class Projectile : MonoBehaviour
     protected float speed;
 
     protected Rigidbody2D rigidbody2D;
+    protected SpriteRenderer spriteRenderer;
     private EPoolObjectType _poolType;
 
     protected virtual void Awake()
     {
         rigidbody2D = GetComponent<Rigidbody2D>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
-
     protected virtual void OnTriggerEnter2D(Collider2D col)
     {
         if (col.CompareTag("Enemy"))
@@ -24,17 +25,15 @@ public abstract class Projectile : MonoBehaviour
             Delete();
         }
     }
-
     protected virtual void Delete()
     {
         StopCoroutine(Move());
         ObjectPoolManager.ReturnObject(gameObject, _poolType);
     }
 
-    public virtual void Initialize(Vector2 playerPos, Quaternion spawnRot, int damage, float activeTime, EPoolObjectType poolType)
+    public virtual void Initialize(Vector3 spawnPos, Quaternion spawnRot, int damage, float activeTime, EPoolObjectType poolType)
     {
-        // transform.SetPositionAndRotation(spawnPos, spawnRot);
-        transform.SetPositionAndRotation(playerPos, spawnRot);
+        transform.SetPositionAndRotation(spawnPos, spawnRot);
         rigidbody2D.velocity = Vector2.zero;
         this.damage = damage;
         _poolType = poolType;

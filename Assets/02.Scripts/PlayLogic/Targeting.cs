@@ -43,7 +43,6 @@ public class Targeting
         float rot = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
         return Quaternion.Euler(0, 0, rot - 90);
     }
-
     public Vector3 GetToNearDirection(Vector3 holderPos)
     {
         Vector3 targetPos = GetNearPosition(holderPos);
@@ -56,9 +55,9 @@ public class Targeting
         Quaternion rot = DirectToRotate(dir);
         return rot;
     }
-    public Vector3 GetNearSpawnPosition(Vector3 holderPos, Vector3 dir)
+    public Vector3 GetToNearPosition(Vector3 dir, float distance = 3)
     {
-        Vector3 pos = holderPos + dir * 3;
+        Vector3 pos = dir * distance;
         return pos;
     }
 }
