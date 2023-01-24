@@ -17,7 +17,7 @@ public class Projectile_NyanPunch : Projectile
     {
         if (col.CompareTag("Enemy"))
         {
-            col.GetComponent<Enemy>().ReceiveDamage(damage, transform.up);
+            col.GetComponent<Enemy>().ReceiveDamage(damage, transform.right);
         }
     }
 }

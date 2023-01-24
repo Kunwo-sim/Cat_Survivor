@@ -68,8 +68,8 @@ public abstract class Character : MonoBehaviour
         
         if (state is CharacterState.Hit or CharacterState.Dead) return;
         state = CharacterState.Hit;
-        StartCoroutine(ReceiveDamageFX());
         KnockBack(knockBackDir);
+        StartCoroutine(ReceiveDamageFX());
     }
     
     private IEnumerator ReceiveDamageFX()

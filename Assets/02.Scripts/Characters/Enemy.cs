@@ -17,6 +17,7 @@ public class Enemy : Character
         MoveSpeed = moveSpeed;
         _level = level;
         _poolType = poolType;
+        _renderer.color = Color.white;
     }
 
     private void FixedUpdate()
