@@ -23,9 +23,10 @@ public class EnemySpawner : MonoBehaviour
     {
         if (ObjectPoolManager.HasObject(poolType))
         {
+            float randSpeed = Random.Range(-1f, 1f);
             GameObject enemy = ObjectPoolManager.GetObject(poolType);
             enemy.transform.position = spawnPos;
-            enemy.GetComponent<Enemy>().Initialize(hp, power, moveSpeed, level, poolType);
+            enemy.GetComponent<Enemy>().Initialize(hp, power, moveSpeed + randSpeed, level, poolType);
         }
     }
 

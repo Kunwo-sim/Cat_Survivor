@@ -43,9 +43,6 @@ public abstract class Enemy : Character
     {
         base.Awake();
         _player = GameObject.FindWithTag("Player").GetComponent<Player>();
-
-        // Test code
-        MoveSpeed = Random.Range(1.0f, 4.0f);
     }
 
     protected override void Death()
