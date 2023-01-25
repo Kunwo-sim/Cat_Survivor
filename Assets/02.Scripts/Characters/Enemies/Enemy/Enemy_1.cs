@@ -31,7 +31,7 @@ public class Enemy_1 : Enemy
     private IEnumerator Routine_Move()
     {
         state = CharacterState.Move;
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(5f);
         Routine();
     }
     private IEnumerator Routine_Shot()
@@ -47,9 +47,7 @@ public class Enemy_1 : Enemy
         cloneProjectile.Initialize(pos, rot, (int)Power, 3, poolType);
         // SoundManager.Instance.PlaySFXSound("SkillShot");
         
-        yield return new WaitForSeconds(0.25f);
-        state = CharacterState.Move;
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(0.5f);
         Routine();
     }
 }

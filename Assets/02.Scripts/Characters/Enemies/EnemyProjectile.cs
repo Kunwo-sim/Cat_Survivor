@@ -39,9 +39,9 @@ public class EnemyProjectile : MonoBehaviour
     }
 
     
-    protected void Move()
+    void Move()
     {
-        speed = 20;
+        speed = 10;
         Vector2 force = transform.right.normalized * speed;
         rigidbody2D.AddForce(force, ForceMode2D.Impulse);
     }
