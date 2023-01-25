@@ -7,13 +7,17 @@ using UnityEngine.EventSystems;
 
 public class UI_ItemPanel : UI_Base
 {
+    enum Texts
+    {
+        ItemName,
+        ItemKind,
+        ItemDescription,
+        CostText,
+    }
     enum GameObjects
     {
         BackGround,
         ItemImage,
-        ItemName,
-        ItemKind,
-        ItemEffect,
         BuyButton
     }
 
@@ -23,6 +27,7 @@ public class UI_ItemPanel : UI_Base
     }
     public override void Init()
     {
+        Bind<TextMeshProUGUI>(typeof(Texts));
         Bind<GameObject>(typeof(GameObjects));
         BindEvent(Get<GameObject>((int)GameObjects.BuyButton), OnBuyButtonClick);
     }
