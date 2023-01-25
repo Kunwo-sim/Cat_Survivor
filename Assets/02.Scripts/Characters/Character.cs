@@ -6,8 +6,8 @@ using static Define;
 public abstract class Character : MonoBehaviour
 {
     private string _name = "Character Name";
-    protected float MaxHp = 10;
-    protected float Hp = 10;
+    public float MaxHp { get; set; } = 10;
+    public float Hp { get; set; } = 10;
     protected float Power = 1;
     protected float MoveSpeed = 3.0f;
     protected int _level = 1;

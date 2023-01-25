@@ -8,7 +8,7 @@ public class WaveManager : MonoBehaviour
 {
     [SerializeField]
     TextMeshProUGUI _timeText;
-    float WaveRemainTime = 10.0f;
+    float WaveRemainTime = 20.0f;
 
     Player _player;
     // Start is called before the first frame update
@@ -26,11 +26,13 @@ public class WaveManager : MonoBehaviour
 
         if (WaveRemainTime < 0.0f)
         {
-            WaveRemainTime = 10.0f;
+            WaveRemainTime = 20.0f;
             Time.timeScale = 0.0f;
+
+            _player.Hp = _player.MaxHp;
+
             ObjectPoolManager.ReturnObjectAll(EPoolObjectType.Enemy1);
             ObjectPoolManager.ReturnObjectAll(EPoolObjectType.Enemy2);
-
 
             if (_player.Level > _player.CurLevel)
             {
