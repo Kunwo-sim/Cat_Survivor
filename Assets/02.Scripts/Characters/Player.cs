@@ -8,6 +8,10 @@ public class Player : Character
     private float _exp = 0;
     private Bar _expBar;
     private Animator _animator;
+    private float _hpRecorveryTime = 0.0f;
+    private int _damagePercent = 0;
+    private int _meleeDamage = 0;
+    private int _rangeDamage = 0;
 
     public JoyStick PjoyStick
     {
