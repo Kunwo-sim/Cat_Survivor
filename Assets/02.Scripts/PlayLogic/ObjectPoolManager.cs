@@ -9,7 +9,8 @@ public enum EPoolObjectType
     Skill2,
     Enemy1,
     Enemy2,
-    ExpObject
+    ExpObject,
+    EnemyProjectile
 }
 // 오브젝트 풀
 [Serializable]

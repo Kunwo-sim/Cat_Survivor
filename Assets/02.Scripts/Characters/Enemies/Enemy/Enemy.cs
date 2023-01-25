@@ -51,6 +51,7 @@ public abstract class Enemy : Character
     protected override void Death()
     {
         base.Death();
+        StopAllCoroutines();
         CreatExpObject();
         ObjectPoolManager.ReturnObject(gameObject, _poolType);
     }
@@ -68,6 +69,4 @@ public abstract class Enemy : Character
             _player.ReceiveDamage(Power * Time.fixedDeltaTime * 10);
         }
     }
-
-    protected abstract IEnumerator Pattern();
 }

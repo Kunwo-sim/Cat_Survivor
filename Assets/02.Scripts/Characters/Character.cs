@@ -40,7 +40,7 @@ public abstract class Character : MonoBehaviour
         Hp = MaxHp;
     }
 
-    protected void Move(Vector2 input)
+    protected virtual void Move(Vector2 input)
     {
         if (state == CharacterState.Dead) return;
         state = input == Vector2.zero ? CharacterState.Idle : CharacterState.Move;
