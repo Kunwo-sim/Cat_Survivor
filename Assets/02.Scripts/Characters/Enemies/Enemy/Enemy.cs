@@ -4,9 +4,9 @@ using UnityEngine;
 using Random = UnityEngine.Random;
 using static Define;
 
-public class Enemy : Character
+public abstract class Enemy : Character
 {
-    private Player _player;
+    protected Player _player;
     private EPoolObjectType _poolType;
 
     public void Initialize(int hp, int power, float moveSpeed, int level, EPoolObjectType poolType)
@@ -15,7 +15,7 @@ public class Enemy : Character
         Hp = MaxHp = hp;
         Power = power;
         MoveSpeed = moveSpeed;
-        _level = level;
+        Level = level;
         _poolType = poolType;
         _renderer.color = Color.white;
     }
@@ -30,7 +30,13 @@ public class Enemy : Character
     private void CreatExpObject()
     {
         ExpObject expObject = ObjectPoolManager.GetObject(EPoolObjectType.ExpObject).GetComponent<ExpObject>();
-        expObject.Initialize(_level, transform.position);
+        expObject.Initialize(Level, transform.position);
+    }
+
+    protected override void Move(Vector2 input)
+    {
+        if (state is CharacterState.Hit or CharacterState.Attack) return;
+        base.Move(input);
     }
 
     protected override void Awake()
@@ -53,9 +59,7 @@ public class Enemy : Character
     {
         SoundManager.Instance.PlaySFXSound("SkillHit");
         base.ReceiveDamage(damage, knockBackDir);
-        
     }
-
 
     private void OnCollisionStay2D(Collision2D col)
     {
@@ -64,4 +68,6 @@ public class Enemy : Character
             _player.ReceiveDamage(Power * Time.fixedDeltaTime * 10);
         }
     }
+
+    protected abstract IEnumerator Pattern();
 }
