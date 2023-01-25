@@ -9,7 +9,7 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private float moveSpeed = 3.0f;
     [SerializeField] private int level = 1;
     [SerializeField] private float baseSpawnTime = 0.5f;
-    private readonly float _randRange = 7f;
+    private readonly float _randRange = 5f;
     public float NextSpawnTime { get; set; } = 0f;
 
     [SerializeField] private EPoolObjectType poolType = EPoolObjectType.Enemy1;
@@ -52,24 +52,32 @@ public class EnemySpawner : MonoBehaviour
         float yPos = Random.Range(-Define.ySpawnLimit + _randRange, Define.ySpawnLimit - _randRange);
         float zPos = 10;
 
-        // 소환 로직 수정
-        //int flag = Random.Range(0, 4);
-        //switch (flag)
-        //{
-        //    case 0:
-        //        randomPosition = new Vector3(max, Random.Range(min, max), zPos);
-        //        break;
-        //    case 1:
-        //        randomPosition = new Vector3(min, Random.Range(min, max), zPos);
-        //        break;
-        //    case 2:
-        //        randomPosition = new Vector3(Random.Range(min, max), max, zPos);
-        //        break;
-        //    case 3:
-        //        randomPosition = new Vector3(Random.Range(min, max), min, zPos);
-        //        break;
-        //}
         randomPosition = new Vector3(xPos, yPos, zPos);
+        return randomPosition;
+    }
+    public Vector3 GetSidePosition()
+    {
+        Vector3 randomPosition = Vector3.zero;
+        float yPos = Define.ySpawnLimit - _randRange;
+        float xPos = Define.xSpawnLimit- _randRange;
+        float zPos = 10;
+
+        int flag = Random.Range(0, 4);
+        switch (flag)
+        {
+            case 0:
+                randomPosition = new Vector3(xPos, Random.Range(-yPos, yPos), zPos);
+                break;
+            case 1:
+                randomPosition = new Vector3(-xPos, Random.Range(-yPos, yPos), zPos);
+                break;
+            case 2:
+                randomPosition = new Vector3(Random.Range(-xPos, xPos), yPos, zPos);
+                break;
+            case 3:
+                randomPosition = new Vector3(Random.Range(-xPos, xPos), -yPos, zPos);
+                break;
+        }
         return randomPosition;
     }
 }
