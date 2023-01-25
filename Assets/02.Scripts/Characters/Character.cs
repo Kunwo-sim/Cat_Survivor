@@ -83,6 +83,8 @@ public abstract class Character : MonoBehaviour
             yield return new WaitForSeconds(0.01f);
         }
         _renderer.color = Color.white;
+        if(state == CharacterState.Attack) yield break;
+        
         _rigidbody.velocity= Vector2.zero;
         state = CharacterState.Idle;
     }

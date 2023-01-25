@@ -87,7 +87,13 @@ public abstract class Enemy : Character
             _player.ReceiveDamage(Power * Time.fixedDeltaTime * 10);
         }
     }
-
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            _player.ReceiveDamage(Power * Time.fixedDeltaTime * 10);
+        }
+    }
     
     protected abstract void Routine();
     protected IEnumerator Routine_Move()
@@ -118,6 +124,29 @@ public abstract class Enemy : Character
         cloneProjectile.Initialize(pos, rot, (int)Power, 3, poolType);
         
         yield return new WaitForSeconds(0.3f);
+        Routine();
+    }
+    protected IEnumerator Routine_Dash()
+    {
+        state = CharacterState.Attack;
+        Vector3 dashDir = GetDirection(transform.position, _player.transform.position);
+        
+        int max = 1;
+        _renderer.color = new Color(max, max, max);
+        for (float i = 0.1f; i <= max; i += 0.02f)
+        {
+            _renderer.color = new Color(max, max-i, max-i);
+            yield return new WaitForSeconds(0.01f);
+        }
+        _renderer.color = Color.white;
+
+        _collider.isTrigger = true;
+        float dashSpeed = 15;
+        _rigidbody.AddForce(dashDir * dashSpeed, ForceMode2D.Impulse);
+        yield return new WaitForSeconds(0.5f);
+        _rigidbody.velocity = Vector2.zero;
+        _collider.isTrigger = false;
+        
         Routine();
     }
 }
