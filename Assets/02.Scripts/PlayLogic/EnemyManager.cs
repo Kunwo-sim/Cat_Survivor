@@ -23,12 +23,12 @@ public class EnemyManager : MonoBehaviour
 
     private Transform _playerTransform;
 
-    [SerializeField] private List<EnemyInfo> enemyList = new List<EnemyInfo>();
+    [SerializeField] private List<EnemySpawner> enemyList = new List<EnemySpawner>();
 
     private void Awake()
     {
         _playerTransform = GameObject.FindWithTag("Player").GetComponent<Transform>();
-        foreach (EnemyInfo enemy in enemyList)
+        foreach (EnemySpawner enemy in enemyList)
         {
             enemy.Initialize();
         }
@@ -41,7 +41,7 @@ public class EnemyManager : MonoBehaviour
 
     private void CheckSpawnTime()
     {
-        foreach (EnemyInfo enemy in enemyList)
+        foreach (EnemySpawner enemy in enemyList)
         {
             bool coolDownComplete = (Time.time > enemy.NextSpawnTime);
             if (coolDownComplete)
@@ -51,9 +51,9 @@ public class EnemyManager : MonoBehaviour
         }
     }
 
-    private void SpawnEnemy(EnemyInfo enemyInfo)
+    private void SpawnEnemy(EnemySpawner enemySpawner)
     {
-        enemyInfo.Spawn(_playerTransform);
+        enemySpawner.Spawn(_playerTransform);
     }
 
     public void DeleteAllEnemy()

@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
 
-[CreateAssetMenu(fileName = "Enemy1", menuName = "Enemy/Enemy1")]
-public class EnemyInfo : ScriptableObject
+public class EnemySpawner : MonoBehaviour
 {
     [SerializeField] private new string name = "Character Name";
     [SerializeField] private int hp = 10;

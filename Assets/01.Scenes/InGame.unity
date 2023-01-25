@@ -2151,6 +2151,14 @@ PrefabInstance:
       propertyPath: m_Offset.x
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3724085145390447965, guid: d2605fe86bd07d64589b02008b43750a, type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6243612007096718595, guid: d2605fe86bd07d64589b02008b43750a, type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d2605fe86bd07d64589b02008b43750a, type: 3}
 --- !u!1 &699832824
@@ -3015,8 +3023,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyList:
-  - {fileID: 11400000, guid: 5719bf2b1e1db8b409872d8def107443, type: 2}
-  - {fileID: 11400000, guid: 79e258d8a0ef7e942a972ac29f5dc045, type: 2}
+  - {fileID: -1190913610587731236, guid: b1d5c24e87526434daf24f4660d735a8, type: 3}
+  - {fileID: -8323216840950185508, guid: d439d1a8bbf18c64f8462d24a245dcb0, type: 3}
 --- !u!4 &999492180
 Transform:
   m_ObjectHideFlags: 0
