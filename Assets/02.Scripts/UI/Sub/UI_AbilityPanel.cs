@@ -8,13 +8,10 @@ public class UI_AbilityPanel : UI_Base
 {
     enum GameObjects
     {
-        NamePanel,
-        IconPanel,
-        DescriptionPanel
+        SelectButton
     }
     enum Texts
     {
-        NameText,
         DescriptionText,
     }
 
@@ -26,7 +23,7 @@ public class UI_AbilityPanel : UI_Base
     {
         Bind<TextMeshProUGUI>(typeof(Texts));
         Bind<GameObject>(typeof(GameObjects));
-        gameObject.BindEvent(OnAbilityPanelClicked, Define.UIEvent.Click);
+        Get<GameObject>((int)GameObjects.SelectButton).BindEvent(OnAbilityPanelClicked, Define.UIEvent.Click);
     }
 
     public void OnAbilityPanelClicked(PointerEventData data)
@@ -38,7 +35,6 @@ public class UI_AbilityPanel : UI_Base
 
     public void SetAbilityPanel(AbilityData data)
     {
-        Get<TextMeshProUGUI>((int)Texts.NameText).text = data.Name;
         Get<TextMeshProUGUI>((int)Texts.DescriptionText).text = data.Description;
     }
 }

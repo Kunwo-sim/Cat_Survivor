@@ -7,11 +7,13 @@ public class Player : Character
     private float _maxExp = 10;
     private float _exp = 0;
     private Bar _expBar;
-    private Animator _animator;
-    private float _hpRecorveryTime = 0.0f;
-    private int _damagePercent = 0;
-    private int _meleeDamage = 0;
-    private int _rangeDamage = 0;
+    private Animator _animator;    
+    public int HpRegen { get; set; } = 0;
+    public int MeleeAttack { get; set; } = 0;
+    public int RangeAttack { get; set; } = 0;
+    public int Defense { get; set; } = 0;
+    public int Attack { get; set; } = 0;
+    public int Critical { get; set; } = 0;
 
     public JoyStick PjoyStick
     {
