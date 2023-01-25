@@ -8,19 +8,18 @@ public abstract class Character : MonoBehaviour
     private string _name = "Character Name";
     public float MaxHp { get; set; } = 10;
     public float Hp { get; set; } = 10;
-    protected float Power = 1;
-    protected float MoveSpeed = 3.0f;
-    protected int _level = 1;
-    protected int _curLevel = 1;
+    public float Power { get; set; } = 1;
+    public float MoveSpeed { get; set; } = 3.0f;
+    public int Level { get; set;} = 1;
+    public int CurLevel { get; set; } = 1;
+    public float AttackSpeed { get; set; } = 1.0f;
+    public float AttackRange { get; set; } = 100;
     private readonly float _protectionTime = 0.1f;
     private float _lastProtectionTime = 0;
     private Bar _hpBar;
     protected SpriteRenderer _renderer;
     public CharacterState state;
     private Rigidbody2D _rigidbody;
-
-    public int Level { get { return _level; } }
-    public int CurLevel { get { return _curLevel; } set { _curLevel = value; } }
 
     protected virtual void Awake()
     {
