@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
@@ -27,6 +28,11 @@ public class EnemySpawner : MonoBehaviour
             enemy.transform.position = GetRandomPosition(playerTransform);
             enemy.GetComponent<Enemy>().Initialize(hp, power, moveSpeed, level, poolType);
         }
+    }
+
+    protected IEnumerator SpawnPattern()
+    {
+        yield break;
     }
 
     private Vector3 GetRandomPosition(Transform playerTransform)
