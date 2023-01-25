@@ -19,13 +19,15 @@ public abstract class Character : MonoBehaviour
     private Bar _hpBar;
     protected SpriteRenderer _renderer;
     public CharacterState state;
-    private Rigidbody2D _rigidbody;
-
+    protected Rigidbody2D _rigidbody;
+    protected Collider2D _collider;
+    
     protected virtual void Awake()
     {
         _hpBar = GetComponentInChildren<Bar>();
         _renderer = GetComponent<SpriteRenderer>();
         _rigidbody = GetComponent<Rigidbody2D>();
+        _collider = GetComponent<Collider2D>();
     }
 
     protected virtual void Start()

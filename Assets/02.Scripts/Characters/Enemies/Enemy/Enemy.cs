@@ -8,16 +8,37 @@ public abstract class Enemy : Character
 {
     protected Player _player;
     private EPoolObjectType _poolType;
-
+    
+    private Targeting _targeting = new Targeting();
+    private EnemyProjectile cloneProjectile;
+    
     public void Initialize(int hp, int power, float moveSpeed, int level, EPoolObjectType poolType)
     {
-        Initialize();
+        base.Initialize();
         Hp = MaxHp = hp;
         Power = power;
         MoveSpeed = moveSpeed;
         Level = level;
         _poolType = poolType;
+        StartCoroutine(SpawnFadeIn());
+    }
+
+    IEnumerator SpawnFadeIn()
+    {
+        state = CharacterState.Hit;
+        _collider.enabled = false;
+        
+        int max = 1;
+        _renderer.color = Color.black;
+        for (float i = 0f; i <= max; i += 0.005f)
+        {
+            _renderer.color = new Color(i, i, i);
+            yield return new WaitForSeconds(0.01f);
+        }
         _renderer.color = Color.white;
+        _collider.enabled = true;
+
+        Routine();
     }
 
     private void FixedUpdate()
@@ -35,8 +56,8 @@ public abstract class Enemy : Character
 
     protected override void Move(Vector2 input)
     {
-        if (state is CharacterState.Hit or CharacterState.Attack) return;
-        base.Move(input);
+        if (state is CharacterState.Move)
+            base.Move(input);
     }
 
     protected override void Awake()
@@ -65,5 +86,38 @@ public abstract class Enemy : Character
         {
             _player.ReceiveDamage(Power * Time.fixedDeltaTime * 10);
         }
+    }
+
+    
+    protected abstract void Routine();
+    protected IEnumerator Routine_Move()
+    {
+        state = CharacterState.Move;
+        yield return new WaitForSeconds(3f);
+        Routine();
+    }
+    protected IEnumerator Routine_Shot()
+    {
+        state = CharacterState.Attack;
+        
+        int max = 1;
+        _renderer.color = new Color(max, max, max);
+        for (float i = 0.1f; i <= max; i += 0.01f)
+        {
+            _renderer.color = new Color(max, max-i, max-i);
+            yield return new WaitForSeconds(0.01f);
+        }
+        _renderer.color = Color.white;
+        
+        var dir = GetDirection(transform.position, _player.transform.position);
+        var pos = transform.position;
+        var rot = _targeting.GetToNearRotate(dir);
+        var poolType = EPoolObjectType.EnemyProjectile;
+        
+        cloneProjectile = ObjectPoolManager.GetObject(poolType).GetComponent<EnemyProjectile>();
+        cloneProjectile.Initialize(pos, rot, (int)Power, 3, poolType);
+        
+        yield return new WaitForSeconds(0.3f);
+        Routine();
     }
 }
