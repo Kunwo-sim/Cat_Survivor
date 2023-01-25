@@ -44,7 +44,7 @@ public class ExpObject : MonoBehaviour
             Vector3 dir = new Vector3(_player.transform.position.x - transform.position.x, _player.transform.position.y - transform.position.y, 0);
             dir = dir.normalized;
             transform.position += (dir * _moveSpeed);
-            _moveSpeed += 0.001f;
+            _moveSpeed += 0.01f;
         }
     }
 
@@ -52,6 +52,7 @@ public class ExpObject : MonoBehaviour
     {
         if (col.CompareTag("Player"))
         {
+            _bIsAcquire = false;
             ObjectPoolManager.ReturnObject(gameObject, _poolType);
             _player.ReceiveExp(_exp);
 
