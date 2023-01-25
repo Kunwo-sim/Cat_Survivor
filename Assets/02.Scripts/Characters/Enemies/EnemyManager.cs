@@ -53,7 +53,7 @@ public class EnemyManager : MonoBehaviour
 
     private void SpawnEnemy(EnemySpawner enemySpawner)
     {
-        enemySpawner.Spawn(_playerTransform);
+        enemySpawner.StartCoroutine(enemySpawner.SpawnPattern(3));
     }
 
     public void DeleteAllEnemy()
