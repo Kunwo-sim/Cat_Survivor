@@ -35,11 +35,13 @@ public class Player : Character
         Hp = 100; 
         _exp = 100;
         _skillHolder.skillList.Add(GetComponentInChildren<Skill_NyanPunch>());
+
+        UIManager.Instance.ShowPopupUI<UI_AbilityUpgrade>();
         
         base.Start();
         SetHpUI();
         _expBar.SetBar(_maxExp, _exp);
-        _expBar.SetText(_level);
+        _expBar.SetText(Level);
     }
     private void FixedUpdate()
     {
@@ -78,8 +80,8 @@ public class Player : Character
     {
         _exp -= _maxExp;
         _maxExp *= 1.2f;
-        _level++;
-        _expBar.SetText(_level);
+        Level++;
+        _expBar.SetText(Level);
     }
 
     public void ReceiveExp(float exp)
