@@ -27,14 +27,15 @@ public class UI_AbilityUpgrade : UI_Popup
         {
             Destroy(child.gameObject);
         }
-        for (int i = 0; i < 3; i++)
+
+        List<AbilityData> data = AbilityGetter.GetRandomAbility();
+        for (int i = 0; i < 4; i++)
         {
             UI_AbilityPanel AbilityPanel = UIManager.Instance.MakeSubUI<UI_AbilityPanel>("UI_AbilityPanel");
-            AbilityData data = AbilityGetter.Get(Random.Range(0, AbilityGetter.Count()));
 
             AbilityPanel.transform.SetParent(AbilityPanels.transform);
             AbilityPanel.name = "AbilityPanel" + i;
-            AbilityPanel.SetAbilityPanel(data);
+            AbilityPanel.SetAbilityPanel(data[i]);
         }
     }
 }

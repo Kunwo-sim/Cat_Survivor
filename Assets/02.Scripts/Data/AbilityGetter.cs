@@ -43,6 +43,33 @@ public static class AbilityGetter
         }
     }
 
+    public static List<AbilityData> GetRandomAbility()
+    {
+        List<bool> check = new List<bool>();
+        int cnt = Count();
+        for (int i = 0; i < cnt; i++)
+        {
+            check.Add(false);
+        }
+
+        List<AbilityData> ability = new List<AbilityData>();
+        for (int i = 0; i < 4; i ++)
+        {
+            while(true)
+            {
+                int idx = Random.Range(0, Count());
+                if (check[idx] == true)
+                    continue;
+
+                ability.Add(Get(idx));
+                check[idx] = true;
+                break;
+            }
+        }
+
+        return ability;
+    }
+
     public static int Count()
     {
         return _abilityData.Count;

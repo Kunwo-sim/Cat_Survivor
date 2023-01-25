@@ -10,7 +10,7 @@ public class UI_WaveShop : UI_Popup
 {
     enum Texts
     {
-        ShopName,
+        WaveInfo,
         CoinCount
     }
 
