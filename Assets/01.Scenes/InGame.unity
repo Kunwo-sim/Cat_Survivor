@@ -707,12 +707,12 @@ MonoBehaviour:
     container: {fileID: 833320327}
     usingList: []
   - type: 5
-    initCount: 500
+    initCount: 300
     prefab: {fileID: 5828173166558950626, guid: ff73263dac104c141a9dc7717a9e8bf9, type: 3}
     container: {fileID: 1356764743}
     usingList: []
   - type: 6
-    initCount: 300
+    initCount: 200
     prefab: {fileID: 3620722361172192362, guid: e69ce3c96807852489a788bd5bad45cf, type: 3}
     container: {fileID: 414864207}
     usingList: []
@@ -720,6 +720,11 @@ MonoBehaviour:
     initCount: 5
     prefab: {fileID: 6287145931260991781, guid: 1d407b7902acbdd45a7f4a74e621a931, type: 3}
     container: {fileID: 2027366743}
+    usingList: []
+  - type: 8
+    initCount: 100
+    prefab: {fileID: 2037071088904110108, guid: 0d569c2690f353a459b1893c7769b5c8, type: 3}
+    container: {fileID: 833320327}
     usingList: []
 --- !u!4 &699832826
 Transform:
