@@ -21,6 +21,8 @@ public abstract class Enemy : Character
         MoveSpeed = moveSpeed;
         Level = level;
         _poolType = poolType;
+        transform.rotation = Quaternion.identity;
+        transform.localScale = new Vector3(1, 1, 1);
         StartCoroutine(SpawnFadeIn());
     }
 
@@ -73,8 +75,7 @@ public abstract class Enemy : Character
     {
         base.Death();
         StopAllCoroutines();
-        CreatExpObject();
-        ObjectPoolManager.ReturnObject(gameObject, _poolType);
+        StartCoroutine(DeathFadeOut());
     }
 
     public override void ReceiveDamage(float damage, Vector3 knockBackDir = default)
@@ -153,5 +154,21 @@ public abstract class Enemy : Character
         _collider.isTrigger = false;
         
         Routine();
+    }
+    IEnumerator DeathFadeOut()
+    {
+        _collider.enabled = false;
+        
+        float max = 0.95f;
+        for (float i = 0f; i <= max; i += 0.02f)
+        {
+            float value = max-i;
+            _renderer.color = new Color(value, value, value);
+            transform.Rotate(0,0,5);
+            transform.localScale = new Vector3(value, value, value);
+            yield return new WaitForSeconds(0.01f);
+        }
+        CreatExpObject();
+        ObjectPoolManager.ReturnObject(gameObject, _poolType);
     }
 }
