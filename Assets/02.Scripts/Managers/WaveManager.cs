@@ -6,12 +6,12 @@ using UnityEngine.UI;
 
 public class WaveManager : MonoBehaviour
 {
+    // 주석 점검
     [SerializeField]
     TextMeshProUGUI _timeText;
     float WaveRemainTime = 20.0f;
 
     Player _player;
-    // Start is called before the first frame update
 
     void Start()
     {
