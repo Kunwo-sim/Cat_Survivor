@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class WaveManager : MonoBehaviour
 {
+    // 주석
     [SerializeField]
     TextMeshProUGUI _timeText;
     float WaveRemainTime = 20.0f;
