@@ -12,7 +12,7 @@ public class Targeting
         foreach (var pool in poolList)
         {
             // 리팩토링 필요
-            if (pool.type is EPoolObjectType.Enemy1 or EPoolObjectType.Enemy2)
+            if (pool.type is EPoolObjectType.Enemy_Mouse or EPoolObjectType.Enemy_Boar)
             {
                 objectList.AddRange(pool.usingList);
             }

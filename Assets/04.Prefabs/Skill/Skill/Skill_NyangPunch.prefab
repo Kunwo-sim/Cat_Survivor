@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2232cc98438b4e8aadf6861bf0b1c064, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  name: New Skill
+  name: NyangPunch
   damage: 3
   activeTime: 0.2
   poolType: 1

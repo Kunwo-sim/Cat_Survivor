@@ -9,7 +9,7 @@ public class EnemyInfo : MonoBehaviour
     [SerializeField] private float moveSpeed = 3.0f;
     [SerializeField] private int level = 1;
 
-    [SerializeField] private EPoolObjectType poolType = EPoolObjectType.Enemy1;
+    [SerializeField] private EPoolObjectType poolType = EPoolObjectType.Enemy_Mouse;
 
     public void Spawn(Vector3 spawnPos)
     {

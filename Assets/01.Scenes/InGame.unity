@@ -1464,25 +1464,30 @@ MonoBehaviour:
     prefab: {fileID: 6287145931260991781, guid: 6b20acbf57f0cf24aa4efe46800ad1f6, type: 3}
     container: {fileID: 2027366743}
     usingList: []
-  - type: 2
+  - type: 3
     initCount: 100
     prefab: {fileID: 2037071088904110108, guid: d83c99bd8503d074baad93e5a9f21123, type: 3}
     container: {fileID: 833320327}
     usingList: []
-  - type: 3
+  - type: 4
     initCount: 10
     prefab: {fileID: 2037071088904110108, guid: ca0925487986a8343842729b13ebb55a, type: 3}
     container: {fileID: 833320327}
     usingList: []
-  - type: 4
+  - type: 5
     initCount: 500
     prefab: {fileID: 5828173166558950626, guid: ff73263dac104c141a9dc7717a9e8bf9, type: 3}
     container: {fileID: 1356764743}
     usingList: []
-  - type: 5
+  - type: 6
     initCount: 300
     prefab: {fileID: 3620722361172192362, guid: e69ce3c96807852489a788bd5bad45cf, type: 3}
     container: {fileID: 414864207}
+    usingList: []
+  - type: 2
+    initCount: 5
+    prefab: {fileID: 6287145931260991781, guid: 1d407b7902acbdd45a7f4a74e621a931, type: 3}
+    container: {fileID: 2027366743}
     usingList: []
 --- !u!4 &699832826
 Transform:

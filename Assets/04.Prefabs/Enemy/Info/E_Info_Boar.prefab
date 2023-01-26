@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5270649259215637688}
   - component: {fileID: -7403168139015517317}
   m_Layer: 0
-  m_Name: EnemySpawner2
+  m_Name: E_Info_Boar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -49,5 +49,4 @@ MonoBehaviour:
   power: 1
   moveSpeed: 2.5
   level: 1
-  baseSpawnTime: 3
-  poolType: 3
+  poolType: 4

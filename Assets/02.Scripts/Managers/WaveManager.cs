@@ -22,7 +22,7 @@ public class WaveManager : MonoBehaviour
     void Update()
     {
         WaveRemainTime -= Time.deltaTime;
-        _timeText.text = "³²Àº ½Ã°£ : " + (int)WaveRemainTime;
+        _timeText.text = "ï¿½ï¿½ï¿½ï¿½ ï¿½Ã°ï¿½ : " + (int)WaveRemainTime;
 
         if (WaveRemainTime < 0.0f)
         {
@@ -31,8 +31,8 @@ public class WaveManager : MonoBehaviour
 
             _player.Hp = _player.MaxHp;
 
-            ObjectPoolManager.ReturnObjectAll(EPoolObjectType.Enemy1);
-            ObjectPoolManager.ReturnObjectAll(EPoolObjectType.Enemy2);
+            ObjectPoolManager.ReturnObjectAll(EPoolObjectType.Enemy_Mouse);
+            ObjectPoolManager.ReturnObjectAll(EPoolObjectType.Enemy_Boar);
 
             if (_player.Level > _player.CurLevel)
             {

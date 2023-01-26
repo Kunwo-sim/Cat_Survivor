@@ -9,6 +9,7 @@ public abstract class Skill : MonoBehaviour
     [SerializeField] protected float activeTime = 3f;
     protected List<Projectile> cloneProjectile = new List<Projectile>();
     protected Vector3 holderPos;
+    protected Transform _holderTrans;
     protected Targeting targeting = new Targeting();
 
     [SerializeField] protected EPoolObjectType poolType;
@@ -17,6 +18,7 @@ public abstract class Skill : MonoBehaviour
 
     protected virtual void Initialize(Transform holderTrans)
     {
+        _holderTrans = holderTrans;
         holderPos = holderTrans.position;
         cloneProjectile.Clear();
     }

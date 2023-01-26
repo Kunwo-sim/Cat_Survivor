@@ -5,10 +5,11 @@ using UnityEngine;
 // 오브젝트 구분을 위한 타입
 public enum EPoolObjectType
 {
-    Skill1,
-    Skill2,
-    Enemy1,
-    Enemy2,
+    Projectile_NyangCat,
+    Projectile_NyangPunch,
+    Projectile_Bong,
+    Enemy_Mouse,
+    Enemy_Boar,
     ExpObject,
     EnemyProjectile
 }

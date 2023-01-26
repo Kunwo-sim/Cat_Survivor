@@ -9,9 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6482142088208216140}
-  - component: {fileID: 2011456529535933757}
+  - component: {fileID: 6163387863558934096}
   m_Layer: 0
-  m_Name: Skill_NyanCat
+  m_Name: Skill_Bong
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -32,7 +32,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2011456529535933757
+--- !u!114 &6163387863558934096
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -41,11 +41,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 6482142088208216147}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cc5f7f5373e24de9986e9d6551545738, type: 3}
+  m_Script: {fileID: 11500000, guid: e660255aede894447ac850888002603e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  name: NyangCat
+  name: Bong
   damage: 1
-  activeTime: 3
-  poolType: 0
-  <BaseCoolDown>k__BackingField: 1
+  activeTime: 0.5
+  poolType: 2
+  <BaseCoolDown>k__BackingField: 0.8

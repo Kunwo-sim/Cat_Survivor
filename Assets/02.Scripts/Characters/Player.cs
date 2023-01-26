@@ -46,7 +46,9 @@ public class Player : Character
         MaxHp = 10;
         Hp = 100; 
         _exp = 100;
+        _skillHolder.skillList.Add(GetComponentInChildren<Skill_NyanCat>());
         _skillHolder.skillList.Add(GetComponentInChildren<Skill_NyanPunch>());
+        _skillHolder.skillList.Add(GetComponentInChildren<Skill_Bong>());
 
         UIManager.Instance.ShowPopupUI<UI_AbilityUpgrade>();
         
