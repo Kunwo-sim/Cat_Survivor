@@ -31,13 +31,14 @@ public abstract class Enemy : Character
         
         int max = 1;
         _renderer.color = Color.black;
-        for (float i = 0f; i <= max; i += 0.005f)
+        for (float i = 0f; i <= max; i += 0.01f)
         {
             _renderer.color = new Color(i, i, i);
             yield return new WaitForSeconds(0.01f);
         }
         _renderer.color = Color.white;
         _collider.enabled = true;
+        state = CharacterState.Idle;
 
         Routine();
     }
