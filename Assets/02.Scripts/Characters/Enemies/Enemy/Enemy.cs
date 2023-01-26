@@ -135,7 +135,6 @@ public abstract class Enemy : Character
     protected IEnumerator Routine_Dash()
     {
         state = CharacterState.Attack;
-        Vector3 dashDir = GetDirection(transform.position, _player.transform.position);
         
         int max = 1;
         _renderer.color = new Color(max, max, max);
@@ -145,7 +144,7 @@ public abstract class Enemy : Character
             yield return new WaitForSeconds(0.01f);
         }
         _renderer.color = Color.white;
-
+        Vector3 dashDir = GetDirection(transform.position, _player.transform.position);
         _collider.isTrigger = true;
         float dashSpeed = 15;
         _rigidbody.AddForce(dashDir * dashSpeed, ForceMode2D.Impulse);
