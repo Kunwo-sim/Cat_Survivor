@@ -11,7 +11,8 @@ public abstract class Enemy : Character
     
     private Targeting _targeting = new Targeting();
     private EnemyProjectile cloneProjectile;
-    
+    private DamagePopup _damagePopup;
+
     public void Initialize(int hp, int power, float moveSpeed, int level, EPoolObjectType poolType)
     {
         base.Initialize();
@@ -64,6 +65,7 @@ public abstract class Enemy : Character
     {
         base.Awake();
         _player = GameObject.FindWithTag("Player").GetComponent<Player>();
+        _damagePopup = Resources.Load<DamagePopup>("Prefabs/DamagePopup");
     }
 
     protected override void Death()
@@ -76,6 +78,8 @@ public abstract class Enemy : Character
 
     public override void ReceiveDamage(float damage, Vector3 knockBackDir = default)
     {
+        DamagePopup d = Instantiate(_damagePopup);
+        d.Setup((int)damage, transform.position);
         SoundManager.Instance.PlaySFXSound("SkillHit");
         base.ReceiveDamage(damage, knockBackDir);
     }
