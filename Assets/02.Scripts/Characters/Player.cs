@@ -15,6 +15,16 @@ public class Player : Character
     public int Attack { get; set; } = 0;
     public int Critical { get; set; } = 0;
 
+    public override float MaxHp
+    {
+        get { return _maxHp; }
+        set
+        {
+            _maxHp = value;
+            Hp = _maxHp;
+            SetHpUI();
+        }
+    }
     public JoyStick PjoyStick
     {
         get { return _joyStick; }
@@ -33,7 +43,7 @@ public class Player : Character
     {
         // Test code
         MoveSpeed = 5.0f;
-        MaxHp = 100;
+        MaxHp = 10;
         Hp = 100; 
         _exp = 100;
         _skillHolder.skillList.Add(GetComponentInChildren<Skill_NyanPunch>());

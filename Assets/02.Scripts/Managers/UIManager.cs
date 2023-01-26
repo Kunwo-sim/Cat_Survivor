@@ -46,7 +46,8 @@ public class UIManager : MonoBehaviour
 
         CanvasScaler canvasScaler = Utils.GetOrAddComponent<CanvasScaler>(go);
         canvasScaler.uiScaleMode = CanvasScaler.ScaleMode.ScaleWithScreenSize;
-        canvasScaler.referenceResolution = new Vector2(1280, 1080);
+        canvasScaler.referenceResolution = new Vector2(1280, 720);
+        canvasScaler.screenMatchMode = CanvasScaler.ScreenMatchMode.Expand;
 
         GraphicRaycaster graphicRaycaster = Utils.GetOrAddComponent<GraphicRaycaster>(go);
 

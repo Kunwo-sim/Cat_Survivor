@@ -47,7 +47,7 @@ public class UI_WaveShop : UI_Popup
 
         // 플레이어의 능력치를 가져와 셋팅
         _player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
-        Get<TextMeshProUGUI>((int)Texts.MaxHp).text = ((int)_player.Hp).ToString();
+        Get<TextMeshProUGUI>((int)Texts.MaxHp).text = ((int)_player.MaxHp).ToString();
         Get<TextMeshProUGUI>((int)Texts.HpRegen).text = _player.HpRegen.ToString();
         Get<TextMeshProUGUI>((int)Texts.MeleeAttack).text = _player.MeleeAttack.ToString();
         Get<TextMeshProUGUI>((int)Texts.RangeAttack).text = _player.RangeAttack.ToString();

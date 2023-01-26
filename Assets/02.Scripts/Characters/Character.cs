@@ -6,7 +6,7 @@ using static Define;
 public abstract class Character : MonoBehaviour
 {
     private string _name = "Character Name";
-    public float MaxHp { get; set; } = 10;
+    protected float _maxHp = 10;
     public float Hp { get; set; } = 10;
     public float Power { get; set; } = 1;
     public float MoveSpeed { get; set; } = 3.0f;
@@ -21,7 +21,16 @@ public abstract class Character : MonoBehaviour
     public CharacterState state;
     protected Rigidbody2D _rigidbody;
     protected Collider2D _collider;
-    
+
+    public virtual float MaxHp
+    {
+        get { return _maxHp; }
+        set
+        {
+            _maxHp = value;
+            Hp = _maxHp;
+        }
+    }
     protected virtual void Awake()
     {
         _hpBar = GetComponentInChildren<Bar>();
