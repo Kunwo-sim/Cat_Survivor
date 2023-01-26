@@ -80,12 +80,11 @@ public class EnemyManager : MonoBehaviour
             }
             yield return new WaitForSeconds(spawnInfo.RepeatTime);
         }
-        print("end : "+spawnInfo.EnemyInfo.gameObject);
     }
     private void Stage1Wave()
     {
-        _stageWave.Add(new SpawnInfo(enemyList[0], GetRandomPosition, 5, 0.2f, 5, 0, 2));
-        _stageWave.Add(new SpawnInfo(enemyList[1], GetRandomPosition, 10, 0.5f, 3, 0, 3));
+        _stageWave.Add(new SpawnInfo(enemyList[0], GetRandomPosition, 5, 0.2f, 5, 0, 40));
+        _stageWave.Add(new SpawnInfo(enemyList[1], GetRandomPosition, 10, 0.5f, 3, 0, 40));
 
     }
     
