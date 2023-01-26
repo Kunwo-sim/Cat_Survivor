@@ -105,7 +105,7 @@ public abstract class Enemy : Character
     protected IEnumerator Routine_Move()
     {
         state = CharacterState.Move;
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(2f);
         Routine();
     }
     protected IEnumerator Routine_Shot()
@@ -130,7 +130,7 @@ public abstract class Enemy : Character
         cloneProjectile.Initialize(pos, rot, (int)Power, 3, poolType);
         
         yield return new WaitForSeconds(0.3f);
-        Routine();
+        StartCoroutine(Routine_Move());
     }
     protected IEnumerator Routine_Dash()
     {
@@ -152,7 +152,7 @@ public abstract class Enemy : Character
         _rigidbody.velocity = Vector2.zero;
         _collider.isTrigger = false;
         
-        Routine();
+        StartCoroutine(Routine_Move());
     }
     IEnumerator DeathFadeOut()
     {
