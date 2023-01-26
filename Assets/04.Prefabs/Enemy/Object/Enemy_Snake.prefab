@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: -4362418286187375851}
   - component: {fileID: -2200159535910177267}
   m_Layer: 0
-  m_Name: Enemy_Sheep
+  m_Name: Enemy_Snake
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -77,7 +77,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: e596b593ee1909940a3e9edf5ae52ac9, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b976da75060343f4db8f1956b845ebb7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -145,7 +145,7 @@ Animator:
   m_GameObject: {fileID: 2037071088904110108}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: f03227faaaea8724395dbcae9cbb8d93, type: 2}
+  m_Controller: {fileID: 9100000, guid: d3eac82faab213249886a02634b93aea, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
