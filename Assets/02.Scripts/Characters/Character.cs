@@ -50,6 +50,7 @@ public abstract class Character : MonoBehaviour
         _lastProtectionTime = 0;
         Hp = MaxHp;
         _rigidbody.velocity = Vector2.zero;
+        _renderer.flipX = false;
     }
 
     protected virtual void Move(Vector2 input)

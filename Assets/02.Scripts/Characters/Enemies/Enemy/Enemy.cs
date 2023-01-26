@@ -49,7 +49,12 @@ public abstract class Enemy : Character
     {
         Vector2 direction = GetDirection(transform.position, _player.transform.position);
         Move(direction);
-        _renderer.flipX = direction.x < 0 ? true : false;
+        FlipXRenderer(direction);
+    }
+
+    protected virtual void FlipXRenderer(Vector2 direction)
+    {
+        _renderer.flipX = direction.x < 0;
     }
 
     private void CreatExpObject()
@@ -102,7 +107,7 @@ public abstract class Enemy : Character
     }
     
     protected abstract void Routine();
-    protected IEnumerator Routine_Move()
+    protected virtual IEnumerator Routine_Move()
     {
         state = CharacterState.Move;
         yield return new WaitForSeconds(2f);
