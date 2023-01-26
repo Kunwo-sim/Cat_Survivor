@@ -3,24 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using static Define;
 
-public class Enemy_2 : Enemy
+public class Enemy_Mouse : Enemy
 {
-    
-
     protected override void Routine()
     {
-        int random = Random.Range(0, 2);
+        int random = Random.Range(0, 1);
         switch (random)
         {
             case 0:
                 StartCoroutine(Routine_Move());
                 break;
-            case 1:
-                StartCoroutine(Routine_Shot());
-                break;
         }
     }
-    
-    
-    
 }
