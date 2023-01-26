@@ -85,6 +85,10 @@ public class EnemyManager : MonoBehaviour
     {
         _stageWave.Add(new SpawnInfo(enemyList[0], GetRandomPosition, 5, 0.2f, 5, 0, 40));
         _stageWave.Add(new SpawnInfo(enemyList[1], GetRandomPosition, 10, 0.5f, 3, 0, 40));
+        
+        // Test
+        _stageWave.Add(new SpawnInfo(enemyList[2], GetRandomPosition, 3, 0.5f, 2, 0, 40));
+        _stageWave.Add(new SpawnInfo(enemyList[3], GetRandomPosition, 3, 0.5f, 2, 0, 40));
 
     }
     

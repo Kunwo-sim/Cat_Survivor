@@ -26,7 +26,7 @@ public class PoolInfo
 
     public Queue<GameObject> poolQueue = new Queue<GameObject>();
     // 오브젝트 전체 회수를 위한 큐
-    public List<GameObject> usingList = new List<GameObject>();
+    [HideInInspector] public List<GameObject> usingList = new List<GameObject>();
 }
 public class ObjectPoolManager : MonoBehaviour
 {

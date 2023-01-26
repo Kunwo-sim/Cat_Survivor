@@ -32,8 +32,12 @@ public class WaveManager : MonoBehaviour
 
             _player.Hp = _player.MaxHp;
 
+            // 리팩토링 필요
             ObjectPoolManager.ReturnObjectAll(EPoolObjectType.Enemy_Mouse);
             ObjectPoolManager.ReturnObjectAll(EPoolObjectType.Enemy_Boar);
+            ObjectPoolManager.ReturnObjectAll(EPoolObjectType.Enemy_Snake);
+            ObjectPoolManager.ReturnObjectAll(EPoolObjectType.Enemy_Sheep);
+            ObjectPoolManager.ReturnObjectAll(EPoolObjectType.EnemyProjectile);
 
             if (_player.Level > _player.CurLevel)
             {

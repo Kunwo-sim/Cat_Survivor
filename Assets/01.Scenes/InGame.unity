@@ -591,6 +591,11 @@ MonoBehaviour:
     prefab: {fileID: 2037071088904110108, guid: 0d569c2690f353a459b1893c7769b5c8, type: 3}
     container: {fileID: 833320327}
     usingList: []
+  - type: 7
+    initCount: 100
+    prefab: {fileID: 2037071088904110108, guid: f6a992388ac89034aac0a8a8f81d8b7f, type: 3}
+    container: {fileID: 833320327}
+    usingList: []
 --- !u!4 &699832826
 Transform:
   m_ObjectHideFlags: 0
