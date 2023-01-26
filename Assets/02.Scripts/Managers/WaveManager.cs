@@ -22,7 +22,7 @@ public class WaveManager : MonoBehaviour
     void Update()
     {
         WaveRemainTime -= Time.deltaTime;
-        _timeText.text = "���� �ð� : " + (int)WaveRemainTime;
+        _timeText.text = "남은 시간 : " + (int)WaveRemainTime;
 
         if (WaveRemainTime < 0.0f)
         {
