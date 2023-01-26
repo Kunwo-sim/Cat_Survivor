@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using UnityEngine;
 using System.Collections.Generic;
+using static Define;
 using Random = UnityEngine.Random;
 
 public class EnemyManager : MonoBehaviour
@@ -30,7 +31,6 @@ public class EnemyManager : MonoBehaviour
 
   
     private List<SpawnInfo> _stageWave = new List<SpawnInfo>(); 
-    private readonly float _randRange = 5f;
 
     private struct SpawnInfo
     {
@@ -72,8 +72,8 @@ public class EnemyManager : MonoBehaviour
             var groupSpawnPos = spawnInfo.SpawnType();
             for (int i = 0; i < spawnInfo.Count; i++)
             {
-                float randX = Random.Range(-_randRange, _randRange);
-                float randY = Random.Range(-_randRange, _randRange);
+                float randX = Random.Range(-randRange, randRange);
+                float randY = Random.Range(-randRange, randRange);
                 groupSpawnPos += new Vector3(randX, randY);
                 spawnInfo.EnemyInfo.Spawn(groupSpawnPos);
                 yield return new WaitForSeconds(spawnInfo.IntervalTime);
@@ -94,8 +94,8 @@ public class EnemyManager : MonoBehaviour
     
     private Vector3 GetRandomPosition()
     {
-        float xPos = Random.Range(-Define.xSpawnLimit + _randRange, Define.xSpawnLimit - _randRange);
-        float yPos = Random.Range(-Define.ySpawnLimit + _randRange, Define.ySpawnLimit - _randRange);
+        float xPos = Random.Range(-xSpawnLimit + randRange, xSpawnLimit - randRange);
+        float yPos = Random.Range(-ySpawnLimit + randRange, ySpawnLimit - randRange);
         float zPos = 10;
 
         var randomPosition = new Vector3(xPos, yPos, zPos);
@@ -104,8 +104,8 @@ public class EnemyManager : MonoBehaviour
     private Vector3 GetSidePosition()
     {
         Vector3 randomPosition = Vector3.zero;
-        float yPos = Define.ySpawnLimit - _randRange;
-        float xPos = Define.xSpawnLimit- _randRange;
+        float yPos = ySpawnLimit - randRange;
+        float xPos = xSpawnLimit- randRange;
         float zPos = 10;
 
         int flag = Random.Range(0, 4);

@@ -33,7 +33,7 @@ public class Define
     {
         QuaterView,
     }
-    
+
     public enum CharacterState
     {
         Idle,
@@ -45,4 +45,5 @@ public class Define
 
     public const float xSpawnLimit = 20;
     public const float ySpawnLimit = 10;
+    public const float randRange = 3f;
 }

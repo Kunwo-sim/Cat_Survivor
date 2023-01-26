@@ -49,6 +49,7 @@ public abstract class Character : MonoBehaviour
         state = CharacterState.Idle;
         _lastProtectionTime = 0;
         Hp = MaxHp;
+        _rigidbody.velocity = Vector2.zero;
     }
 
     protected virtual void Move(Vector2 input)
