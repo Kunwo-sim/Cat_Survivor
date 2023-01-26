@@ -58,6 +58,7 @@ public class UI_AbilityUpgrade : UI_Popup
             Destroy(child.gameObject);
         }
 
+        // 주석체크
         // 4개의 무작위 어빌리티를 가져오고 초기화
         List<AbilityData> data = AbilityGetter.GetRandomAbility();
         for (int i = 0; i < 4; i++)
