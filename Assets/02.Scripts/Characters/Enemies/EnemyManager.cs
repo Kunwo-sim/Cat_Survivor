@@ -29,8 +29,8 @@ public class EnemyManager : MonoBehaviour
     public delegate void Stage();
     [SerializeField] private List<EnemyInfo> enemyList = new List<EnemyInfo>();
 
-  
-    private List<SpawnInfo> _stageWave = new List<SpawnInfo>(); 
+
+    private List<SpawnInfo> _stageWave = new List<SpawnInfo>();
 
     private struct SpawnInfo
     {
@@ -52,10 +52,10 @@ public class EnemyManager : MonoBehaviour
             EndTime = endTime;
         }
     }
-    
+
     private void Start()
     {
-        Stage1Wave();   
+        Stage1Wave();
         foreach (var routine in _stageWave)
             StartCoroutine(SpawnRoutine(routine));
     }
@@ -74,7 +74,7 @@ public class EnemyManager : MonoBehaviour
             {
                 if (WaveManager.Instance._bWaveEnd) yield break;
                 float randX = Random.Range(-randRange, randRange);
-                float randY = Random.Range(-randRange*0.7f, randRange*0.7f);
+                float randY = Random.Range(-randRange * 0.7f, randRange * 0.7f);
                 groupSpawnPos += new Vector3(randX, randY);
                 spawnInfo.EnemyInfo.Spawn(groupSpawnPos);
                 yield return new WaitForSeconds(spawnInfo.IntervalTime);
@@ -84,39 +84,68 @@ public class EnemyManager : MonoBehaviour
     }
     private void Stage1Wave()
     {
-        
-        _stageWave.Add(new SpawnInfo(enemyList[BossSheep], GetRandomPosition, 1, 0.1f, 5, 1, 5));
+        float[] waveTime = new float[11];
+        for (int i = 1; i <= 10; i++)
+        {
+            waveTime[i] += waveTime[i - 1];
+            waveTime[i] += WaveManager.Instance._waveTime[i];
+        }
 
         // Wave 1
-        _stageWave.Add(new SpawnInfo(enemyList[Snake], GetRandomPosition, 10, 0.5f, 3, 1, 40));
-        _stageWave.Add(new SpawnInfo(enemyList[Mouse], GetRandomPosition, 5, 0.2f, 5, 1, 40));
-        
-        float endTime = 2.1f;
+        _stageWave.Add(new SpawnInfo(enemyList[Mouse], GetRandomPosition, 3, 0.2f, 2, 1, 20));
+        float endTime = 2.2f;
         // Wave 2
-        _stageWave.Add(new SpawnInfo(enemyList[Snake], GetRandomPosition, 6, 0.2f, 5, 40 + endTime, 60+ endTime));
-        _stageWave.Add(new SpawnInfo(enemyList[Mouse], GetRandomPosition, 3, 1f, 3, 40 + endTime, 60+ endTime));
-        _stageWave.Add(new SpawnInfo(enemyList[Mouse], GetRandomPosition, 4, 0.8f, 3, 40 + endTime, 60+ endTime));
-        endTime += 2;
+        _stageWave.Add(new SpawnInfo(enemyList[Mouse], GetRandomPosition, 3, 0.2f, 3, 20 + endTime, 999 + endTime));
+        _stageWave.Add(new SpawnInfo(enemyList[Snake], GetRandomPosition, 2, 0.2f, 3, 20 + endTime, 999 + endTime));
+        endTime += 2.2f;
         // Wave 3
-        _stageWave.Add(new SpawnInfo(enemyList[Mouse], GetRandomPosition, 8, 0.2f, 3, 60 + endTime, 100+ endTime));
-        _stageWave.Add(new SpawnInfo(enemyList[Snake], GetRandomPosition, 5, 0.2f, 5, 60+ endTime, 100+ endTime));
-        _stageWave.Add(new SpawnInfo(enemyList[Sheep], GetRandomPosition, 3, 0.2f, 4, 75+ endTime, 100+ endTime));
-        _stageWave.Add(new SpawnInfo(enemyList[Boar], GetRandomPosition, 4, 0.4f, 3, 75+ endTime, 100+ endTime));
-        _stageWave.Add(new SpawnInfo(enemyList[Mouse], GetRandomPosition, 3, 0.2f, 2, 75+ endTime, 100+ endTime));
-        endTime += 2;
+        _stageWave.Add(new SpawnInfo(enemyList[Mouse], GetRandomPosition, 4, 0.2f, 3, 45 + endTime, 999 + endTime));
+        _stageWave.Add(new SpawnInfo(enemyList[Mouse], GetRandomPosition, 4, 0.2f, 7, 45 + endTime, 999 + endTime));
+        _stageWave.Add(new SpawnInfo(enemyList[Snake], GetRandomPosition, 4, 0.2f, 5, 45 + endTime, 999 + endTime));
+        endTime += 2.2f;
         // Wave 4
-        _stageWave.Add(new SpawnInfo(enemyList[Snake], GetRandomPosition, 12, 0.2f, 6, 100+ endTime, 120+ endTime));
-        _stageWave.Add(new SpawnInfo(enemyList[Sheep], GetRandomPosition, 3, 0.3f, 2, 100+ endTime, 120+ endTime));
-        _stageWave.Add(new SpawnInfo(enemyList[Boar], GetRandomPosition, 5, 0.4f, 2, 100+ endTime, 120+ endTime));
-        endTime += 2;
-        // Wave 5 보스
-        _stageWave.Add(new SpawnInfo(enemyList[BossSheep], GetRandomPosition, 1, 0.1f, 5, 121+endTime, 122+endTime));
+        _stageWave.Add(new SpawnInfo(enemyList[Snake], GetRandomPosition, 6, 0.2f, 4, 75 + endTime, 999 + endTime));
+        _stageWave.Add(new SpawnInfo(enemyList[Sheep], GetRandomPosition, 1, 0.3f, 5, 75 + endTime, 999 + endTime));
+        endTime += 2.2f;
+        // Wave 5
+        _stageWave.Add(new SpawnInfo(enemyList[Mouse], GetRandomPosition, 6, 0.2f, 4, 110 + endTime, 999 + endTime));
+        _stageWave.Add(new SpawnInfo(enemyList[Mouse], GetRandomPosition, 3, 0.2f, 7, 110 + endTime, 999 + endTime));
+        _stageWave.Add(new SpawnInfo(enemyList[Sheep], GetRandomPosition, 1, 0.2f, 4, 110 + endTime, 999 + endTime));
+        endTime += 2.2f;
+        // Wave 6
+        _stageWave.Add(new SpawnInfo(enemyList[Mouse], GetRandomPosition, 3, 0.2f, 3, waveTime[5] + endTime, 999 + endTime));
+        _stageWave.Add(new SpawnInfo(enemyList[Mouse], GetRandomPosition, 6, 0.2f, 8, waveTime[5] + endTime, 999 + endTime));
+        _stageWave.Add(new SpawnInfo(enemyList[Snake], GetRandomPosition, 4, 0.2f, 5, waveTime[5] + endTime, 999 + endTime));
+        _stageWave.Add(new SpawnInfo(enemyList[Sheep], GetRandomPosition, 2, 0.2f, 6, waveTime[5] + endTime, 999 + endTime));
+        endTime += 2.2f;
+        // Wave 7                                                                                            
+        _stageWave.Add(new SpawnInfo(enemyList[Mouse], GetRandomPosition, 4, 0.2f, 5, waveTime[6] + endTime, 999 + endTime));
+        _stageWave.Add(new SpawnInfo(enemyList[Mouse], GetRandomPosition, 6, 0.2f, 8, waveTime[6] + endTime, 999 + endTime));
+        _stageWave.Add(new SpawnInfo(enemyList[Snake], GetRandomPosition, 2, 0.4f, 4, waveTime[6] + endTime, 999 + endTime));
+        _stageWave.Add(new SpawnInfo(enemyList[Snake], GetRandomPosition, 4, 0.4f, 7, waveTime[6] + endTime, 999 + endTime));
+        _stageWave.Add(new SpawnInfo(enemyList[Boar], GetRandomPosition, 1, 0.4f, 6, waveTime[6] + endTime, 999 + endTime));
+        endTime += 2.2f;
+        // Wave 8
+        _stageWave.Add(new SpawnInfo(enemyList[Mouse], GetRandomPosition, 6, 0.2f, 9, waveTime[7] + endTime, 999 + endTime));
+        _stageWave.Add(new SpawnInfo(enemyList[Sheep], GetRandomPosition, 2, 0.2f, 5, waveTime[7] + endTime, 999 + endTime));
+        _stageWave.Add(new SpawnInfo(enemyList[Boar], GetRandomPosition, 2, 0.2f, 7, waveTime[7] + endTime, 999 + endTime));
+        endTime += 2.2f;
+        // Wave 9
+        _stageWave.Add(new SpawnInfo(enemyList[Mouse], GetRandomPosition, 3, 0.2f, 2, waveTime[8] + endTime, 999 + endTime));
+        _stageWave.Add(new SpawnInfo(enemyList[Snake], GetRandomPosition, 2, 0.2f, 2, waveTime[8] + endTime, 999 + endTime));
+        _stageWave.Add(new SpawnInfo(enemyList[Sheep], GetRandomPosition, 3, 0.2f, 6, waveTime[8] + endTime, 999 + endTime));
+        _stageWave.Add(new SpawnInfo(enemyList[Boar], GetRandomPosition, 3, 0.4f, 7, waveTime[8] + endTime, 999 + endTime));
+        _stageWave.Add(new SpawnInfo(enemyList[Mouse], GetRandomPosition, 6, 0.2f, 8, waveTime[8] + endTime, 999 + endTime));
+        _stageWave.Add(new SpawnInfo(enemyList[Snake], GetRandomPosition, 4, 0.2f, 5, waveTime[8] + endTime, 999 + endTime));
+        endTime += 2.2f;
+        // Wave 10 보스
+        //_stageWave.Add(new SpawnInfo(enemyList[BossSheep], GetRandomPosition, 1, 0.1f, 5, waveTime[9] + endTime, 999 + waveTime[9] + 1 + endTime));
     }
-    
+
     private Vector3 GetRandomPosition()
     {
         float xPos = Random.Range(-xSpawnLimit + randRange, xSpawnLimit - randRange);
-        float yPos = Random.Range(-ySpawnLimit + randRange*0.7f, ySpawnLimit - randRange*0.7f);
+        float yPos = Random.Range(-ySpawnLimit + randRange * 0.7f, ySpawnLimit - randRange * 0.7f);
         float zPos = 10;
 
         var randomPosition = new Vector3(xPos, yPos, zPos);
@@ -126,7 +155,7 @@ public class EnemyManager : MonoBehaviour
     {
         Vector3 randomPosition = Vector3.zero;
         float yPos = ySpawnLimit - randRange;
-        float xPos = xSpawnLimit- randRange;
+        float xPos = xSpawnLimit - randRange;
         float zPos = 10;
 
         int flag = Random.Range(0, 4);
