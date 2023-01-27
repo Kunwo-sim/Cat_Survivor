@@ -32,15 +32,12 @@ public class Player : Character
     protected override void Start()
     {
         // Test code
-        MoveSpeed = 5.0f;
+        MoveSpeed = 3.0f;
         MaxHp = 10;
         Hp = 10; 
-        _exp = 100;
         _skillHolder.skillList.Add(GetComponentInChildren<Skill_NyanCat>());
         _skillHolder.skillList.Add(GetComponentInChildren<Skill_NyanPunch>());
         _skillHolder.skillList.Add(GetComponentInChildren<Skill_Bong>());
-
-        UIManager.Instance.ShowPopupUI<UI_AbilityUpgrade>();
         
         base.Start();
         SetHpUI();
@@ -85,6 +82,7 @@ public class Player : Character
         _exp -= _maxExp;
         _maxExp *= 1.2f;
         Level++;
+        LevelCnt++;
         _expBar.SetText(Level);
     }
 

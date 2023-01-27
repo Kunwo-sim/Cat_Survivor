@@ -60,7 +60,7 @@ public abstract class Enemy : Character
     private void CreatExpObject()
     {
         ExpObject expObject = ObjectPoolManager.GetObject(EPoolObjectType.ExpObject).GetComponent<ExpObject>();
-        expObject.Initialize(Level, transform.position);
+        expObject.Initialize(1, Level, transform.position);
     }
 
     protected override void Move(Vector2 input)

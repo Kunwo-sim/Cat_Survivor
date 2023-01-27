@@ -11,7 +11,7 @@ public abstract class Character : MonoBehaviour
     public float Power { get; set; } = 1;
     public float MoveSpeed { get; set; } = 3.0f;
     public int Level { get; set;} = 1;
-    public int CurLevel { get; set; } = 1;
+    public int LevelCnt { get; set; } = 0;
     public float AttackSpeed { get; set; } = 1.0f;
     public float AttackRange { get; set; } = 100;
     private readonly float _protectionTime = 0.1f;

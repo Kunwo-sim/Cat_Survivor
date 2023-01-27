@@ -79,5 +79,6 @@ public class UI_WaveShop : UI_Popup
     {
         UIManager.Instance.ClosePopupUI();
         Time.timeScale = 1.0f;
+        WaveManager.Instance.BeforeWaveStart();
     }
 }

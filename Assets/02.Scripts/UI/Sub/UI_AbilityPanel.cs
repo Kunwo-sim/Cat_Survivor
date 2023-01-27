@@ -39,8 +39,17 @@ public class UI_AbilityPanel : UI_Base
         MethodInfo theMethod = thisType.GetMethod(functionName);
         theMethod.Invoke(this, null);
 
-        UIManager.Instance.ClosePopupUI();
-        UIManager.Instance.ShowPopupUI<UI_WaveShop>("UI_WaveShop");
+        if (_player.LevelCnt > 0)
+        {
+            _player.LevelCnt -= 1;
+            UIManager.Instance.ClosePopupUI();
+            UIManager.Instance.ShowPopupUI<UI_AbilityUpgrade>("UI_AbilityUpgrade");
+        }
+        else
+        {
+            UIManager.Instance.ClosePopupUI();
+            UIManager.Instance.ShowPopupUI<UI_WaveShop>("UI_WaveShop");
+        }
     }
 
     public void SetAbilityPanel(AbilityData data)
