@@ -10,7 +10,11 @@ public class Skill_NyanCat : Skill
         var rot = targeting.GetToNearRotate(dir);
         
         cloneProjectile.Add(ObjectPoolManager.GetObject(poolType).GetComponent<Projectile_NyanCat>());
-        cloneProjectile[0].Initialize(pos, rot, damage, activeTime, poolType);
+        cloneProjectile.Add(ObjectPoolManager.GetObject(poolType).GetComponent<Projectile_NyanCat>());
+        cloneProjectile.Add(ObjectPoolManager.GetObject(poolType).GetComponent<Projectile_NyanCat>());
+        cloneProjectile[0].Initialize(pos, rot * Quaternion.Euler(0,0,-30), damage, activeTime, poolType);
+        cloneProjectile[1].Initialize(pos, rot, damage, activeTime, poolType);
+        cloneProjectile[2].Initialize(pos, rot * Quaternion.Euler(0,0,30), damage, activeTime, poolType);
         SoundManager.Instance.PlaySFXSound("Gun_Shot");
         yield break;
     }
