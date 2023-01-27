@@ -29,7 +29,13 @@ public class Enemy_BossSheep : Enemy
                 break;
         }
     }
-    
+
+    protected override void Start()
+    {
+        base.Start();
+        SoundManager.Instance.PlayBGMSound();
+    }
+
     public override void ReceiveDamage(float damage, Vector3 knockBackDir = default, bool bCiritical = false)
     {
         DamagePopup d = Instantiate(_damagePopup);
@@ -52,12 +58,12 @@ public class Enemy_BossSheep : Enemy
     {
         state = CharacterState.Attack;
         _animator.SetTrigger("Dash");
+        SoundManager.Instance.PlaySFXSound("Boss_Dash_Full");
         yield return new WaitForSeconds(1f);
         Vector3 dashDir = GetDirection(transform.position, _player.transform.position);
         _collider.isTrigger = true;
         float dashSpeed = 30;
         _rigidbody.AddForce(dashDir * dashSpeed, ForceMode2D.Impulse);
-        SoundManager.Instance.PlaySFXSound("Boss_Dash_Crush");
         yield return new WaitForSeconds(0.5f);
         _rigidbody.velocity = Vector2.zero;
         _collider.isTrigger = false;

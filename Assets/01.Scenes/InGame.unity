@@ -433,7 +433,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1719785112}
         m_TargetAssemblyTypeName: a, Assembly-CSharp
         m_MethodName: aa
         m_Mode: 1
@@ -1657,6 +1657,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1719785113}
+  - component: {fileID: 1719785112}
   - component: {fileID: 1719785114}
   m_Layer: 0
   m_Name: Gotitle
@@ -1665,6 +1666,18 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &1719785112
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1719785111}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7d26dab28c405043b506d6d210d973a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1719785113
 Transform:
   m_ObjectHideFlags: 0
@@ -1673,7 +1686,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1719785111}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -3.4283838, y: -0.38869652, z: -0.17029096}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1977,7 +1990,8 @@ MonoBehaviour:
   masterVolumeSFX: 1
   masterVolumeBGM: 1
   menuBgmClip: {fileID: 8300000, guid: 96eafd1dc93dd694f83a9ad75e4a6d55, type: 3}
-  inGameBgmClip: {fileID: 8300000, guid: 69396cd1e3828394e90f6d31cb58723b, type: 3}
+  inGameBgmClip: {fileID: 8300000, guid: 6706f97ea54cfdd448d469e3696ea4e0, type: 3}
+  inGameBossBgmClip: {fileID: 8300000, guid: 69396cd1e3828394e90f6d31cb58723b, type: 3}
   sfxAudioClips:
   - {fileID: 8300000, guid: c387f373d9f1847449302fc0c0ed1197, type: 3}
   - {fileID: 8300000, guid: 4c67a1b4a8f9c3f46a9c5180d248663a, type: 3}
@@ -1994,6 +2008,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: bb654791b53174a43a4cec7ee29ca081, type: 3}
   - {fileID: 8300000, guid: fb8bb9d0df3bca8498b223ecd960fa77, type: 3}
   - {fileID: 8300000, guid: 05d68ca5e4fa97f498a71848b6275c15, type: 3}
+  - {fileID: 8300000, guid: 2e006f4e4eedfb149a5c5da1e091390c, type: 3}
 --- !u!4 &1787131063
 Transform:
   m_ObjectHideFlags: 0

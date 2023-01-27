@@ -27,7 +27,7 @@ public class WaveManager : MonoBehaviour
     float _waveRemainTime = 40.0f;
     public int _waveStep = 1;
     public bool _bWaveEnd = false;
-    float[] _waveTime = { 40, 20, 40, 20, 40 };
+    float[] _waveTime = { 40, 20, 40, 20, 999 };
 
     [SerializeField]
     TextMeshProUGUI _waveInfoText;
