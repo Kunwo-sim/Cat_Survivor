@@ -10,7 +10,7 @@ using System.Reflection;
 public class UI_AbilityPanel : UI_Base
 {
     Player _player;
-    string functionName;
+    string _functionName;
     enum GameObjects
     {
         SelectButton
@@ -36,7 +36,7 @@ public class UI_AbilityPanel : UI_Base
     {
         // functionName과 동일한 함수 호출
         Type thisType = GetType();
-        MethodInfo theMethod = thisType.GetMethod(functionName);
+        MethodInfo theMethod = thisType.GetMethod(_functionName);
         theMethod.Invoke(this, null);
 
         if (_player.LevelCnt > 0)
@@ -55,7 +55,7 @@ public class UI_AbilityPanel : UI_Base
     public void SetAbilityPanel(AbilityData data)
     {
         Get<TextMeshProUGUI>((int)Texts.DescriptionText).text = data.Description;
-        functionName = data.FunctionName;
+        _functionName = data.FunctionName;
     }
 
     public void AbilityMaxHp()

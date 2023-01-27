@@ -63,6 +63,8 @@ public class UI_WaveShop : UI_Popup
         {
             Destroy(child.gameObject);
         }
+
+        List<ItemData> data = ItemGetter.GetRandomItem();
         for (int i = 0; i < 4; i++)
         {
             GameObject itemPanel = Instantiate(Resources.Load<GameObject>("Prefabs/UI/Sub/UI_ItemPanel"));
@@ -70,6 +72,7 @@ public class UI_WaveShop : UI_Popup
             itemPanel.name = "ItemPanel" + i;
 
             UI_ItemPanel item = itemPanel.GetOrAddComponent<UI_ItemPanel>();
+            item.SetItemInfo(data[i]);
         }
 
         Get<GameObject>((int)GameObjects.NextButton).BindEvent(OnNextButtonClicked, Define.UIEvent.Click);

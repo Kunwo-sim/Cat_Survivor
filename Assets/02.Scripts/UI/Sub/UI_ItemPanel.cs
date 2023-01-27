@@ -4,9 +4,12 @@ using UnityEngine;
 using TMPro;
 using System;
 using UnityEngine.EventSystems;
+using System.Reflection;
 
 public class UI_ItemPanel : UI_Base
 {
+    string _functionName;
+    int _cost = 0;
     enum Texts
     {
         ItemName,
@@ -21,7 +24,7 @@ public class UI_ItemPanel : UI_Base
         BuyButton
     }
 
-    void Start()
+    void Awake()
     {
         Init();
     }
@@ -34,10 +37,19 @@ public class UI_ItemPanel : UI_Base
 
     public void OnBuyButtonClick(PointerEventData data)
     {
-        Debug.Log("아이템 구매");
-    }
-    public void SetInfo(string name)
-    {
+        if (_cost > InGameManager.Instance.Money)
+            return;
 
+        // functionName과 동일한 함수 호출
+        Type thisType = GetType();
+        MethodInfo theMethod = thisType.GetMethod(_functionName);
+        theMethod.Invoke(this, null);
+    }
+    public void SetItemInfo(ItemData data)
+    {
+        Get<TextMeshProUGUI>((int)Texts.ItemName).text = data.Name;
+        Get<TextMeshProUGUI>((int)Texts.ItemKind).text = data.Kind;
+        Get<TextMeshProUGUI>((int)Texts.ItemDescription).text = data.Description;
+        Get<TextMeshProUGUI>((int)Texts.CostText).text = $"비용 : {data.Cost}";
     }
 }
