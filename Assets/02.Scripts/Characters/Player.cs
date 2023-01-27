@@ -44,6 +44,7 @@ public class Player : Character
         _skillHolder.skillList.Add(GetComponentInChildren<Skill_NyanCat>());
         _skillHolder.skillList.Add(GetComponentInChildren<Skill_NyanPunch>());
         _skillHolder.skillList.Add(GetComponentInChildren<Skill_Bong>());
+        _skillHolder.skillList.Add(GetComponentInChildren<Skill_Orb>());
         
         base.Start();
         SetHpUI();

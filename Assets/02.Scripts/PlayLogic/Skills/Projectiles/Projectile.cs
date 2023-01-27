@@ -7,7 +7,7 @@ public abstract class Projectile : MonoBehaviour
     protected Define.ProjectileType _projectileType;
     protected int damage = 0;
     protected float speed;
-    bool bCritical = false;
+    protected bool bCritical = false;
 
     protected Player _player;
     protected Rigidbody2D rigidbody2D;
