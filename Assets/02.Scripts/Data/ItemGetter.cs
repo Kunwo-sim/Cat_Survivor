@@ -11,8 +11,8 @@ public class ItemData
     public int Power;
     public string FunctionName;
     public int Cost;
-
-    public ItemData(int key, string name, string kind, string description, string functionName, int cost)
+    public string Grade;
+    public ItemData(int key, string name, string kind, string description, string functionName, int cost, string grade)
     {
         Key = key;
         Name = name;
@@ -20,6 +20,7 @@ public class ItemData
         Description = description;
         FunctionName = functionName;
         Cost = cost;
+        Grade = grade;
     }
 }
 
@@ -42,8 +43,9 @@ public static class ItemGetter
             description.Replace("\\n", "\n");
             string functionName = _itemCSV[i]["functionName"].ToString();
             int cost = int.Parse(_itemCSV[i]["cost"].ToString());
+            string grade = _itemCSV[i]["grade"].ToString();
 
-            ItemData data = new ItemData(key, name, kind, description, functionName, cost);
+            ItemData data = new ItemData(key, name, kind, description, functionName, cost, grade);
             _itemData.Add(i, data);
         }
     }

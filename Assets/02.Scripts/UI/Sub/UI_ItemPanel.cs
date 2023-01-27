@@ -5,9 +5,11 @@ using TMPro;
 using System;
 using UnityEngine.EventSystems;
 using System.Reflection;
+using UnityEngine.UI;
 
 public class UI_ItemPanel : UI_Base
 {
+    string _grade;
     string _functionName;
     int _cost = 0;
     Player _player;
@@ -58,6 +60,24 @@ public class UI_ItemPanel : UI_Base
         Get<TextMeshProUGUI>((int)Texts.CostText).text = $"ºñ¿ë : {data.Cost}";
         _functionName = data.FunctionName;
         _cost = data.Cost;
+        _grade = data.Grade;
+
+        if(_grade == "normal")
+        {
+            Get<GameObject>((int)GameObjects.BackGround).GetComponent<Image>().sprite = InGameManager.Instance.itemPanelSprite[0];
+        }
+        else if (_grade == "rare")
+        {
+            Get<GameObject>((int)GameObjects.BackGround).GetComponent<Image>().sprite = InGameManager.Instance.itemPanelSprite[1];
+        }
+        else if (_grade == "epic")
+        {
+            Get<GameObject>((int)GameObjects.BackGround).GetComponent<Image>().sprite = InGameManager.Instance.itemPanelSprite[2];
+        }
+        else
+        {
+            Get<GameObject>((int)GameObjects.BackGround).GetComponent<Image>().sprite = InGameManager.Instance.itemPanelSprite[3];
+        }
     }
 
     public void Item1()

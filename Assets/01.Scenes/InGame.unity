@@ -1371,6 +1371,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95c7d12e93dae5c40a25e14f085e0d6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _normalAbilityPercnt: 50
+  _rareAbilityPercnt: 85
+  _epicAbilityPercnt: 97
+  _legendAbilityPercnt: 100
+  abilityPanelSprite:
+  - {fileID: 21300000, guid: e270abc920d11184d986732bea059d49, type: 3}
+  - {fileID: 21300000, guid: e5463877d5a60ee41b879864a36e9820, type: 3}
+  - {fileID: 21300000, guid: 88b00d0d17f9c254e998732180db6abe, type: 3}
+  - {fileID: 21300000, guid: 632757fe16a5b0e4fba82bfee29e86ff, type: 3}
+  itemPanelSprite:
+  - {fileID: 21300000, guid: 2ed1a78537b9eeb42a32a2a44b19cc15, type: 3}
+  - {fileID: 21300000, guid: 7089f08c296563247a00a99872b6cb8b, type: 3}
+  - {fileID: 21300000, guid: 29a4e741884ace1418e998db6f9e6768, type: 3}
+  - {fileID: 21300000, guid: 24ebc0f655c59e44b894230f41ab3d57, type: 3}
   _moneyUI: {fileID: 1870236618}
 --- !u!4 &1735060420
 Transform:

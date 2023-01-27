@@ -99,7 +99,7 @@ public class WaveManager : MonoBehaviour
         _player.Hp = _player.MaxHp;
         _waveRemainTime = 20.0f;
         Time.timeScale = 1.0f;
-        _waveInfoText.text = _waveStep.ToString();
+        _waveInfoText.text = $"시련 {_waveStep}";
     }
 
     public void SetWaveTime(float value)

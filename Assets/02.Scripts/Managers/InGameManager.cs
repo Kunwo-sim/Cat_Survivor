@@ -24,7 +24,15 @@ public class InGameManager : MonoBehaviour
         }
     }
 
-    int _money = 0;
+    int _money = 999;
+    public int _normalAbilityPercnt = 50;
+    public int _rareAbilityPercnt = 85;
+    public int _epicAbilityPercnt = 97;
+    public int _legendAbilityPercnt = 100;
+    [SerializeField]
+    public Sprite[] abilityPanelSprite;
+    [SerializeField]
+    public Sprite[] itemPanelSprite;
 
     [SerializeField]
     GameObject _moneyUI;

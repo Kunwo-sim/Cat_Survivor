@@ -9,14 +9,16 @@ public class AbilityData
     public string Description;
     public int Power;
     public string FunctionName;
+    public string Type;
 
-    public AbilityData(int key, string name, string description, int power, string functionName)
+    public AbilityData(int key, string name, string description, int power, string functionName, string type)
     {
         Key = key;
         Name = name;
         Description = description;
         Power = power;
         FunctionName = functionName;
+        Type = type;
     }
 }
 
@@ -37,8 +39,13 @@ public static class AbilityGetter
             string description = _abilityCSV[i]["description"].ToString();
             int power = int.Parse(_abilityCSV[i]["power"].ToString());
             string functionName = _abilityCSV[i]["functionName"].ToString();
+            string type = _abilityCSV[i]["type"].ToString();
+            if(string.IsNullOrEmpty(type))
+            {
+                type = "";
+            }
 
-            AbilityData data = new AbilityData(key, name, description, power, functionName);
+            AbilityData data = new AbilityData(key, name, description, power, functionName, type);
             _abilityData.Add(i, data);
         }
     }
