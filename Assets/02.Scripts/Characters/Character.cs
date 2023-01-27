@@ -99,10 +99,10 @@ public abstract class Character : MonoBehaviour
         if (Hp <= 0)
             Death();
         
-        if (state is CharacterState.Hit or CharacterState.Dead) return;
+        StartCoroutine(ReceiveDamageFX());
+        if (state is not CharacterState.Move or CharacterState.Idle) return;
         state = CharacterState.Hit;
         KnockBack(knockBackDir);
-        StartCoroutine(ReceiveDamageFX());
     }
     
     private IEnumerator ReceiveDamageFX()

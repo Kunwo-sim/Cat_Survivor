@@ -409,6 +409,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cf8e6da67a52b64bbe8c4253909edb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _bWaveEnd: 0
   _timeText: {fileID: 1687117817}
   _expParent: {fileID: 1356764743}
 --- !u!4 &430181106
@@ -596,6 +597,16 @@ MonoBehaviour:
     initCount: 100
     prefab: {fileID: 2037071088904110108, guid: f6a992388ac89034aac0a8a8f81d8b7f, type: 3}
     container: {fileID: 833320327}
+    usingList: []
+  - type: 9
+    initCount: 10
+    prefab: {fileID: 2037071088904110108, guid: 31046cbb87810ec4bb384e25f8d2e805, type: 3}
+    container: {fileID: 833320327}
+    usingList: []
+  - type: 10
+    initCount: 100
+    prefab: {fileID: 3620722361172192362, guid: e69ce3c96807852489a788bd5bad45cf, type: 3}
+    container: {fileID: 414864207}
     usingList: []
 --- !u!4 &699832826
 Transform:
@@ -871,6 +882,7 @@ MonoBehaviour:
   - {fileID: 4399081333754547787, guid: 35270965d6df4a544ab20a4fb76c8cbd, type: 3}
   - {fileID: 4399081333754547787, guid: 09ba683e2ecc92249a8fabd20b230a9b, type: 3}
   - {fileID: -7403168139015517317, guid: d439d1a8bbf18c64f8462d24a245dcb0, type: 3}
+  - {fileID: 4399081333754547787, guid: 8899d4159fdbe664fabe647e538e8ce6, type: 3}
 --- !u!4 &999492180
 Transform:
   m_ObjectHideFlags: 0

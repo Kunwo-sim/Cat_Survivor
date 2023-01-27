@@ -13,7 +13,9 @@ public enum EPoolObjectType
     ExpObject,
     EnemyProjectile,
     Enemy_Snake,
-    Enemy_Sheep
+    Enemy_Sheep,
+    Enemy_BossSheep,
+    Projectile_BossSheep
 }
 // 오브젝트 풀
 [Serializable]

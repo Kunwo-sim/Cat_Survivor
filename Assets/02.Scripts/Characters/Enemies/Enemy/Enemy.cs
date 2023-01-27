@@ -7,10 +7,11 @@ using static Define;
 public abstract class Enemy : Character
 {
     protected Player _player;
-    private EPoolObjectType _poolType;
+    protected EPoolObjectType _poolType;
     
-    private Targeting _targeting = new Targeting();
-    private EnemyProjectile cloneProjectile;
+    
+    protected EnemyProjectile _cloneProjectile;
+    protected Targeting _targeting = new Targeting();
     private DamagePopup _damagePopup;
     private Vector2 _direction;
 
@@ -103,7 +104,7 @@ public abstract class Enemy : Character
             _player.ReceiveDamage(Power);
         }
     }
-    private void OnTriggerStay(Collider other)
+    protected virtual void OnTriggerStay(Collider other)
     {
         if (other.CompareTag("Player"))
         {
@@ -118,7 +119,7 @@ public abstract class Enemy : Character
         yield return new WaitForSeconds(2f);
         Routine();
     }
-    protected IEnumerator Routine_Shot()
+    protected virtual IEnumerator Routine_Shot()
     {
         state = CharacterState.Attack;
         
@@ -136,13 +137,13 @@ public abstract class Enemy : Character
         var rot = _targeting.GetToNearRotate(dir);
         var poolType = EPoolObjectType.EnemyProjectile;
         
-        cloneProjectile = ObjectPoolManager.GetObject(poolType).GetComponent<EnemyProjectile>();
-        cloneProjectile.Initialize(pos, rot, (int)Power, 3, poolType);
+        _cloneProjectile = ObjectPoolManager.GetObject(poolType).GetComponent<EnemyProjectile>();
+        _cloneProjectile.Initialize(pos, rot, (int)Power, 3, poolType);
         
         yield return new WaitForSeconds(0.3f);
         StartCoroutine(Routine_Move());
     }
-    protected IEnumerator Routine_Dash()
+    protected virtual IEnumerator Routine_Dash()
     {
         state = CharacterState.Attack;
         
@@ -164,7 +165,7 @@ public abstract class Enemy : Character
         
         StartCoroutine(Routine_Move());
     }
-    IEnumerator DeathFadeOut()
+    protected virtual IEnumerator  DeathFadeOut()
     {
         _collider.enabled = false;
         
