@@ -26,7 +26,7 @@ public class WaveManager : MonoBehaviour
 
     float _waveRemainTime = 20.0f;
     int _waveStep = 1;
-    bool _bWaveEnd = false;
+    public bool _bWaveEnd = false;
 
     [SerializeField]
     TextMeshProUGUI _timeText;
@@ -52,17 +52,12 @@ public class WaveManager : MonoBehaviour
             _bWaveEnd = true;
             _waveRemainTime = 0.0f;
             
-            // 리팩토링 필요
-            ObjectPoolManager.ReturnObjectAll(EPoolObjectType.Enemy_Mouse);
-            ObjectPoolManager.ReturnObjectAll(EPoolObjectType.Enemy_Boar);
-            ObjectPoolManager.ReturnObjectAll(EPoolObjectType.Enemy_Snake);
-            ObjectPoolManager.ReturnObjectAll(EPoolObjectType.Enemy_Sheep);
-            ObjectPoolManager.ReturnObjectAll(EPoolObjectType.EnemyProjectile);
 
             foreach(Transform expChild in _expParent.transform)
             {
                 expChild.GetComponent<ExpObject>()._bToUI = true;
             }
+            ReturnAllEnemy();
 
             Invoke("WaveEnded", 2f);
         }
@@ -70,6 +65,16 @@ public class WaveManager : MonoBehaviour
         _timeText.text = "남은 시간 : " + (int)_waveRemainTime;
     }
 
+    private void ReturnAllEnemy()
+    {
+        // 리팩토링 필요
+        ObjectPoolManager.ReturnObjectAll(EPoolObjectType.Enemy_Mouse);
+        ObjectPoolManager.ReturnObjectAll(EPoolObjectType.Enemy_Boar);
+        ObjectPoolManager.ReturnObjectAll(EPoolObjectType.Enemy_Snake);
+        ObjectPoolManager.ReturnObjectAll(EPoolObjectType.Enemy_Sheep);
+        ObjectPoolManager.ReturnObjectAll(EPoolObjectType.EnemyProjectile);
+    }
+    
     public void WaveEnded()
     {
         Time.timeScale = 0.0f;

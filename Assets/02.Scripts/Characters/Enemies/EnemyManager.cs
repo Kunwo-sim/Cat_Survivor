@@ -69,6 +69,12 @@ public class EnemyManager : MonoBehaviour
         yield return new WaitForSeconds(spawnInfo.StartTime);
         while (Time.time < spawnInfo.EndTime)
         {
+            if (WaveManager.Instance._bWaveEnd)
+            {
+                Debug.Log("안쪽");
+                yield break;
+            }
+
             var groupSpawnPos = spawnInfo.SpawnType();
             for (int i = 0; i < spawnInfo.Count; i++)
             {
