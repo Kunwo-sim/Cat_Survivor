@@ -27,7 +27,7 @@ public class Enemy_Sheep : Enemy
     {
         if (state != CharacterState.Move) return;
         _dir = input.normalized;
-        transform.Translate(_dir * (MoveSpeed * 0.03f * _dir2));
+        transform.Translate(_dir * (_defaultMoveSpeed * 0.03f * _dir2));
         FlipXRenderer(_dir);
     }
     protected override void FlipXRenderer(Vector2 direction)

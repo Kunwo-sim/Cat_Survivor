@@ -8,8 +8,9 @@ public abstract class Character : MonoBehaviour
     private string _name = "Character Name";
     protected float _maxHp = 10;
     protected float _hp = 10;
+    protected float _defaultMoveSpeed = 3.0f;
     public float Power { get; set; } = 1;
-    public float MoveSpeed { get; set; } = 3.0f;
+    public int MoveSpeed { get; set; } = 0;
     public int Level { get; set;} = 1;
     public int LevelCnt { get; set; } = 0;
     public float AttackSpeed { get; set; } = 1.0f;
@@ -73,7 +74,8 @@ public abstract class Character : MonoBehaviour
         if (state == CharacterState.Dead) return;
         state = input == Vector2.zero ? CharacterState.Idle : CharacterState.Move;
         Vector2 dir = input.normalized;
-        transform.Translate(dir * (MoveSpeed * 0.03f));
+        float addSpeed = (100 + MoveSpeed) / 100.0f;
+        transform.Translate(dir * (_defaultMoveSpeed * 0.03f * addSpeed));
     }
 
     protected virtual void Death()

@@ -19,7 +19,7 @@ public abstract class Enemy : Character
         base.Initialize();
         Hp = MaxHp = hp;
         Power = power;
-        MoveSpeed = moveSpeed;
+        _defaultMoveSpeed = moveSpeed;
         Level = level;
         _poolType = poolType;
         transform.rotation = Quaternion.identity;

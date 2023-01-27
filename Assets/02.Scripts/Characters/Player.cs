@@ -33,7 +33,8 @@ public class Player : Character
     protected override void Start()
     {
         // Test code
-        MoveSpeed = 3.0f;
+        _defaultMoveSpeed = 5.0f;
+        MoveSpeed = 30;
         MaxHp = 10;
         Hp = 10; 
         _skillHolder.skillList.Add(GetComponentInChildren<Skill_NyanCat>());
