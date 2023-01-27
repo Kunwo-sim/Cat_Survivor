@@ -96,8 +96,8 @@ public class WaveManager : MonoBehaviour
     {
         _player.transform.position = Vector3.zero;
         _bWaveEnd = false;
-        _waveStep += 1;
         _waveRemainTime = _waveTime[_waveStep];
+        _waveStep += 1;
 
         _player.Hp = _player.MaxHp;
         Time.timeScale = 1.0f;
