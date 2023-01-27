@@ -83,13 +83,27 @@ public class EnemyManager : MonoBehaviour
     }
     private void Stage1Wave()
     {
-        _stageWave.Add(new SpawnInfo(enemyList[0], GetRandomPosition, 5, 0.2f, 5, 0, 40));
-        _stageWave.Add(new SpawnInfo(enemyList[1], GetRandomPosition, 10, 0.5f, 3, 0, 40));
-        
-        // Test
-        _stageWave.Add(new SpawnInfo(enemyList[2], GetRandomPosition, 3, 0.5f, 2, 0, 40));
-        _stageWave.Add(new SpawnInfo(enemyList[3], GetRandomPosition, 3, 0.5f, 2, 0, 40));
+        // Wave 1
+        _stageWave.Add(new SpawnInfo(enemyList[Snake], GetRandomPosition, 10, 0.5f, 3, 0, 40));
+        _stageWave.Add(new SpawnInfo(enemyList[Mouse], GetRandomPosition, 5, 0.2f, 5, 0, 40));
+        // Wave 1 시련
+        _stageWave.Add(new SpawnInfo(enemyList[Snake], GetRandomPosition, 6, 0.2f, 5, 40, 60));
+        _stageWave.Add(new SpawnInfo(enemyList[Mouse], GetRandomPosition, 3, 1f, 3, 40, 60));
+        _stageWave.Add(new SpawnInfo(enemyList[Mouse], GetRandomPosition, 4, 0.8f, 3, 40, 60));
 
+        // Wave 2
+        _stageWave.Add(new SpawnInfo(enemyList[Mouse], GetRandomPosition, 8, 0.2f, 3, 60, 100));
+        _stageWave.Add(new SpawnInfo(enemyList[Snake], GetRandomPosition, 5, 0.2f, 5, 60, 100));
+        _stageWave.Add(new SpawnInfo(enemyList[Sheep], GetRandomPosition, 3, 0.2f, 4, 75, 100));
+        _stageWave.Add(new SpawnInfo(enemyList[Boar], GetRandomPosition, 4, 0.4f, 3, 75, 100));
+        _stageWave.Add(new SpawnInfo(enemyList[Mouse], GetRandomPosition, 3, 0.2f, 2, 75, 100));
+        // Wave 2 시련
+        _stageWave.Add(new SpawnInfo(enemyList[Snake], GetRandomPosition, 12, 0.2f, 6, 100, 120));
+        _stageWave.Add(new SpawnInfo(enemyList[Sheep], GetRandomPosition, 3, 0.3f, 2, 100, 120));
+        _stageWave.Add(new SpawnInfo(enemyList[Boar], GetRandomPosition, 5, 0.4f, 2, 100, 120));
+        
+        // Wave 3 보스
+        // _stageWave.Add(new SpawnInfo(enemyList[BossSheep], GetRandomPosition, 1, 0.1f, 5, 120, 121));
     }
     
     private Vector3 GetRandomPosition()
