@@ -382,7 +382,7 @@ RectTransform:
   m_Children:
   - {fileID: 930978689}
   m_Father: {fileID: 633422143}
-  m_RootOrder: 10
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1519,6 +1519,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6563322060924173586, guid: e6fe2e09c3d873048bd38b5753ecabf0, type: 3}
+      propertyPath: m_RootOrder
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 6563322060924173615, guid: e6fe2e09c3d873048bd38b5753ecabf0, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -1625,7 +1629,7 @@ PrefabInstance:
       objectReference: {fileID: 430181105}
     - target: {fileID: 8328014783190886923, guid: e6fe2e09c3d873048bd38b5753ecabf0, type: 3}
       propertyPath: m_RootOrder
-      value: 11
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 8788800405314079593, guid: e6fe2e09c3d873048bd38b5753ecabf0, type: 3}
       propertyPath: m_AnchorMax.x
@@ -1748,6 +1752,24 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 7089f08c296563247a00a99872b6cb8b, type: 3}
   - {fileID: 21300000, guid: 29a4e741884ace1418e998db6f9e6768, type: 3}
   - {fileID: 21300000, guid: 24ebc0f655c59e44b894230f41ab3d57, type: 3}
+  itemIconSprite:
+  - {fileID: 0}
+  - {fileID: 21300000, guid: 1c87a0028e028de409376e105b7bbbc3, type: 3}
+  - {fileID: 21300000, guid: 9a271a2c96f2bf14282f92c0f6fd9a4c, type: 3}
+  - {fileID: 21300000, guid: abc540492b4d10a4488a5ec470f7c200, type: 3}
+  - {fileID: 21300000, guid: 71e9a42301758834c9c7825f4d246de1, type: 3}
+  - {fileID: 21300000, guid: 26ae98006d775e846bde71ab31f5fcd4, type: 3}
+  - {fileID: 21300000, guid: a299a97448555874b88e5ed247dd20d0, type: 3}
+  - {fileID: 21300000, guid: 7fb5fed7e017c604089b20623bd11255, type: 3}
+  - {fileID: 21300000, guid: 342baf2449bdad048840d00d162036de, type: 3}
+  - {fileID: 21300000, guid: 65ba83b7bb4a89f408b2c4dafa4de83b, type: 3}
+  - {fileID: 21300000, guid: fe8e50abdf9e37b4dbcdaa4125b04100, type: 3}
+  - {fileID: 21300000, guid: b02d81306a151a24dab24931df0f0ac8, type: 3}
+  - {fileID: 21300000, guid: 2281cc3c65facee4c95019f8a61c18b3, type: 3}
+  - {fileID: 21300000, guid: cc16ac79fb14a5f429426a44ce943728, type: 3}
+  - {fileID: 21300000, guid: f0692be1cf909044a8e8c882f8e9ea5e, type: 3}
+  - {fileID: 21300000, guid: 91fc722ef48755d4085495be1d4bdb10, type: 3}
+  - {fileID: 21300000, guid: a04bd943480c6db4eb151598baff19d3, type: 3}
   _moneyUI: {fileID: 1870236618}
 --- !u!4 &1735060420
 Transform:

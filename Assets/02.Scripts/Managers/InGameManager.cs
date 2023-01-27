@@ -33,7 +33,8 @@ public class InGameManager : MonoBehaviour
     public Sprite[] abilityPanelSprite;
     [SerializeField]
     public Sprite[] itemPanelSprite;
-
+    [SerializeField]
+    public Sprite[] itemIconSprite;
     [SerializeField]
     GameObject _moneyUI;
 
@@ -55,7 +56,7 @@ public class InGameManager : MonoBehaviour
 
     void Start()
     {
-        Money = 0;
+        Money = 999;
     }
 
     void SetFixedCanvas()
