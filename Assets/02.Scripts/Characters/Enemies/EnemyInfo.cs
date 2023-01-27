@@ -5,7 +5,7 @@ public class EnemyInfo : MonoBehaviour
 {
     [SerializeField] private new string name = "Character Name";
     [SerializeField] private int hp = 10;
-    [SerializeField] private int power = 1;
+    [SerializeField] private float power = 5;
     [SerializeField] private float moveSpeed = 3.0f;
     [SerializeField] private int level = 1;
 

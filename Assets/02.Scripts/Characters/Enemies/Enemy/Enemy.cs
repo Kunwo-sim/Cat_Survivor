@@ -13,8 +13,8 @@ public abstract class Enemy : Character
     private EnemyProjectile cloneProjectile;
     private DamagePopup _damagePopup;
     private Vector2 _direction;
-    
-    public void Initialize(int hp, int power, float moveSpeed, int level, EPoolObjectType poolType)
+
+    public void Initialize(int hp, float power, float moveSpeed, int level, EPoolObjectType poolType)
     {
         base.Initialize();
         Hp = MaxHp = hp;
@@ -100,14 +100,14 @@ public abstract class Enemy : Character
     {
         if (col.collider.CompareTag("Player"))
         {
-            _player.ReceiveDamage(Power * Time.fixedDeltaTime * 10);
+            _player.ReceiveDamage(Power);
         }
     }
     private void OnTriggerStay(Collider other)
     {
         if (other.CompareTag("Player"))
         {
-            _player.ReceiveDamage(Power * Time.fixedDeltaTime * 10);
+            _player.ReceiveDamage(Power);
         }
     }
     

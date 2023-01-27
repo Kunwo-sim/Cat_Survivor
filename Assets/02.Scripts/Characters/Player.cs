@@ -11,7 +11,6 @@ public class Player : Character
     public int HpRegen { get; set; } = 1;
     public int MeleeAttack { get; set; } = 0;
     public int RangeAttack { get; set; } = 0;
-    public int Defense { get; set; } = 0;
     public int Attack { get; set; } = 0;
     public int Critical { get; set; } = 0;
 
@@ -34,9 +33,9 @@ public class Player : Character
     {
         // Test code
         _defaultMoveSpeed = 5.0f;
-        MoveSpeed = 30;
         MaxHp = 10;
-        Hp = 10; 
+        Hp = 10;
+        Defense = 10;
         _skillHolder.skillList.Add(GetComponentInChildren<Skill_NyanCat>());
         _skillHolder.skillList.Add(GetComponentInChildren<Skill_NyanPunch>());
         _skillHolder.skillList.Add(GetComponentInChildren<Skill_Bong>());

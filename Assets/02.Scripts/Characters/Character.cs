@@ -7,10 +7,11 @@ public abstract class Character : MonoBehaviour
 {
     private string _name = "Character Name";
     protected float _maxHp = 10;
-    protected float _hp = 10;
+    protected float _hp = 5;
     protected float _defaultMoveSpeed = 3.0f;
-    public float Power { get; set; } = 1;
+    public float Power { get; set; } = 10;
     public int MoveSpeed { get; set; } = 0;
+    public int Defense { get; set; } = 0;
     public int Level { get; set;} = 1;
     public int LevelCnt { get; set; } = 0;
     public float AttackSpeed { get; set; } = 1.0f;
@@ -91,6 +92,9 @@ public abstract class Character : MonoBehaviour
     
     public virtual void ReceiveDamage(float damage, Vector3 knockBackDir = default)
     {
+        float ReducePercent = 10 / (10 + (Defense / 1.5f));
+        damage *= ReducePercent;
+
         Hp -= damage;
         if (Hp <= 0)
             Death();
