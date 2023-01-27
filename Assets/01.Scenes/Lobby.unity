@@ -1800,7 +1800,8 @@ MonoBehaviour:
   masterVolumeSFX: 1
   masterVolumeBGM: 1
   menuBgmClip: {fileID: 8300000, guid: 96eafd1dc93dd694f83a9ad75e4a6d55, type: 3}
-  inGameBgmClip: {fileID: 8300000, guid: 69396cd1e3828394e90f6d31cb58723b, type: 3}
+  inGameBgmClip: {fileID: 8300000, guid: 6706f97ea54cfdd448d469e3696ea4e0, type: 3}
+  inGameBossBgmClip: {fileID: 8300000, guid: 69396cd1e3828394e90f6d31cb58723b, type: 3}
   sfxAudioClips:
   - {fileID: 8300000, guid: c387f373d9f1847449302fc0c0ed1197, type: 3}
   - {fileID: 8300000, guid: 4c67a1b4a8f9c3f46a9c5180d248663a, type: 3}
@@ -1817,6 +1818,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: bb654791b53174a43a4cec7ee29ca081, type: 3}
   - {fileID: 8300000, guid: fb8bb9d0df3bca8498b223ecd960fa77, type: 3}
   - {fileID: 8300000, guid: 05d68ca5e4fa97f498a71848b6275c15, type: 3}
+  - {fileID: 8300000, guid: 2e006f4e4eedfb149a5c5da1e091390c, type: 3}
 --- !u!4 &1451514591
 Transform:
   m_ObjectHideFlags: 0

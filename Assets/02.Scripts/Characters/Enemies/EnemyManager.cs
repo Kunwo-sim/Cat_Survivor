@@ -88,7 +88,7 @@ public class EnemyManager : MonoBehaviour
         _stageWave.Add(new SpawnInfo(enemyList[Snake], GetRandomPosition, 10, 0.5f, 3, 1, 40));
         _stageWave.Add(new SpawnInfo(enemyList[Mouse], GetRandomPosition, 5, 0.2f, 5, 1, 40));
         
-        int endTime = 2;
+        float endTime = 2.1f;
         // Wave 2
         _stageWave.Add(new SpawnInfo(enemyList[Snake], GetRandomPosition, 6, 0.2f, 5, 40 + endTime, 60+ endTime));
         _stageWave.Add(new SpawnInfo(enemyList[Mouse], GetRandomPosition, 3, 1f, 3, 40 + endTime, 60+ endTime));
@@ -107,7 +107,7 @@ public class EnemyManager : MonoBehaviour
         _stageWave.Add(new SpawnInfo(enemyList[Boar], GetRandomPosition, 5, 0.4f, 2, 100+ endTime, 120+ endTime));
         endTime += 2;
         // Wave 5 보스
-        // _stageWave.Add(new SpawnInfo(enemyList[BossSheep], GetRandomPosition, 1, 0.1f, 5, 120+endTime, 121+endTime));
+        _stageWave.Add(new SpawnInfo(enemyList[BossSheep], GetRandomPosition, 1, 0.1f, 5, 121+endTime, 122+endTime));
     }
     
     private Vector3 GetRandomPosition()

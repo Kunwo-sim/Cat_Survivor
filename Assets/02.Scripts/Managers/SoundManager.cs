@@ -28,6 +28,7 @@ public class SoundManager : MonoBehaviour
 
     [SerializeField] private AudioClip menuBgmClip;
     [SerializeField] private AudioClip inGameBgmClip;
+    [SerializeField] private AudioClip inGameBossBgmClip;
     [SerializeField] private AudioClip[] sfxAudioClips;
 
     Dictionary<string, AudioClip> audioClipsDic = new Dictionary<string, AudioClip>();
@@ -71,7 +72,16 @@ public class SoundManager : MonoBehaviour
         }
         else if (SceneManager.GetActiveScene().name == "InGame")
         {
-            bgmPlayer.clip = inGameBgmClip;
+            if (bgmPlayer.clip != inGameBgmClip)
+            {
+                bgmPlayer.clip = inGameBgmClip;
+                bgmPlayer.volume = 1f;
+            }
+            else
+            {
+                bgmPlayer.clip = inGameBossBgmClip;
+                bgmPlayer.volume = 0.7f;
+            }
             bgmPlayer.Play();
         }
     }
