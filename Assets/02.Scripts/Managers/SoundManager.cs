@@ -59,7 +59,7 @@ public class SoundManager : MonoBehaviour
         sfxPlayer.PlayOneShot(audioClipsDic[name], volume * masterVolumeSFX);
     }
 
-    public void PlayBGMSound(float volume = 1f)
+    public void PlayBGMSound(float volume = .7f)
     {
         bgmPlayer.loop = true; 
         bgmPlayer.volume = volume * masterVolumeBGM;
