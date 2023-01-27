@@ -7,8 +7,10 @@ public class Player : Character
     private float _maxExp = 10;
     private float _exp = 0;
     private Bar _expBar;
+    [SerializeField]
+    private Bar _topHpBar;
     private Animator _animator;    
-    public int HpRegen { get; set; } = 1;
+    public int HpRegen { get; set; } = 0;
     public int MeleeAttack { get; set; } = 0;
     public int RangeAttack { get; set; } = 0;
     public int Attack { get; set; } = 0;
@@ -44,6 +46,8 @@ public class Player : Character
         SetHpUI();
         _expBar.SetBar(_maxExp, _exp);
         _expBar.SetText(Level);
+        _topHpBar.SetBar(MaxHp, Hp);
+        _topHpBar.SetText($"{Hp} / {MaxHp}");
     }
     private void Update()
     {
@@ -123,5 +127,11 @@ public class Player : Character
         // Test
         GameObject.Find("Canvas").transform.Find("GameOverPanel").gameObject.SetActive(true);
         Time.timeScale = 0;
+    }
+    protected override void SetHpUI()
+    {
+        base.SetHpUI();
+        _topHpBar.SetBar(MaxHp, Hp);
+        _topHpBar.SetText($"{Hp} / {MaxHp}");
     }
 }

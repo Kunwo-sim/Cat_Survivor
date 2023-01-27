@@ -6,8 +6,8 @@ using static Define;
 public abstract class Character : MonoBehaviour
 {
     private string _name = "Character Name";
-    protected float _maxHp = 10;
-    protected float _hp = 5;
+    protected int _maxHp = 10;
+    protected int _hp = 5;
     protected float _defaultMoveSpeed = 3.0f;
     public float Power { get; set; } = 10;
     public int MoveSpeed { get; set; } = 0;
@@ -24,7 +24,7 @@ public abstract class Character : MonoBehaviour
     protected Rigidbody2D _rigidbody;
     protected Collider2D _collider;
 
-    public virtual float MaxHp
+    public virtual int MaxHp
     {
         get { return _maxHp; }
         set
@@ -35,7 +35,7 @@ public abstract class Character : MonoBehaviour
         }
     }
 
-    public virtual float Hp
+    public virtual int Hp
     {
         get { return _hp; }
         set
@@ -94,8 +94,7 @@ public abstract class Character : MonoBehaviour
     {
         float ReducePercent = 10 / (10 + (Defense / 1.5f));
         damage *= ReducePercent;
-
-        Hp -= damage;
+        Hp -= (int)Mathf.Round(damage);
         if (Hp <= 0)
             Death();
         
@@ -124,7 +123,7 @@ public abstract class Character : MonoBehaviour
     {
         _rigidbody.AddForce(attackDir.normalized * 3, ForceMode2D.Impulse);
     }
-    protected void SetHpUI()
+    protected virtual void SetHpUI()
     {
         if (_hpBar == null)
             return;
