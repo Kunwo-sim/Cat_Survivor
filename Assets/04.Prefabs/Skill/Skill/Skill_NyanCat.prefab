@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   name: NyangCat
-  damage: 1
+  damage: 12
   activeTime: 3
   poolType: 0
-  <BaseCoolDown>k__BackingField: 1
+  <BaseCoolDown>k__BackingField: 1.2

@@ -45,8 +45,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   name: Character Name
-  hp: 5
+  hp: 4
   power: 1
-  moveSpeed: 2.5
+  moveSpeed: 4
   level: 1
   poolType: 4

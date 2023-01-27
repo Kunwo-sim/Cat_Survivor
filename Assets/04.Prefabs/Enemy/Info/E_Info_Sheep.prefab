@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   name: Character Name
-  hp: 3
+  hp: 8
   power: 1
   moveSpeed: 2
   level: 1

@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   name: Bong
-  damage: 1
+  damage: 15
   activeTime: 0.5
   poolType: 2
-  <BaseCoolDown>k__BackingField: 0.8
+  <BaseCoolDown>k__BackingField: 1.5

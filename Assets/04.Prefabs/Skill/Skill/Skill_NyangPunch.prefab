@@ -46,6 +46,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: NyangPunch
   damage: 3
-  activeTime: 0.2
+  activeTime: 0.1
   poolType: 1
-  <BaseCoolDown>k__BackingField: 1
+  <BaseCoolDown>k__BackingField: 0.7
