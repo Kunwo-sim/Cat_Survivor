@@ -21,6 +21,12 @@ public class Enemy_BossSheep : Enemy
         _hpBar = GetComponentInChildren<Bar>();
     }
 
+    private void Update()
+    {
+        if(transform.position.x is < -xSpawnLimit or > xSpawnLimit) _rigidbody.velocity = Vector2.zero;
+        if(transform.position.y is < -ySpawnLimit or > ySpawnLimit) _rigidbody.velocity = Vector2.zero;
+    }
+
     protected override void Routine()
     {
         int random = Random.Range(0, 3);

@@ -84,6 +84,9 @@ public class EnemyManager : MonoBehaviour
     }
     private void Stage1Wave()
     {
+        
+        _stageWave.Add(new SpawnInfo(enemyList[BossSheep], GetRandomPosition, 1, 0.1f, 5, 1, 5));
+
         // Wave 1
         _stageWave.Add(new SpawnInfo(enemyList[Snake], GetRandomPosition, 10, 0.5f, 3, 1, 40));
         _stageWave.Add(new SpawnInfo(enemyList[Mouse], GetRandomPosition, 5, 0.2f, 5, 1, 40));
