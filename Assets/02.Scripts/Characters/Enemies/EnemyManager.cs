@@ -84,11 +84,11 @@ public class EnemyManager : MonoBehaviour
     }
     private void Stage1Wave()
     {
-        int endTime = 2;
         // Wave 1
         _stageWave.Add(new SpawnInfo(enemyList[Snake], GetRandomPosition, 10, 0.5f, 3, 1, 40));
         _stageWave.Add(new SpawnInfo(enemyList[Mouse], GetRandomPosition, 5, 0.2f, 5, 1, 40));
-        endTime += 2;
+        
+        int endTime = 2;
         // Wave 2
         _stageWave.Add(new SpawnInfo(enemyList[Snake], GetRandomPosition, 6, 0.2f, 5, 40 + endTime, 60+ endTime));
         _stageWave.Add(new SpawnInfo(enemyList[Mouse], GetRandomPosition, 3, 1f, 3, 40 + endTime, 60+ endTime));
