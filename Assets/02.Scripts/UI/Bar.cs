@@ -17,8 +17,16 @@ public class Bar : MonoBehaviour
     {
         _bar.value = now / max;
     }
+    public void SetBar(int max, int now)
+    {
+        _bar.value = (float)now / max;
+    }
     public void SetText(int text)
     {
         _text.text = text.ToString();
+    }
+    public void SetText(string text)
+    {
+        _text.text = text;
     }
 }

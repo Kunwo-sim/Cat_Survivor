@@ -409,7 +409,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cf8e6da67a52b64bbe8c4253909edb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _waveStep: 1
   _bWaveEnd: 0
+  _waveInfoText: {fileID: 1248331930}
   _timeText: {fileID: 1687117817}
   _expParent: {fileID: 1356764743}
 --- !u!4 &430181106
@@ -517,6 +519,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 471927365540907314, guid: d2605fe86bd07d64589b02008b43750a, type: 3}
+      propertyPath: _topHpBar
+      value: 
+      objectReference: {fileID: 979444098}
     - target: {fileID: 471927365540907319, guid: d2605fe86bd07d64589b02008b43750a, type: 3}
       propertyPath: m_Name
       value: Player
@@ -848,6 +854,17 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &979444098 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4410458479103366834, guid: e6fe2e09c3d873048bd38b5753ecabf0, type: 3}
+  m_PrefabInstance: {fileID: 1687117816}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1491d2bc1de25e4fbc74c7ef86c6cdb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &999492178
 GameObject:
   m_ObjectHideFlags: 0
@@ -898,6 +915,17 @@ Transform:
   m_Father: {fileID: 765312500}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1248331930 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6262480911200676749, guid: e6fe2e09c3d873048bd38b5753ecabf0, type: 3}
+  m_PrefabInstance: {fileID: 1687117816}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1356764743
 GameObject:
   m_ObjectHideFlags: 0

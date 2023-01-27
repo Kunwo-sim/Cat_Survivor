@@ -25,9 +25,11 @@ public class WaveManager : MonoBehaviour
     }
 
     float _waveRemainTime = 20.0f;
-    int _waveStep = 1;
+    public int _waveStep = 1;
     public bool _bWaveEnd = false;
 
+    [SerializeField]
+    TextMeshProUGUI _waveInfoText;
     [SerializeField]
     TextMeshProUGUI _timeText;
     [SerializeField]
@@ -91,11 +93,13 @@ public class WaveManager : MonoBehaviour
 
     public void BeforeWaveStart()
     {
+        _player.transform.position = Vector3.zero;
         _bWaveEnd = false;
         _waveStep += 1;
         _player.Hp = _player.MaxHp;
         _waveRemainTime = 20.0f;
         Time.timeScale = 1.0f;
+        _waveInfoText.text = _waveStep.ToString();
     }
 
     public void SetWaveTime(float value)
