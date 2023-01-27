@@ -97,21 +97,21 @@ public abstract class Enemy : Character
         base.ReceiveDamage(damage, knockBackDir);
     }
 
-    private void OnCollisionStay2D(Collision2D col)
+    protected virtual void OnCollisionStay2D(Collision2D col)
     {
         if (col.collider.CompareTag("Player"))
         {
             _player.ReceiveDamage(Power);
         }
     }
-    protected virtual void OnTriggerStay(Collider other)
+    protected virtual void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
         {
-            _player.ReceiveDamage(Power);
+            _player.ReceiveDamage(Power*1.5f);
         }
     }
-    
+
     protected abstract void Routine();
     protected virtual IEnumerator Routine_Move()
     {
