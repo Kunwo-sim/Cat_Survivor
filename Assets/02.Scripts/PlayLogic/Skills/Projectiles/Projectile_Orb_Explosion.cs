@@ -10,6 +10,7 @@ public class Projectile_Orb_Explosion : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D col)
     {
-        col.GetComponent<Enemy>().ReceiveDamage(Damage, transform.right, Critical);
+        if (col.tag == "Enemy")
+            col.GetComponent<Enemy>().ReceiveDamage(Damage, transform.right, Critical);
     }
 }

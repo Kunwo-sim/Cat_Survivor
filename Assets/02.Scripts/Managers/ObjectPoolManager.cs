@@ -25,6 +25,7 @@ public class PoolInfo
     public EPoolObjectType type;
     public int initCount;
     public GameObject prefab;
+    public GameObject container;
 
     public Queue<GameObject> poolQueue = new Queue<GameObject>();
     // 오브젝트 전체 회수를 위한 큐
@@ -58,7 +59,7 @@ public class ObjectPoolManager : MonoBehaviour
     // 초기화 및 풀에 오브젝트가 부족할 때 오브젝트를 생성하는 함수
     private GameObject CreatNewObject(PoolInfo poolInfo)
     {
-        GameObject newObject = Instantiate(poolInfo.prefab, gameObject.transform);
+        GameObject newObject = Instantiate(poolInfo.prefab, poolInfo.container.transform);
         newObject.gameObject.SetActive(false);
         return newObject;
     }
