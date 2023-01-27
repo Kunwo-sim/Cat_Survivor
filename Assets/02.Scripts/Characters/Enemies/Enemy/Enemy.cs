@@ -17,8 +17,10 @@ public abstract class Enemy : Character
     public void Initialize(int hp, float power, float moveSpeed, int level, EPoolObjectType poolType)
     {
         base.Initialize();
+        float waveValue = WaveManager.Instance._waveStep * 0.6f;
+        hp *= Mathf.RoundToInt(waveValue);
         Hp = MaxHp = hp;
-        Power = power;
+        Power = power *= waveValue;
         _defaultMoveSpeed = moveSpeed;
         Level = level;
         _poolType = poolType;
