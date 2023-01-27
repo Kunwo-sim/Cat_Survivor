@@ -69,15 +69,10 @@ public class EnemyManager : MonoBehaviour
         yield return new WaitForSeconds(spawnInfo.StartTime);
         while (Time.time < spawnInfo.EndTime)
         {
-            if (WaveManager.Instance._bWaveEnd)
-            {
-                Debug.Log("안쪽");
-                yield break;
-            }
-
             var groupSpawnPos = spawnInfo.SpawnType();
             for (int i = 0; i < spawnInfo.Count; i++)
             {
+                if (WaveManager.Instance._bWaveEnd) yield break;
                 float randX = Random.Range(-randRange, randRange);
                 float randY = Random.Range(-randRange*0.7f, randRange*0.7f);
                 groupSpawnPos += new Vector3(randX, randY);
@@ -89,27 +84,30 @@ public class EnemyManager : MonoBehaviour
     }
     private void Stage1Wave()
     {
+        int endTime = 2;
         // Wave 1
-        _stageWave.Add(new SpawnInfo(enemyList[Snake], GetRandomPosition, 10, 0.5f, 3, 0, 40));
-        _stageWave.Add(new SpawnInfo(enemyList[Mouse], GetRandomPosition, 5, 0.2f, 5, 0, 40));
-        // Wave 1 시련
-        _stageWave.Add(new SpawnInfo(enemyList[Snake], GetRandomPosition, 6, 0.2f, 5, 40, 60));
-        _stageWave.Add(new SpawnInfo(enemyList[Mouse], GetRandomPosition, 3, 1f, 3, 40, 60));
-        _stageWave.Add(new SpawnInfo(enemyList[Mouse], GetRandomPosition, 4, 0.8f, 3, 40, 60));
-
+        _stageWave.Add(new SpawnInfo(enemyList[Snake], GetRandomPosition, 10, 0.5f, 3, 1, 40));
+        _stageWave.Add(new SpawnInfo(enemyList[Mouse], GetRandomPosition, 5, 0.2f, 5, 1, 40));
+        endTime += 2;
         // Wave 2
-        _stageWave.Add(new SpawnInfo(enemyList[Mouse], GetRandomPosition, 8, 0.2f, 3, 60, 100));
-        _stageWave.Add(new SpawnInfo(enemyList[Snake], GetRandomPosition, 5, 0.2f, 5, 60, 100));
-        _stageWave.Add(new SpawnInfo(enemyList[Sheep], GetRandomPosition, 3, 0.2f, 4, 75, 100));
-        _stageWave.Add(new SpawnInfo(enemyList[Boar], GetRandomPosition, 4, 0.4f, 3, 75, 100));
-        _stageWave.Add(new SpawnInfo(enemyList[Mouse], GetRandomPosition, 3, 0.2f, 2, 75, 100));
-        // Wave 2 시련
-        _stageWave.Add(new SpawnInfo(enemyList[Snake], GetRandomPosition, 12, 0.2f, 6, 100, 120));
-        _stageWave.Add(new SpawnInfo(enemyList[Sheep], GetRandomPosition, 3, 0.3f, 2, 100, 120));
-        _stageWave.Add(new SpawnInfo(enemyList[Boar], GetRandomPosition, 5, 0.4f, 2, 100, 120));
-        
-        // Wave 3 보스
-        // _stageWave.Add(new SpawnInfo(enemyList[BossSheep], GetRandomPosition, 1, 0.1f, 5, 120, 121));
+        _stageWave.Add(new SpawnInfo(enemyList[Snake], GetRandomPosition, 6, 0.2f, 5, 40 + endTime, 60+ endTime));
+        _stageWave.Add(new SpawnInfo(enemyList[Mouse], GetRandomPosition, 3, 1f, 3, 40 + endTime, 60+ endTime));
+        _stageWave.Add(new SpawnInfo(enemyList[Mouse], GetRandomPosition, 4, 0.8f, 3, 40 + endTime, 60+ endTime));
+        endTime += 2;
+        // Wave 3
+        _stageWave.Add(new SpawnInfo(enemyList[Mouse], GetRandomPosition, 8, 0.2f, 3, 60 + endTime, 100+ endTime));
+        _stageWave.Add(new SpawnInfo(enemyList[Snake], GetRandomPosition, 5, 0.2f, 5, 60+ endTime, 100+ endTime));
+        _stageWave.Add(new SpawnInfo(enemyList[Sheep], GetRandomPosition, 3, 0.2f, 4, 75+ endTime, 100+ endTime));
+        _stageWave.Add(new SpawnInfo(enemyList[Boar], GetRandomPosition, 4, 0.4f, 3, 75+ endTime, 100+ endTime));
+        _stageWave.Add(new SpawnInfo(enemyList[Mouse], GetRandomPosition, 3, 0.2f, 2, 75+ endTime, 100+ endTime));
+        endTime += 2;
+        // Wave 4
+        _stageWave.Add(new SpawnInfo(enemyList[Snake], GetRandomPosition, 12, 0.2f, 6, 100+ endTime, 120+ endTime));
+        _stageWave.Add(new SpawnInfo(enemyList[Sheep], GetRandomPosition, 3, 0.3f, 2, 100+ endTime, 120+ endTime));
+        _stageWave.Add(new SpawnInfo(enemyList[Boar], GetRandomPosition, 5, 0.4f, 2, 100+ endTime, 120+ endTime));
+        endTime += 2;
+        // Wave 5 보스
+        // _stageWave.Add(new SpawnInfo(enemyList[BossSheep], GetRandomPosition, 1, 0.1f, 5, 120+endTime, 121+endTime));
     }
     
     private Vector3 GetRandomPosition()
