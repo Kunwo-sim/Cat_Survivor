@@ -62,7 +62,9 @@ public class UI_ItemPanel : UI_Base
         _cost = data.Cost;
         _grade = data.Grade;
 
-        if(_grade == "normal")
+        Get<GameObject>((int)GameObjects.ItemImage).GetComponent<Image>().sprite = InGameManager.Instance.itemIconSprite[data.Key];
+
+        if (_grade == "normal")
         {
             Get<GameObject>((int)GameObjects.BackGround).GetComponent<Image>().sprite = InGameManager.Instance.itemPanelSprite[0];
         }
@@ -82,22 +84,24 @@ public class UI_ItemPanel : UI_Base
 
     public void Item1()
     {
-        _player.MeleeAttack += 4;
+        _player.MeleeAttack += 2;
+        _player.RangeAttack += 1;
         _player.Defense -= 2;
     }
     public void Item2()
     {
-        _player.Defense += 5;
+        _player.Defense += 3;
+        _player.HpRegen += 1;
         _player.MoveSpeed -= 3;
     }
     public void Item3()
     {
-        _player.Critical += 5;
+        _player.Critical += 20;
     }
     public void Item4()
     {
         _player.MaxHp += 6;
-        _player.Attack -= 3;
+        _player.Attack -= 2;
     }
     public void Item5()
     {
@@ -106,7 +110,9 @@ public class UI_ItemPanel : UI_Base
     }
     public void Item6()
     {
-        _player.MaxHp += 2;
+        _player.MaxHp += 3;
+        _player.MoveSpeed += 2;
+        _player.HpRegen -= 1;
     }
     public void Item7()
     {
@@ -142,5 +148,17 @@ public class UI_ItemPanel : UI_Base
     public void Item14()
     {
 
+    }
+    public void Item15()
+    {
+        _player.Critical += 5;
+        _player.MeleeAttack += 2;
+        _player.RangeAttack -= 1;
+    }
+    public void Item16()
+    {
+        _player.MaxHp += 2;
+        _player.HpRegen += 1;
+        _player.Defense -= 1;
     }
 }
