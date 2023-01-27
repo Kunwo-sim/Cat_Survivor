@@ -90,7 +90,7 @@ public abstract class Character : MonoBehaviour
         return (b - a).normalized;
     }
     
-    public virtual void ReceiveDamage(float damage, Vector3 knockBackDir = default)
+    public virtual void ReceiveDamage(float damage, Vector3 knockBackDir = default, bool bCritical = false)
     {
         float ReducePercent = 10 / (10 + (Defense / 1.5f));
         damage *= ReducePercent;

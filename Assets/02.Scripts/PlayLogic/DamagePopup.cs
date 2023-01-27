@@ -13,8 +13,11 @@ public class DamagePopup : MonoBehaviour
         _textMesh = transform.GetComponent<TextMeshPro>();
     }
 
-    public void Setup(int damage, Vector3 pos)
+    public void Setup(int damage, Vector3 pos, bool Critical)
     {
+        if (Critical)
+            _textMesh.color = Color.red;
+
         _textMesh.SetText(damage.ToString());
         transform.position = pos;
         Invoke(nameof(Delete), 1);

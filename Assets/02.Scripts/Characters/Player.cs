@@ -110,7 +110,7 @@ public class Player : Character
         _expBar.SetBar(_maxExp, _exp);
     }
 
-    public override void ReceiveDamage(float damage, Vector3 knockBackDir = default)
+    public override void ReceiveDamage(float damage, Vector3 knockBackDir = default, bool bCritical = false)
     {
         base.ReceiveDamage(damage);
         // SoundManager.Instance.PlaySFXSound("Player_Hit");

@@ -89,10 +89,10 @@ public abstract class Enemy : Character
         StartCoroutine(DeathFadeOut());
     }
 
-    public override void ReceiveDamage(float damage, Vector3 knockBackDir = default)
+    public override void ReceiveDamage(float damage, Vector3 knockBackDir = default, bool bCiritical = false)
     {
         DamagePopup d = Instantiate(_damagePopup);
-        d.Setup((int)damage, transform.position);
+        d.Setup((int)damage, transform.position, bCiritical);
         SoundManager.Instance.PlaySFXSound("SkillHit");
         base.ReceiveDamage(damage, knockBackDir);
     }

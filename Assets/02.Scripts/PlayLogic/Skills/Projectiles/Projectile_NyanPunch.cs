@@ -14,12 +14,4 @@ public class Projectile_NyanPunch : Projectile
     {
         yield break;
     }
-    protected override void OnTriggerEnter2D(Collider2D col)
-    {
-        if (col.CompareTag("Enemy"))
-        {
-            damage = GetMeleeDamage(damage);
-            col.GetComponent<Enemy>().ReceiveDamage(damage, transform.right);
-        }
-    }
 }

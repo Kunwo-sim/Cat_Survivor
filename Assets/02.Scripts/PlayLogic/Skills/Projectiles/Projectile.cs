@@ -7,6 +7,7 @@ public abstract class Projectile : MonoBehaviour
     protected Define.ProjectileType _projectileType;
     protected int damage = 0;
     protected float speed;
+    bool bCritical = false;
 
     protected Player _player;
     protected Rigidbody2D rigidbody2D;
@@ -31,7 +32,18 @@ public abstract class Projectile : MonoBehaviour
             {
                 damage = GetRangeDamage(damage);
             }
-            col.GetComponent<Enemy>().ReceiveDamage(damage, transform.right);
+
+            if(CriticalCheck())
+            {
+                bCritical = true;
+                damage *= 2;
+            }
+
+            col.GetComponent<Enemy>().ReceiveDamage(damage, transform.right, bCritical);
+
+            if (_projectileType == Define.ProjectileType.Melee)
+                return;
+
             CancelInvoke(nameof(Delete));
             Delete();
         }
@@ -62,5 +74,12 @@ public abstract class Projectile : MonoBehaviour
     {
         damage = (damage + _player.RangeAttack) * (100 + _player.Attack) / 100;
         return damage;
+    }
+    protected bool CriticalCheck()
+    {
+        if (_player.Critical >= UnityEngine.Random.Range(0, 101))
+            return true;
+        else
+            return false;
     }
 }
