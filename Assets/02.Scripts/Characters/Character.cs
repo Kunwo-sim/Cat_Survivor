@@ -23,6 +23,7 @@ public abstract class Character : MonoBehaviour
     public CharacterState state;
     protected Rigidbody2D _rigidbody;
     protected Collider2D _collider;
+    protected Animator _animator;
 
     public virtual int MaxHp
     {
@@ -54,6 +55,7 @@ public abstract class Character : MonoBehaviour
         _renderer = GetComponent<SpriteRenderer>();
         _rigidbody = GetComponent<Rigidbody2D>();
         _collider = GetComponent<Collider2D>();
+        _animator = GetComponent<Animator>();
     }
 
     protected virtual void Start()
@@ -73,7 +75,6 @@ public abstract class Character : MonoBehaviour
     protected virtual void Move(Vector2 input)
     {
         if (state == CharacterState.Dead) return;
-        state = input == Vector2.zero ? CharacterState.Idle : CharacterState.Move;
         Vector2 dir = input.normalized;
         float addSpeed = (100 + MoveSpeed) / 100.0f;
         transform.Translate(dir * (_defaultMoveSpeed * 0.03f * addSpeed));
@@ -115,9 +116,7 @@ public abstract class Character : MonoBehaviour
         }
         _renderer.color = Color.white;
         if(state == CharacterState.Attack) yield break;
-        
         _rigidbody.velocity= Vector2.zero;
-        state = CharacterState.Idle;
     }
     private void KnockBack(Vector3 attackDir)
     {

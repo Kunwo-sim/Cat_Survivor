@@ -12,7 +12,7 @@ public class Enemy_BossSheep : Enemy
     [SerializeField] private GameObject meteorReady;
     [SerializeField] private GameObject meteor;
     [SerializeField] private GameObject meteorExplosion;
-    
+
     protected override void Routine()
     {
         int random = Random.Range(0, 3);
@@ -30,16 +30,28 @@ public class Enemy_BossSheep : Enemy
         }
     }
     
+    public override void ReceiveDamage(float damage, Vector3 knockBackDir = default, bool bCiritical = false)
+    {
+        DamagePopup d = Instantiate(_damagePopup);
+        d.Setup((int)damage, transform.position, bCiritical);
+        SoundManager.Instance.PlaySFXSound("SkillHit");
+        base.ReceiveDamage(damage, Vector3.zero);
+    }
+    
     protected override IEnumerator Routine_Move()
     {
+        _animator.SetTrigger("Idle");
+        state = CharacterState.Idle;
+        yield return new WaitForSeconds(Random.Range(0.2f, 0.5f));
         state = CharacterState.Move;
-        yield return new WaitForSeconds(Random.Range(0f, 2f));
+        _animator.SetTrigger("Run");
+        yield return new WaitForSeconds(Random.Range(0.5f, 2f));
         Routine();
     }
     protected override IEnumerator Routine_Dash()
     {
         state = CharacterState.Attack;
-
+        _animator.SetTrigger("Dash");
         yield return new WaitForSeconds(1f);
         Vector3 dashDir = GetDirection(transform.position, _player.transform.position);
         _collider.isTrigger = true;
@@ -48,12 +60,14 @@ public class Enemy_BossSheep : Enemy
         yield return new WaitForSeconds(0.5f);
         _rigidbody.velocity = Vector2.zero;
         _collider.isTrigger = false;
+        _animator.SetTrigger("Idle");
         yield return new WaitForSeconds(2f);
         StartCoroutine(Routine_Move());
     }
     private IEnumerator Routine_Sweep()
     {
         state = CharacterState.Attack;
+        _animator.SetTrigger("Sweep");
         var v = new Vector3(0, 0, 1);
         GameObject sl = Instantiate(sweepReady, transform.position + v, transform.rotation);
         yield return new WaitForSeconds(1.5f);
@@ -63,19 +77,22 @@ public class Enemy_BossSheep : Enemy
         yield return new WaitForSeconds(0.25f);
         Destroy(s);
         yield return new WaitForSeconds(0.25f);
+        _animator.SetTrigger("Idle");
         StartCoroutine(Routine_Move());
     }
     private IEnumerator Routine_Meteor()
     {
         state = CharacterState.Attack;
+        _animator.SetTrigger("Meteor");
         Vector3 pp = _player.transform.position;
         yield return new WaitForSeconds(0.5f);
         GameObject mr = Instantiate(meteorReady, pp, Quaternion.identity);
         Destroy(mr, 2.33f);
-        GameObject m = Instantiate(meteor, pp + new Vector3(-xSpawnLimit, ySpawnLimit, -1), Quaternion.identity);
+        GameObject m = Instantiate(meteor, pp + new Vector3(-xSpawnLimit-1, ySpawnLimit+1, -1), Quaternion.Euler(0, 0, -45));
         GameObject me = Instantiate(meteorExplosion, pp, Quaternion.identity);
         me.GetComponent<EnemyAttack>().Damage = 5;
         yield return new WaitForSeconds(0.5f);
+        _animator.SetTrigger("Idle");
         StartCoroutine(Routine_Move());
     }
     

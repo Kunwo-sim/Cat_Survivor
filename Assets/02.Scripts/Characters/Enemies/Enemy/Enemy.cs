@@ -8,11 +8,10 @@ public abstract class Enemy : Character
 {
     protected Player _player;
     protected EPoolObjectType _poolType;
-    
-    
+
     protected EnemyProjectile _cloneProjectile;
     protected Targeting _targeting = new Targeting();
-    private DamagePopup _damagePopup;
+    protected DamagePopup _damagePopup;
     private Vector2 _direction;
 
     public void Initialize(int hp, float power, float moveSpeed, int level, EPoolObjectType poolType)
@@ -66,7 +65,7 @@ public abstract class Enemy : Character
 
     protected override void Move(Vector2 input)
     {
-        if (state is CharacterState.Move)
+        if (state is CharacterState.Move or CharacterState.Hit)
         {
             base.Move(input);
             FlipXRenderer(_direction);

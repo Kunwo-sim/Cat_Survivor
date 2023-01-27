@@ -1,4 +1,5 @@
 using UnityEngine;
+using static Define;
 
 public class Player : Character
 {
@@ -67,6 +68,12 @@ public class Player : Character
         Move(_joyStick.JoyDirection);
         TurnSkillHolder();
         SetAnimation();
+    }
+
+    protected override void Move(Vector2 input)
+    {
+        base.Move(input);
+        state = input == Vector2.zero ? CharacterState.Idle : CharacterState.Move;
     }
 
     private void SetAnimation()
