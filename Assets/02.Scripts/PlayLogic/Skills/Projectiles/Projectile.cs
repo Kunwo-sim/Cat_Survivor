@@ -4,15 +4,18 @@ using UnityEngine;
 
 public abstract class Projectile : MonoBehaviour
 {
-    protected int damage;
+    protected Define.ProjectileType _projectileType;
+    protected int damage = 0;
     protected float speed;
 
+    protected Player _player;
     protected Rigidbody2D rigidbody2D;
     protected SpriteRenderer spriteRenderer;
     private EPoolObjectType _poolType;
 
     protected virtual void Awake()
     {
+        _player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
         rigidbody2D = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
     }
@@ -20,6 +23,14 @@ public abstract class Projectile : MonoBehaviour
     {
         if (col.CompareTag("Enemy"))
         {
+            if (_projectileType == Define.ProjectileType.Melee)
+            {
+                damage = GetMeleeDamage(damage);
+            }
+            else if (_projectileType == Define.ProjectileType.Range)
+            {
+                damage = GetRangeDamage(damage);
+            }
             col.GetComponent<Enemy>().ReceiveDamage(damage, transform.right);
             CancelInvoke(nameof(Delete));
             Delete();
@@ -42,4 +53,14 @@ public abstract class Projectile : MonoBehaviour
     }
 
     protected abstract IEnumerator Move();
+    protected int GetMeleeDamage(int damage)
+    {
+        damage = (damage + _player.MeleeAttack) * (100 + _player.Attack) / 100;
+        return damage;
+    }
+    protected int GetRangeDamage(int damage)
+    {
+        damage = (damage + _player.RangeAttack) * (100 + _player.Attack) / 100;
+        return damage;
+    }
 }

@@ -8,6 +8,7 @@ public class Projectile_NyanPunch : Projectile
     {
         base.Initialize(spawnPos, spawnRot, damage, activeTime, poolType);
         spriteRenderer.color = new Color(1f, 1f, 1f, alpha);
+        _projectileType = Define.ProjectileType.Melee;
     }
     protected override IEnumerator Move()
     {
@@ -17,6 +18,7 @@ public class Projectile_NyanPunch : Projectile
     {
         if (col.CompareTag("Enemy"))
         {
+            damage = GetMeleeDamage(damage);
             col.GetComponent<Enemy>().ReceiveDamage(damage, transform.right);
         }
     }

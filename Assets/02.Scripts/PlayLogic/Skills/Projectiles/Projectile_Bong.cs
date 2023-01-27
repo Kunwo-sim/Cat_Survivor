@@ -9,6 +9,7 @@ public class Projectile_Bong : Projectile
     {
         base.Initialize(spawnPos, spawnRot, damage, activeTime, poolType);
         _holderTrans = holderTrans;
+        _projectileType = Define.ProjectileType.Melee;
 
     }
     private void FixedUpdate()
@@ -26,11 +27,12 @@ public class Projectile_Bong : Projectile
         yield return new WaitForSeconds(0.15f);
         rigidbody2D.AddForce(transform.right * speed, ForceMode2D.Impulse);
     }
-    
+
     protected override void OnTriggerEnter2D(Collider2D col)
     {
         if (col.CompareTag("Enemy"))
         {
+            damage = GetMeleeDamage(damage);
             col.GetComponent<Enemy>().ReceiveDamage(damage, transform.right);
         }
     }

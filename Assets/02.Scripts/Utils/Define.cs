@@ -43,6 +43,12 @@ public class Define
         Dead
     }
 
+    public enum ProjectileType
+    {
+        Melee,
+        Range,
+    }
+
     public const float xSpawnLimit = 20;
     public const float ySpawnLimit = 12;
     public const float randRange = 5f;

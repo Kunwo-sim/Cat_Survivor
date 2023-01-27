@@ -3,6 +3,11 @@ using UnityEngine;
 
 public class Projectile_NyanCat : Projectile
 {
+    protected override void Awake()
+    {
+        base.Awake();
+        _projectileType = Define.ProjectileType.Range;
+    }
     protected override IEnumerator Move()
     {
         speed = 20;
