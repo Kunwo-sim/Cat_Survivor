@@ -39,6 +39,9 @@ public abstract class Character : MonoBehaviour
         set
         {
             _hp = value;
+            if (_hp > _maxHp)
+                _hp = MaxHp;
+
             SetHpUI();
         }
     }

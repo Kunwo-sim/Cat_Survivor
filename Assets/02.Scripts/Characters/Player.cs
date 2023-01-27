@@ -8,7 +8,7 @@ public class Player : Character
     private float _exp = 0;
     private Bar _expBar;
     private Animator _animator;    
-    public int HpRegen { get; set; } = 0;
+    public int HpRegen { get; set; } = 1;
     public int MeleeAttack { get; set; } = 0;
     public int RangeAttack { get; set; } = 0;
     public int Defense { get; set; } = 0;
@@ -20,6 +20,7 @@ public class Player : Character
         get { return _joyStick; }
     }
 
+    private float _lastHpReGenTime = 0.0f;
     protected override void Awake()
     {
         base.Awake();
@@ -43,6 +44,19 @@ public class Player : Character
         SetHpUI();
         _expBar.SetBar(_maxExp, _exp);
         _expBar.SetText(Level);
+    }
+    private void Update()
+    {
+        if (HpRegen <= 0)
+            return;
+
+        _lastHpReGenTime += Time.deltaTime;
+        float hpRecoveryTime = 5.0f / (1.0f + ((HpRegen - 1) / 2.25f));
+        if (_lastHpReGenTime > hpRecoveryTime)
+        {
+            Hp += 1;
+            _lastHpReGenTime = 0.0f;
+        }    
     }
     private void FixedUpdate()
     {
