@@ -7,7 +7,9 @@ using UnityEngine.EventSystems;
 
 public class UI_AbilityUpgrade : UI_Popup
 {
+    int _reRollCost = 5;
     Player _player;
+    GameObject AbilityPanels;
     enum Texts
     {
         WaveInfoText,
@@ -21,10 +23,13 @@ public class UI_AbilityUpgrade : UI_Popup
         Critical,
         AttackSpeed,
         Range,
+
+        ReRollButtonText,
     }
     enum GameObjects
     {
         AbilityPanels,
+        ReRollButton,
     }
 
     private void Start()
@@ -52,13 +57,19 @@ public class UI_AbilityUpgrade : UI_Popup
         Get<TextMeshProUGUI>((int)Texts.AttackSpeed).text = _player.AttackSpeed.ToString();
         Get<TextMeshProUGUI>((int)Texts.Range).text = _player.AttackRange.ToString();
 
-        GameObject AbilityPanels = Get<GameObject>((int)GameObjects.AbilityPanels);
+        Get<GameObject>((int)GameObjects.ReRollButton).BindEvent(OnReRollButtonClicked, Define.UIEvent.Click);
+
+        AbilityPanels = Get<GameObject>((int)GameObjects.AbilityPanels);
+        SetAbilityPanels();
+        _reRollCost = 5;
+        Get<TextMeshProUGUI>((int)Texts.ReRollButtonText).text = $"초기화 : {_reRollCost}";
+    }
+    void SetAbilityPanels()
+    {
         foreach (Transform child in AbilityPanels.transform)
         {
             Destroy(child.gameObject);
         }
-
-        // 주석체크
         // 4개의 무작위 어빌리티를 가져오고 초기화
         List<AbilityData> data = AbilityGetter.GetRandomAbility();
         for (int i = 0; i < 4; i++)
@@ -69,5 +80,16 @@ public class UI_AbilityUpgrade : UI_Popup
             AbilityPanel.name = "AbilityPanel" + i;
             AbilityPanel.SetAbilityPanel(data[i]);
         }
+    }
+
+    void OnReRollButtonClicked(PointerEventData data)
+    {
+        if (InGameManager.Instance.Money < _reRollCost)
+            return;
+
+        InGameManager.Instance.Money -= _reRollCost;
+        SetAbilityPanels();
+        _reRollCost += 2;
+        Get<TextMeshProUGUI>((int)Texts.ReRollButtonText).text = $"초기화 : {_reRollCost}";
     }
 }

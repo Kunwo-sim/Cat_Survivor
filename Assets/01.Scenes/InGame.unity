@@ -1181,14 +1181,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 6563322060679155313, guid: e6fe2e09c3d873048bd38b5753ecabf0, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6563322060679155313, guid: e6fe2e09c3d873048bd38b5753ecabf0, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6563322061053284321, guid: e6fe2e09c3d873048bd38b5753ecabf0, type: 3}
       propertyPath: m_Name
       value: Canvas
@@ -1278,45 +1270,9 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7383568704198727892, guid: e6fe2e09c3d873048bd38b5753ecabf0, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7383568704198727892, guid: e6fe2e09c3d873048bd38b5753ecabf0, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 7383568704198727892, guid: e6fe2e09c3d873048bd38b5753ecabf0, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 430181105}
-    - target: {fileID: 7383568704198727892, guid: e6fe2e09c3d873048bd38b5753ecabf0, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 7383568704198727892, guid: e6fe2e09c3d873048bd38b5753ecabf0, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: SetWaveTime
-      objectReference: {fileID: 0}
-    - target: {fileID: 7383568704198727892, guid: e6fe2e09c3d873048bd38b5753ecabf0, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: WaveManager, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 7383568704198727892, guid: e6fe2e09c3d873048bd38b5753ecabf0, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_FloatArgument
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7383568704198727892, guid: e6fe2e09c3d873048bd38b5753ecabf0, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
-    - target: {fileID: 8788800405314079593, guid: e6fe2e09c3d873048bd38b5753ecabf0, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8788800405314079593, guid: e6fe2e09c3d873048bd38b5753ecabf0, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e6fe2e09c3d873048bd38b5753ecabf0, type: 3}
 --- !u!114 &1687117817 stripped
