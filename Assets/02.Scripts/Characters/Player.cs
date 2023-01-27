@@ -99,6 +99,7 @@ public class Player : Character
     public override void ReceiveDamage(float damage, Vector3 knockBackDir = default)
     {
         base.ReceiveDamage(damage);
+        // SoundManager.Instance.PlaySFXSound("Player_Hit");
         SetHpUI();
     }
 

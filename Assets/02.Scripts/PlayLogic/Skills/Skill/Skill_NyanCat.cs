@@ -11,7 +11,7 @@ public class Skill_NyanCat : Skill
         
         cloneProjectile.Add(ObjectPoolManager.GetObject(poolType).GetComponent<Projectile_NyanCat>());
         cloneProjectile[0].Initialize(pos, rot, damage, activeTime, poolType);
-        SoundManager.Instance.PlaySFXSound("SkillShot");
+        SoundManager.Instance.PlaySFXSound("Gun_Shot");
         yield break;
     }
 }

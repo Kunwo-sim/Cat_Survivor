@@ -1572,12 +1572,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   masterVolumeSFX: 1
   masterVolumeBGM: 1
-  menuBgmClip: {fileID: 8300000, guid: cacac3cd3ae564543b5f8c6b80d44343, type: 3}
-  inGameBgmClip: {fileID: 8300000, guid: d57970564e99d1d418c7df60ae082941, type: 3}
+  menuBgmClip: {fileID: 8300000, guid: 96eafd1dc93dd694f83a9ad75e4a6d55, type: 3}
+  inGameBgmClip: {fileID: 8300000, guid: 69396cd1e3828394e90f6d31cb58723b, type: 3}
   sfxAudioClips:
   - {fileID: 8300000, guid: c387f373d9f1847449302fc0c0ed1197, type: 3}
   - {fileID: 8300000, guid: 4c67a1b4a8f9c3f46a9c5180d248663a, type: 3}
   - {fileID: 8300000, guid: 97699308604581a4aae3bab6fbd656d6, type: 3}
+  - {fileID: 8300000, guid: 42cf37fbcad322249b8b0e95e8dbc57b, type: 3}
+  - {fileID: 8300000, guid: c4dad0104fdfeb54ebc2e4095a48ef8e, type: 3}
+  - {fileID: 8300000, guid: ff631d7f4fe6123468d320703bf2d580, type: 3}
+  - {fileID: 8300000, guid: fc9e2f100da591e4ca2b9a3b49e12a2b, type: 3}
+  - {fileID: 8300000, guid: 555f12c7248ce11499c30bafd65bf49b, type: 3}
+  - {fileID: 8300000, guid: e87993e4126254544b51919a534fcd31, type: 3}
+  - {fileID: 8300000, guid: fc4059ccb27e92347b0c688af01d3d82, type: 3}
+  - {fileID: 8300000, guid: 3c61edba12b0ac84eb102deb24b7dbf4, type: 3}
+  - {fileID: 8300000, guid: 5a80f72b70ae40c46b821994bc2b388a, type: 3}
+  - {fileID: 8300000, guid: bb654791b53174a43a4cec7ee29ca081, type: 3}
+  - {fileID: 8300000, guid: fb8bb9d0df3bca8498b223ecd960fa77, type: 3}
+  - {fileID: 8300000, guid: 05d68ca5e4fa97f498a71848b6275c15, type: 3}
 --- !u!4 &1787131063
 Transform:
   m_ObjectHideFlags: 0

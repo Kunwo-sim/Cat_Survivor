@@ -36,6 +36,7 @@ public class InGameManager : MonoBehaviour
         {
             _money = value;
             _moneyUI.GetComponentInChildren<TextMeshProUGUI>().text = _money.ToString();
+            SoundManager.Instance.PlaySFXSound("Get_Coin");
         }
     }
 
@@ -51,23 +52,23 @@ public class InGameManager : MonoBehaviour
 
     void SetFixedCanvas()
     {
-        int setWidth = 1280; // »ç¿ëÀÚ ¼³Á¤ ³Êºñ
-        int setHeight = 720; // »ç¿ëÀÚ ¼³Á¤ ³ôÀÌ
+        int setWidth = 1280; // ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Êºï¿½
+        int setHeight = 720; // ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 
-        int deviceWidth = Screen.width; // ±â±â ³Êºñ ÀúÀå
-        int deviceHeight = Screen.height; // ±â±â ³ôÀÌ ÀúÀå
+        int deviceWidth = Screen.width; // ï¿½ï¿½ï¿½ ï¿½Êºï¿½ ï¿½ï¿½ï¿½ï¿½
+        int deviceHeight = Screen.height; // ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 
-        Screen.SetResolution(setWidth, (int)(((float)deviceHeight / deviceWidth) * setWidth), true); // SetResolution ÇÔ¼ö Á¦´ë·Î »ç¿ëÇÏ±â
+        Screen.SetResolution(setWidth, (int)(((float)deviceHeight / deviceWidth) * setWidth), true); // SetResolution ï¿½Ô¼ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ï±ï¿½
 
-        if ((float)setWidth / setHeight < (float)deviceWidth / deviceHeight) // ±â±âÀÇ ÇØ»óµµ ºñ°¡ ´õ Å« °æ¿ì
+        if ((float)setWidth / setHeight < (float)deviceWidth / deviceHeight) // ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ø»ï¿½ ï¿½ï¿½ ï¿½ï¿½ Å« ï¿½ï¿½ï¿½
         {
-            float newWidth = ((float)setWidth / setHeight) / ((float)deviceWidth / deviceHeight); // »õ·Î¿î ³Êºñ
-            Camera.main.rect = new Rect((1f - newWidth) / 2f, 0f, newWidth, 1f); // »õ·Î¿î Rect Àû¿ë
+            float newWidth = ((float)setWidth / setHeight) / ((float)deviceWidth / deviceHeight); // ï¿½ï¿½ï¿½Î¿ï¿½ ï¿½Êºï¿½
+            Camera.main.rect = new Rect((1f - newWidth) / 2f, 0f, newWidth, 1f); // ï¿½ï¿½ï¿½Î¿ï¿½ Rect ï¿½ï¿½ï¿½ï¿½
         }
-        else // °ÔÀÓÀÇ ÇØ»óµµ ºñ°¡ ´õ Å« °æ¿ì
+        else // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ø»ï¿½ ï¿½ï¿½ ï¿½ï¿½ Å« ï¿½ï¿½ï¿½
         {
-            float newHeight = ((float)deviceWidth / deviceHeight) / ((float)setWidth / setHeight); // »õ·Î¿î ³ôÀÌ
-            Camera.main.rect = new Rect(0f, (1f - newHeight) / 2f, 1f, newHeight); // »õ·Î¿î Rect Àû¿ë
+            float newHeight = ((float)deviceWidth / deviceHeight) / ((float)setWidth / setHeight); // ï¿½ï¿½ï¿½Î¿ï¿½ ï¿½ï¿½ï¿½ï¿½
+            Camera.main.rect = new Rect(0f, (1f - newHeight) / 2f, 1f, newHeight); // ï¿½ï¿½ï¿½Î¿ï¿½ Rect ï¿½ï¿½ï¿½ï¿½
         }
     }
 }

@@ -19,6 +19,7 @@ public class EnemyInfo : MonoBehaviour
             GameObject enemy = ObjectPoolManager.GetObject(poolType);
             enemy.transform.position = spawnPos;
             enemy.GetComponent<Enemy>().Initialize(hp, power, moveSpeed + randSpeed, level, poolType);
+            SoundManager.Instance.PlaySFXSound("Enemy_Spawn");
         }
     }
 

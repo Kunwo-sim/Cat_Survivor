@@ -83,6 +83,8 @@ public abstract class Enemy : Character
     {
         base.Death();
         StopAllCoroutines();
+        CreatExpObject();
+        SoundManager.Instance.PlaySFXSound("Enemy_Death");
         StartCoroutine(DeathFadeOut());
     }
 
@@ -175,7 +177,6 @@ public abstract class Enemy : Character
             transform.localScale = new Vector3(value, value, value);
             yield return new WaitForSeconds(0.01f);
         }
-        CreatExpObject();
         ObjectPoolManager.ReturnObject(gameObject, _poolType);
     }
 }
