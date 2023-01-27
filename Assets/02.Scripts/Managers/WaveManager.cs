@@ -24,9 +24,10 @@ public class WaveManager : MonoBehaviour
         }
     }
 
-    float _waveRemainTime = 20.0f;
+    float _waveRemainTime = 40.0f;
     public int _waveStep = 1;
     public bool _bWaveEnd = false;
+    float[] _waveTime = { 40, 20, 40, 20, 40 };
 
     [SerializeField]
     TextMeshProUGUI _waveInfoText;
@@ -96,8 +97,9 @@ public class WaveManager : MonoBehaviour
         _player.transform.position = Vector3.zero;
         _bWaveEnd = false;
         _waveStep += 1;
+        _waveRemainTime = _waveTime[_waveStep];
+
         _player.Hp = _player.MaxHp;
-        _waveRemainTime = 20.0f;
         Time.timeScale = 1.0f;
         _waveInfoText.text = $"시련 {_waveStep}";
     }
