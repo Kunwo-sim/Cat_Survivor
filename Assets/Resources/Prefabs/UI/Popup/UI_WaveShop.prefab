@@ -88,7 +88,7 @@ GameObject:
   - component: {fileID: 7776501152147010512}
   - component: {fileID: 3163636728044383084}
   m_Layer: 0
-  m_Name: Reroll
+  m_Name: ReRollButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -421,7 +421,7 @@ GameObject:
   - component: {fileID: 3749953473521071885}
   - component: {fileID: 7553666710444229270}
   m_Layer: 0
-  m_Name: RerollText
+  m_Name: ReRollButtonText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -632,7 +632,7 @@ GameObject:
   - component: {fileID: 3196105933109610664}
   - component: {fileID: 3196105933109610665}
   m_Layer: 5
-  m_Name: CoinCount
+  m_Name: CoinText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -987,13 +987,13 @@ RectTransform:
   - {fileID: 2092622273518175130}
   - {fileID: 3628375556662027562}
   - {fileID: 2924723929101487961}
-  - {fileID: 4945371736909381584}
+  - {fileID: 8731889567172450681}
   m_Father: {fileID: 3196105933658274923}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 177, y: -6}
+  m_AnchoredPosition: {x: -140, y: -10}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1098550227524846873
@@ -1014,7 +1014,7 @@ MonoBehaviour:
     m_Top: 0
     m_Bottom: 0
   m_ChildAlignment: 4
-  m_Spacing: -700
+  m_Spacing: 0
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 1
   m_ChildControlWidth: 0
@@ -1784,7 +1784,7 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 3029457737949688324, guid: dadeff1ad42aeb64fadae221d2f2ed6b, type: 3}
   m_PrefabInstance: {fileID: 3963369010800865694}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &7974668395984571860
+--- !u!1001 &5991806822767160189
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -1881,10 +1881,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dadeff1ad42aeb64fadae221d2f2ed6b, type: 3}
---- !u!224 &4945371736909381584 stripped
+--- !u!224 &8731889567172450681 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3029457737949688324, guid: dadeff1ad42aeb64fadae221d2f2ed6b, type: 3}
-  m_PrefabInstance: {fileID: 7974668395984571860}
+  m_PrefabInstance: {fileID: 5991806822767160189}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8882853809064850746
 PrefabInstance:

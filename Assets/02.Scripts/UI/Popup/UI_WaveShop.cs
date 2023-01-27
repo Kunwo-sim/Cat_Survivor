@@ -8,12 +8,14 @@ using UnityEngine.EventSystems;
 
 public class UI_WaveShop : UI_Popup
 {
+    int _reRollCost = 10;
     Player _player;
+    GameObject ItemPanels;
     enum Texts
     {
         WaveInfo,
-        CoinCount,
-        RerollText,
+        CoinText,
+        ReRollButtonText,
 
         MaxHp,
         HpRegen,
@@ -30,6 +32,7 @@ public class UI_WaveShop : UI_Popup
     enum GameObjects
     {
         ItemPanels,
+        ReRollButton,
         NextButton
     }
 
@@ -58,7 +61,32 @@ public class UI_WaveShop : UI_Popup
         Get<TextMeshProUGUI>((int)Texts.AttackSpeed).text = _player.AttackSpeed.ToString();
         Get<TextMeshProUGUI>((int)Texts.Range).text = _player.AttackRange.ToString();
 
-        GameObject ItemPanels = Get<GameObject>((int)GameObjects.ItemPanels);
+        ItemPanels = Get<GameObject>((int)GameObjects.ItemPanels);
+
+        SetItemPanels();
+        _reRollCost = 10;
+        Get<TextMeshProUGUI>((int)Texts.ReRollButtonText).text = $"초기화 - {_reRollCost}";
+
+        Get<GameObject>((int)GameObjects.NextButton).BindEvent(OnNextButtonClicked, Define.UIEvent.Click);
+        Get<GameObject>((int)GameObjects.ReRollButton).BindEvent(OnReRollButtonClicked, Define.UIEvent.Click);
+    }
+    void Update()
+    {
+        Get<TextMeshProUGUI>((int)Texts.MaxHp).text = ((int)_player.MaxHp).ToString();
+        Get<TextMeshProUGUI>((int)Texts.HpRegen).text = _player.HpRegen.ToString();
+        Get<TextMeshProUGUI>((int)Texts.MeleeAttack).text = _player.MeleeAttack.ToString();
+        Get<TextMeshProUGUI>((int)Texts.RangeAttack).text = _player.RangeAttack.ToString();
+        Get<TextMeshProUGUI>((int)Texts.MoveSpeed).text = _player.MoveSpeed.ToString();
+        Get<TextMeshProUGUI>((int)Texts.Defense).text = _player.Defense.ToString();
+        Get<TextMeshProUGUI>((int)Texts.Attack).text = _player.Attack.ToString();
+        Get<TextMeshProUGUI>((int)Texts.Critical).text = _player.Critical.ToString();
+        Get<TextMeshProUGUI>((int)Texts.AttackSpeed).text = _player.AttackSpeed.ToString();
+        Get<TextMeshProUGUI>((int)Texts.Range).text = _player.AttackRange.ToString();
+
+        Get<TextMeshProUGUI>((int)Texts.CoinText).text = InGameManager.Instance.Money.ToString();
+    }
+    void SetItemPanels()
+    {
         foreach (Transform child in ItemPanels.transform)
         {
             Destroy(child.gameObject);
@@ -74,14 +102,21 @@ public class UI_WaveShop : UI_Popup
             UI_ItemPanel item = itemPanel.GetOrAddComponent<UI_ItemPanel>();
             item.SetItemInfo(data[i]);
         }
-
-        Get<GameObject>((int)GameObjects.NextButton).BindEvent(OnNextButtonClicked, Define.UIEvent.Click);
     }
-
     void OnNextButtonClicked(PointerEventData data)
     {
         UIManager.Instance.ClosePopupUI();
-        Time.timeScale = 1.0f;
         WaveManager.Instance.BeforeWaveStart();
+    }
+    void OnReRollButtonClicked(PointerEventData data)
+    {
+        if (InGameManager.Instance.Money < _reRollCost)
+            return;
+
+        InGameManager.Instance.Money -= _reRollCost;
+        SetItemPanels();
+        _reRollCost += 2;
+        Get<TextMeshProUGUI>((int)Texts.ReRollButtonText).text = $"초기화 - {_reRollCost}";
+        Get<TextMeshProUGUI>((int)Texts.CoinText).text = InGameManager.Instance.Money.ToString();
     }
 }

@@ -76,26 +76,26 @@ public class UI_AbilityPanel : UI_Base
     }
     public void AbilityMoveSpeed()
     {
-        _player.MoveSpeed += 1;
+        _player.MoveSpeed += 3;
     }
     public void AbilityDefense()
     {
-        _player.Defense += 1;
+        _player.Defense += 2;
     }
     public void AbilityAttack()
     {
-        _player.Attack += 1;
+        _player.Attack += 4;
     }
     public void AbilityCritical()
     {
-        _player.Critical += 1;
+        _player.Critical += 4;
     }
     public void AbilityAttackSpeed()
     {
-        _player.AttackSpeed += 1;
+        _player.AttackSpeed += 3;
     }
     public void AbilityRange()
     {
-        _player.AttackRange += 1;
+        _player.AttackRange += 10;
     }
 }
