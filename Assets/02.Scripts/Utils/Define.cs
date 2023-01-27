@@ -44,8 +44,8 @@ public class Define
     }
 
     public const float xSpawnLimit = 20;
-    public const float ySpawnLimit = 10;
-    public const float randRange = 3f;
+    public const float ySpawnLimit = 12;
+    public const float randRange = 5f;
     
     public const int Mouse = 0;
     public const int Snake = 1;

@@ -73,7 +73,7 @@ public class EnemyManager : MonoBehaviour
             for (int i = 0; i < spawnInfo.Count; i++)
             {
                 float randX = Random.Range(-randRange, randRange);
-                float randY = Random.Range(-randRange, randRange);
+                float randY = Random.Range(-randRange*0.7f, randRange*0.7f);
                 groupSpawnPos += new Vector3(randX, randY);
                 spawnInfo.EnemyInfo.Spawn(groupSpawnPos);
                 yield return new WaitForSeconds(spawnInfo.IntervalTime);
@@ -109,7 +109,7 @@ public class EnemyManager : MonoBehaviour
     private Vector3 GetRandomPosition()
     {
         float xPos = Random.Range(-xSpawnLimit + randRange, xSpawnLimit - randRange);
-        float yPos = Random.Range(-ySpawnLimit + randRange, ySpawnLimit - randRange);
+        float yPos = Random.Range(-ySpawnLimit + randRange*0.7f, ySpawnLimit - randRange*0.7f);
         float zPos = 10;
 
         var randomPosition = new Vector3(xPos, yPos, zPos);
