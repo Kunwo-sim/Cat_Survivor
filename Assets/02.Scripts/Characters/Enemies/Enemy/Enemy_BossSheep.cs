@@ -113,6 +113,8 @@ public class Enemy_BossSheep : Enemy
             transform.localScale = new Vector3(value, value, value);
             yield return new WaitForSeconds(0.01f);
         }
+        GameObject.Find("Canvas").transform.Find("GameClearPanel").gameObject.SetActive(true);
+        Time.timeScale = 0;
         ObjectPoolManager.ReturnObject(gameObject, _poolType);
     }
 
