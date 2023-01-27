@@ -57,6 +57,7 @@ public class Enemy_BossSheep : Enemy
         _collider.isTrigger = true;
         float dashSpeed = 30;
         _rigidbody.AddForce(dashDir * dashSpeed, ForceMode2D.Impulse);
+        SoundManager.Instance.PlaySFXSound("Boss_Dash_Crush");
         yield return new WaitForSeconds(0.5f);
         _rigidbody.velocity = Vector2.zero;
         _collider.isTrigger = false;
@@ -73,6 +74,7 @@ public class Enemy_BossSheep : Enemy
         yield return new WaitForSeconds(1.5f);
         Destroy(sl);
         GameObject s = Instantiate(sweep, transform.position + v, transform.rotation);
+        SoundManager.Instance.PlaySFXSound("Boss_Magic_Explosion");
         s.GetComponent<EnemyAttack>().Damage = 7;
         yield return new WaitForSeconds(0.25f);
         Destroy(s);
@@ -84,11 +86,13 @@ public class Enemy_BossSheep : Enemy
     {
         state = CharacterState.Attack;
         _animator.SetTrigger("Meteor");
+        SoundManager.Instance.PlaySFXSound("Boss_Meteor_Fall");
+        SoundManager.Instance.PlaySFXSound("Boss_Meteor_Explosion");
         Vector3 pp = _player.transform.position;
         yield return new WaitForSeconds(0.5f);
         GameObject mr = Instantiate(meteorReady, pp, Quaternion.identity);
         Destroy(mr, 2.33f);
-        GameObject m = Instantiate(meteor, pp + new Vector3(-xSpawnLimit-1, ySpawnLimit+1, -1), Quaternion.Euler(0, 0, -45));
+        GameObject m = Instantiate(meteor, pp + new Vector3(-xSpawnLimit-1, ySpawnLimit+1, -5), Quaternion.Euler(0, 0, -45));
         GameObject me = Instantiate(meteorExplosion, pp, Quaternion.identity);
         me.GetComponent<EnemyAttack>().Damage = 5;
         yield return new WaitForSeconds(0.5f);
