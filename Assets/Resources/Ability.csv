@@ -5,7 +5,7 @@ key,name,description,power,functionName
 4,원거리 공격력 증가,원거리 공격력 + 1,1,AbilityRangeAttack
 5,이동 속도 증가,이동 속도 +3%,3,AbilityMoveSpeed
 6,방어력 증가,방어력 +2%,2,AbilityDefense
-7,공격력 % 증가,공력력 + 5%,5,AbilityAttack
-8,치명타 확률 증가,치명타 +5%,5,AbilityCritical
+7,공격력 % 증가,공력력 + 4%,5,AbilityAttack
+8,치명타 확률 증가,치명타 +4%,5,AbilityCritical
 9,공격속도 증가,공격속도 +3%,3,AbilityAttackSpeed
 10,사정거리,사정거리 증가 + 10,10,AbilityRange
