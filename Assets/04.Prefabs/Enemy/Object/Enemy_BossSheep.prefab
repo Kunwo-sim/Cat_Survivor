@@ -168,3 +168,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   state: 0
+  sweepReady: {fileID: 8025573816887418386, guid: 985d111f8ae4a584e9c00ac2345a8929, type: 3}
+  sweep: {fileID: 8025573816887418386, guid: 7604c08242f5a104abe10381c31515e5, type: 3}
+  meteorReady: {fileID: 8025573816887418386, guid: cbd002fe2633e15418bdc5a6f8a0085f, type: 3}
+  meteor: {fileID: 8025573816887418386, guid: b464f89e325f7b141a3971d34f0bbf59, type: 3}
+  meteorExplosion: {fileID: 8025573816887418386, guid: f9d27b9e34f52e645b28e910e794c863, type: 3}

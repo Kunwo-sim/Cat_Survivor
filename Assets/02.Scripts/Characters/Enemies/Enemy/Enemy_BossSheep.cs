@@ -7,6 +7,11 @@ using Random = UnityEngine.Random;
 
 public class Enemy_BossSheep : Enemy
 {
+    [SerializeField] private GameObject sweepReady;
+    [SerializeField] private GameObject sweep;
+    [SerializeField] private GameObject meteorReady;
+    [SerializeField] private GameObject meteor;
+    [SerializeField] private GameObject meteorExplosion;
     
     protected override void Routine()
     {
@@ -17,10 +22,10 @@ public class Enemy_BossSheep : Enemy
                 StartCoroutine(Routine_Dash());
                 break;
             case 1:
-                StartCoroutine(Routine_Dash());
+                StartCoroutine(Routine_Sweep());
                 break;
             case 2:
-                StartCoroutine(Routine_Dash());
+                StartCoroutine(Routine_Meteor());
                 break;
         }
     }
@@ -46,6 +51,34 @@ public class Enemy_BossSheep : Enemy
         yield return new WaitForSeconds(2f);
         StartCoroutine(Routine_Move());
     }
+    private IEnumerator Routine_Sweep()
+    {
+        state = CharacterState.Attack;
+        var v = new Vector3(0, 0, 1);
+        GameObject sl = Instantiate(sweepReady, transform.position + v, transform.rotation);
+        yield return new WaitForSeconds(1.5f);
+        Destroy(sl);
+        GameObject s = Instantiate(sweep, transform.position + v, transform.rotation);
+        s.GetComponent<EnemyAttack>().Damage = 7;
+        yield return new WaitForSeconds(0.25f);
+        Destroy(s);
+        yield return new WaitForSeconds(0.25f);
+        StartCoroutine(Routine_Move());
+    }
+    private IEnumerator Routine_Meteor()
+    {
+        state = CharacterState.Attack;
+        Vector3 pp = _player.transform.position;
+        yield return new WaitForSeconds(0.5f);
+        GameObject mr = Instantiate(meteorReady, pp, Quaternion.identity);
+        Destroy(mr, 2.33f);
+        GameObject m = Instantiate(meteor, pp + new Vector3(-xSpawnLimit, ySpawnLimit, -1), Quaternion.identity);
+        GameObject me = Instantiate(meteorExplosion, pp, Quaternion.identity);
+        me.GetComponent<EnemyAttack>().Damage = 5;
+        yield return new WaitForSeconds(0.5f);
+        StartCoroutine(Routine_Move());
+    }
+    
     protected override IEnumerator  DeathFadeOut()
     {
         _collider.enabled = false;
@@ -62,15 +95,11 @@ public class Enemy_BossSheep : Enemy
         ObjectPoolManager.ReturnObject(gameObject, _poolType);
     }
 
-    private void OnTriggerEnter(Collider other)
+    protected override void OnTriggerEnter2D(Collider2D col)
     {
-        if (other.CompareTag("Player"))
+        if (col.CompareTag("Player"))
         {
             _player.ReceiveDamage(15);
         }
     }
-    protected override void OnTriggerStay(Collider other)
-    {
-    }
-    
 }
