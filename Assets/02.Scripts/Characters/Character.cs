@@ -7,7 +7,7 @@ public abstract class Character : MonoBehaviour
 {
     private string _name = "Character Name";
     protected float _maxHp = 10;
-    public float Hp { get; set; } = 10;
+    protected float _hp = 10;
     public float Power { get; set; } = 1;
     public float MoveSpeed { get; set; } = 3.0f;
     public int Level { get; set;} = 1;
@@ -29,8 +29,20 @@ public abstract class Character : MonoBehaviour
         {
             _maxHp = value;
             Hp = _maxHp;
+            SetHpUI();
         }
     }
+
+    public virtual float Hp
+    {
+        get { return _hp; }
+        set
+        {
+            _hp = value;
+            SetHpUI();
+        }
+    }
+
     protected virtual void Awake()
     {
         _hpBar = GetComponentInChildren<Bar>();
@@ -105,6 +117,9 @@ public abstract class Character : MonoBehaviour
     }
     protected void SetHpUI()
     {
+        if (_hpBar == null)
+            return;
+
         _hpBar.SetBar(MaxHp, Hp);
         _hpBar.SetText(Mathf.FloorToInt(Hp));
     }
