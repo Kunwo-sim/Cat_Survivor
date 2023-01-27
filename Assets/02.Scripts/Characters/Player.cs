@@ -28,7 +28,7 @@ public class Player : Character
         base.Awake();
         _joyStick = GameObject.Find("JoyStick").GetComponent<JoyStick>();
         _skillHolder = GetComponentInChildren<SkillHolder>();
-        _expBar = GameObject.Find("Exp Bar").GetComponent<Bar>();
+        _expBar = GameObject.Find("ExpBar").GetComponent<Bar>();
         _animator = GetComponent<Animator>();
         _renderer = GetComponent<SpriteRenderer>();
     }
