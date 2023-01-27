@@ -12,7 +12,8 @@ public abstract class Enemy : Character
     private Targeting _targeting = new Targeting();
     private EnemyProjectile cloneProjectile;
     private DamagePopup _damagePopup;
-
+    private Vector2 _direction;
+    
     public void Initialize(int hp, int power, float moveSpeed, int level, EPoolObjectType poolType)
     {
         base.Initialize();
@@ -47,9 +48,8 @@ public abstract class Enemy : Character
 
     private void FixedUpdate()
     {
-        Vector2 direction = GetDirection(transform.position, _player.transform.position);
-        Move(direction);
-        FlipXRenderer(direction);
+        _direction = GetDirection(transform.position, _player.transform.position);
+        Move(_direction);
     }
 
     protected virtual void FlipXRenderer(Vector2 direction)
@@ -66,7 +66,10 @@ public abstract class Enemy : Character
     protected override void Move(Vector2 input)
     {
         if (state is CharacterState.Move)
+        {
             base.Move(input);
+            FlipXRenderer(_direction);
+        }
     }
 
     protected override void Awake()
