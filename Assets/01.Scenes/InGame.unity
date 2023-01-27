@@ -868,9 +868,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyList:
   - {fileID: 4399081333754547787, guid: b1d5c24e87526434daf24f4660d735a8, type: 3}
-  - {fileID: -7403168139015517317, guid: d439d1a8bbf18c64f8462d24a245dcb0, type: 3}
   - {fileID: 4399081333754547787, guid: 35270965d6df4a544ab20a4fb76c8cbd, type: 3}
   - {fileID: 4399081333754547787, guid: 09ba683e2ecc92249a8fabd20b230a9b, type: 3}
+  - {fileID: -7403168139015517317, guid: d439d1a8bbf18c64f8462d24a245dcb0, type: 3}
 --- !u!4 &999492180
 Transform:
   m_ObjectHideFlags: 0
@@ -1181,6 +1181,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6563322060679155313, guid: e6fe2e09c3d873048bd38b5753ecabf0, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6563322060679155313, guid: e6fe2e09c3d873048bd38b5753ecabf0, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6563322061053284321, guid: e6fe2e09c3d873048bd38b5753ecabf0, type: 3}
       propertyPath: m_Name
       value: Canvas
@@ -1273,6 +1281,14 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 430181105}
+    - target: {fileID: 8788800405314079593, guid: e6fe2e09c3d873048bd38b5753ecabf0, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8788800405314079593, guid: e6fe2e09c3d873048bd38b5753ecabf0, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e6fe2e09c3d873048bd38b5753ecabf0, type: 3}
 --- !u!114 &1687117817 stripped

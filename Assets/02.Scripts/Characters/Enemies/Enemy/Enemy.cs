@@ -146,7 +146,7 @@ public abstract class Enemy : Character
         
         int max = 1;
         _renderer.color = new Color(max, max, max);
-        for (float i = 0.1f; i <= max; i += 0.02f)
+        for (float i = 0.0f; i <= max; i += 0.02f)
         {
             _renderer.color = new Color(max, max-i, max-i);
             yield return new WaitForSeconds(0.01f);
