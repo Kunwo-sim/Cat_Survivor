@@ -13,6 +13,14 @@ public class Enemy_BossSheep : Enemy
     [SerializeField] private GameObject meteor;
     [SerializeField] private GameObject meteorExplosion;
 
+    private Bar _hpBar;
+
+    protected override void Awake()
+    {
+        base.Awake();
+        _hpBar = GetComponentInChildren<Bar>();
+    }
+
     protected override void Routine()
     {
         int random = Random.Range(0, 3);
@@ -42,6 +50,8 @@ public class Enemy_BossSheep : Enemy
         d.Setup((int)damage, transform.position, bCiritical);
         SoundManager.Instance.PlaySFXSound("SkillHit");
         base.ReceiveDamage(damage, Vector3.zero);
+        _hpBar.SetBar(_maxHp, _hp);
+        _hpBar.SetText($"{Hp} / {MaxHp}");
     }
     
     protected override IEnumerator Routine_Move()
