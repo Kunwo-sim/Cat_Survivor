@@ -10,7 +10,9 @@ public class Player : Character
     private Bar _expBar;
     [SerializeField]
     private Bar _topHpBar;
-    private Animator _animator;    
+    private Animator _animator;
+    private const float BaseProtectionTime = 0.2f;
+    private float _protectionTime = 1f;
     public int HpRegen { get; set; } = 0;
     public int MeleeAttack { get; set; } = 0;
     public int RangeAttack { get; set; } = 0;
@@ -52,6 +54,8 @@ public class Player : Character
     }
     private void Update()
     {
+        _protectionTime += Time.deltaTime;
+        
         if (HpRegen <= 0)
             return;
 
@@ -123,6 +127,8 @@ public class Player : Character
 
     public override void ReceiveDamage(float damage, Vector3 knockBackDir = default, bool bCritical = false)
     {
+        if(_protectionTime < BaseProtectionTime) return;
+        _protectionTime = 0;
         base.ReceiveDamage(damage);
         // SoundManager.Instance.PlaySFXSound("Player_Hit");
         SetHpUI();
