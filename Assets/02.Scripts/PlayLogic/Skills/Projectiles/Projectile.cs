@@ -77,7 +77,7 @@ public abstract class Projectile : MonoBehaviour
     }
     protected bool CriticalCheck()
     {
-        if (_player.Critical >= UnityEngine.Random.Range(0, 101))
+        if (_player.Critical > UnityEngine.Random.Range(0, 100))
             return true;
         else
             return false;
