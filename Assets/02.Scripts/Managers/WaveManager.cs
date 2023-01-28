@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class WaveManager : MonoBehaviour
 {
+    public EnemyInfo Boss;
     private static WaveManager instance;
     public static WaveManager Instance
     {
@@ -24,17 +25,14 @@ public class WaveManager : MonoBehaviour
         }
     }
 
-    float _waveRemainTime = 40.0f;
+    float _waveRemainTime = 20.0f;
     public int _waveStep = 1;
     public bool _bWaveEnd = false;
-    float[] _waveTime = { 40, 20, 40, 20, 999 };
+    public float[] _waveTime = {0, 20, 25, 30, 35, 40, 45, 50, 55, 60, 300};
 
-    [SerializeField]
-    TextMeshProUGUI _waveInfoText;
-    [SerializeField]
-    TextMeshProUGUI _timeText;
-    [SerializeField]
-    GameObject _expParent;
+    [SerializeField] TextMeshProUGUI _waveInfoText;
+    [SerializeField] TextMeshProUGUI _timeText;
+    [SerializeField] GameObject _expParent;
     Player _player;
 
     void Start()
@@ -54,9 +52,9 @@ public class WaveManager : MonoBehaviour
         {
             _bWaveEnd = true;
             _waveRemainTime = 0.0f;
-            
 
-            foreach(Transform expChild in _expParent.transform)
+
+            foreach (Transform expChild in _expParent.transform)
             {
                 expChild.GetComponent<ExpObject>()._bToUI = true;
             }
@@ -65,7 +63,7 @@ public class WaveManager : MonoBehaviour
             Invoke("WaveEnded", 2f);
         }
 
-        _timeText.text = "남은 시간 : " + (int)_waveRemainTime;
+        _timeText.text = "남은 시간 : " + (int) _waveRemainTime;
     }
 
     private void ReturnAllEnemy()
@@ -77,7 +75,7 @@ public class WaveManager : MonoBehaviour
         ObjectPoolManager.ReturnObjectAll(EPoolObjectType.Enemy_Sheep);
         ObjectPoolManager.ReturnObjectAll(EPoolObjectType.EnemyProjectile);
     }
-    
+
     public void WaveEnded()
     {
         Time.timeScale = 0.0f;
@@ -96,12 +94,13 @@ public class WaveManager : MonoBehaviour
     {
         _player.transform.position = Vector3.zero;
         _bWaveEnd = false;
-        _waveRemainTime = _waveTime[_waveStep];
         _waveStep += 1;
+        _waveRemainTime = _waveTime[_waveStep];
 
         _player.Hp = _player.MaxHp;
         Time.timeScale = 1.0f;
         _waveInfoText.text = $"시련 {_waveStep}";
+        if (_waveStep == 10) Boss.Spawn(new Vector3(0, 7, 0));
     }
 
     public void SetWaveTime(float value)

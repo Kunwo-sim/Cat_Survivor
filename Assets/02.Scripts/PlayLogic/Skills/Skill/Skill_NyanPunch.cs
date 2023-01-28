@@ -19,7 +19,7 @@ public class Skill_NyanPunch : Skill
             var rot = targeting.GetToNearRotate(dir);
 
             cloneProjectile.Add(ObjectPoolManager.GetObject(poolType).GetComponent<Projectile_NyanPunch>());
-            cloneProjectile[i].Initialize(pos, rot, damage, activeTime, poolType);
+            cloneProjectile[i].Initialize(pos, rot, (int)(damage + (damage * Level * 0.5f)), activeTime, poolType);
             SoundManager.Instance.PlaySFXSound("SkillShot");
             yield return new WaitForSeconds(0.05f);
         }

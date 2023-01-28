@@ -11,13 +11,9 @@ public class a : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        Debug.Log(Time.time);
-    }
 
     public void aa()
     {
-        Time.timeScale = 10;
+        Time.timeScale = 3;
     }
 }

@@ -44,7 +44,7 @@ public class UI_ItemPanel : UI_Base
         if (_cost > InGameManager.Instance.Money)
             return;
 
-        // functionName°ú µ¿ÀÏÇÑ ÇÔ¼ö È£Ãâ
+        // functionNameï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ô¼ï¿½ È£ï¿½ï¿½
         Type thisType = GetType();
         MethodInfo theMethod = thisType.GetMethod(_functionName);
         theMethod.Invoke(this, null);
@@ -57,7 +57,7 @@ public class UI_ItemPanel : UI_Base
         Get<TextMeshProUGUI>((int)Texts.ItemName).text = data.Name;
         Get<TextMeshProUGUI>((int)Texts.ItemKind).text = data.Kind;
         Get<TextMeshProUGUI>((int)Texts.ItemDescription).text = data.Description;
-        Get<TextMeshProUGUI>((int)Texts.CostText).text = $"ºñ¿ë : {data.Cost}";
+        Get<TextMeshProUGUI>((int)Texts.CostText).text = $"ï¿½ï¿½ï¿½ : {data.Cost}";
         _functionName = data.FunctionName;
         _cost = data.Cost;
         _grade = data.Grade;
@@ -135,19 +135,27 @@ public class UI_ItemPanel : UI_Base
     }
     public void Item11()
     {
-
+        SkillHolder holder = _player.GetComponentInChildren<SkillHolder>(); 
+        if(holder.skillData[0].Level == 0) holder.skillList.Add(holder.skillData[0]);
+        holder.skillData[0].Level += 1;
     }
     public void Item12()
     {
-
+        SkillHolder holder = _player.GetComponentInChildren<SkillHolder>(); 
+        if(holder.skillData[1].Level == 0) holder.skillList.Add(holder.skillData[1]);
+        holder.skillData[1].Level += 1;
     }
     public void Item13()
     {
-
+        SkillHolder holder = _player.GetComponentInChildren<SkillHolder>(); 
+        if(holder.skillData[2].Level == 0) holder.skillList.Add(holder.skillData[2]);
+        holder.skillData[2].Level += 1;
     }
     public void Item14()
     {
-
+        SkillHolder holder = _player.GetComponentInChildren<SkillHolder>(); 
+        if(holder.skillData[3].Level == 0) holder.skillList.Add(holder.skillData[3]);
+        holder.skillData[3].Level += 1;
     }
     public void Item15()
     {

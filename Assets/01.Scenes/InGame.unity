@@ -543,6 +543,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cf8e6da67a52b64bbe8c4253909edb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Boss: {fileID: 4399081333754547787, guid: 8899d4159fdbe664fabe647e538e8ce6, type: 3}
   _waveStep: 1
   _bWaveEnd: 0
   _waveTime:
@@ -649,7 +650,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7192919855663051715, guid: d2605fe86bd07d64589b02008b43750a, type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d2605fe86bd07d64589b02008b43750a, type: 3}
