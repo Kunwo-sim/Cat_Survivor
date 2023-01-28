@@ -509,10 +509,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 7192919855663051715, guid: d2605fe86bd07d64589b02008b43750a, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d2605fe86bd07d64589b02008b43750a, type: 3}
 --- !u!1 &699832824
@@ -1172,6 +1168,14 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6563322059508937997, guid: e6fe2e09c3d873048bd38b5753ecabf0, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 18d07a8dd45888e4387931720acceacf, type: 3}
+    - target: {fileID: 6563322060200394592, guid: e6fe2e09c3d873048bd38b5753ecabf0, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 209a5387c9b21c845b80893595347bb1, type: 3}
     - target: {fileID: 6563322060679155313, guid: e6fe2e09c3d873048bd38b5753ecabf0, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
