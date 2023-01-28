@@ -1619,10 +1619,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uACF5\uACA9\uB825"
+  m_text: "\uB300\uBBF8\uC9C0"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 132b265f66faa85479d4654aef0b41f6, type: 2}
-  m_sharedMaterial: {fileID: 4971127821387066270, guid: 132b265f66faa85479d4654aef0b41f6, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 1c8628848de3f5946861e85d2ee5c202, type: 2}
+  m_sharedMaterial: {fileID: 6457692609034719153, guid: 1c8628848de3f5946861e85d2ee5c202, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
