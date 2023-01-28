@@ -24,7 +24,7 @@ public class InGameManager : MonoBehaviour
         }
     }
 
-    int _money = 999;
+    int _money = 0;
     public int _normalAbilityPercnt = 50;
     public int _rareAbilityPercnt = 85;
     public int _epicAbilityPercnt = 97;
@@ -56,7 +56,7 @@ public class InGameManager : MonoBehaviour
 
     void Start()
     {
-        Money = 999;
+        Money = 0;
     }
 
     void SetFixedCanvas()

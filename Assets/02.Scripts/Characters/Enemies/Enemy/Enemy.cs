@@ -24,6 +24,7 @@ public abstract class Enemy : Character
         _defaultMoveSpeed = moveSpeed;
         Level = level;
         _poolType = poolType;
+        state = CharacterState.Idle;
         transform.rotation = Quaternion.identity;
         transform.localScale = new Vector3(1, 1, 1);
         StartCoroutine(SpawnFadeIn());

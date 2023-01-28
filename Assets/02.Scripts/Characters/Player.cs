@@ -40,7 +40,6 @@ public class Player : Character
         _defaultMoveSpeed = 5.0f;
         MaxHp = 10;
         Hp = 10;
-        Defense = 10;
         _skillHolder.skillList.Add(GetComponentInChildren<Skill_NyanCat>());
         _skillHolder.skillList[0].Level += 1;
         // _skillHolder.skillList.Add(GetComponentInChildren<Skill_NyanPunch>());

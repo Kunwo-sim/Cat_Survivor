@@ -73,6 +73,7 @@ public class EnemyManager : MonoBehaviour
             for (int i = 0; i < spawnInfo.Count; i++)
             {
                 if (WaveManager.Instance._bWaveEnd) yield break;
+                if (WaveManager.Instance._waveStep == 10) yield break;
                 float randX = Random.Range(-randRange, randRange);
                 float randY = Random.Range(-randRange * 0.7f, randRange * 0.7f);
                 groupSpawnPos += new Vector3(randX, randY);

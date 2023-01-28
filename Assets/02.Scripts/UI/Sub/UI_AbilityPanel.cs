@@ -37,7 +37,7 @@ public class UI_AbilityPanel : UI_Base
 
     public void OnAbilityPanelClicked(PointerEventData data)
     {
-        // functionName°ú µ¿ÀÏÇÑ ÇÔ¼ö È£Ãâ
+        // functionNameï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ô¼ï¿½ È£ï¿½ï¿½
         Type thisType = GetType();
         MethodInfo theMethod = thisType.GetMethod(_functionName);
         theMethod.Invoke(this, null);
@@ -81,6 +81,8 @@ public class UI_AbilityPanel : UI_Base
             Get<GameObject>((int)GameObjects.AbilityBackGround).GetComponent<Image>().sprite = InGameManager.Instance.abilityPanelSprite[2];
         }
         Get<TextMeshProUGUI>((int)Texts.DescriptionText).text = $"{data.Description}+{_abilityValue}{data.Type}";
+        this.GetComponent<RectTransform>().localScale = new Vector3(1, 1, 1);
+
     }
 
     public void AbilityMaxHp()

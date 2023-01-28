@@ -80,6 +80,7 @@ public class UI_ItemPanel : UI_Base
         {
             Get<GameObject>((int)GameObjects.BackGround).GetComponent<Image>().sprite = InGameManager.Instance.itemPanelSprite[3];
         }
+        this.GetComponent<RectTransform>().localScale = new Vector3(1, 1, 1);
     }
 
     public void Item1()
