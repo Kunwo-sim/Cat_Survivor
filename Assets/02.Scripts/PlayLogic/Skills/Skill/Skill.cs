@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -14,7 +15,13 @@ public abstract class Skill : MonoBehaviour
 
     [SerializeField] protected EPoolObjectType poolType;
     [field: SerializeField] public float BaseCoolDown { get; set; } = 1;
+    public int Level { get; set; } = 0;
     public float NextCoolDown { get; set; } = 0;
+
+    private void Awake()
+    {
+        Level = 0;
+    }
 
     protected virtual void Initialize(Transform holderTrans)
     {

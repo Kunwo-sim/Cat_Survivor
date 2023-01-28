@@ -11,7 +11,7 @@ public class Skill_Bong : Skill
         var rot = targeting.GetToNearRotate(dir);
         
         cloneProjectile.Add(ObjectPoolManager.GetObject(poolType).GetComponent<Projectile_Bong>());
-        cloneProjectile[0].GetComponent<Projectile_Bong>().Initialize(pos, rot, damage, activeTime, poolType, _holderTrans);
+        cloneProjectile[0].GetComponent<Projectile_Bong>().Initialize(pos, rot, (int)(damage + (damage * Level * 0.5f)), activeTime, poolType, _holderTrans);
         SoundManager.Instance.PlaySFXSound("SkillShot");
         yield break;
     }

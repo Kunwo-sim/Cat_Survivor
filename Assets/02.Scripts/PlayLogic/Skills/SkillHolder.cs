@@ -2,8 +2,9 @@ using System.Collections.Generic;
 using UnityEngine;
 public class SkillHolder : MonoBehaviour
 {
+    
     public List<Skill> skillList = new List<Skill>();
-
+    public List<Skill> skillData = new List<Skill>();
     private void Awake()
     {
         foreach (Skill skill in skillList)

@@ -10,7 +10,7 @@ public class Skill_Orb : Skill
         var rot = targeting.GetToNearRotate(dir);
         
         cloneProjectile.Add(ObjectPoolManager.GetObject(poolType).GetComponent<Projectile_Orb>());
-        cloneProjectile[0].Initialize(pos, rot, damage, activeTime, poolType);
+        cloneProjectile[0].Initialize(pos, rot, (int)(damage + (damage * Level * 0.5f)), activeTime, poolType);
         SoundManager.Instance.PlaySFXSound("Orb_Shot");
         yield break;
     }

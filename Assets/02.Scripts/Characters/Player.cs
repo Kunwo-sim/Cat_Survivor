@@ -42,9 +42,10 @@ public class Player : Character
         Hp = 10;
         Defense = 10;
         _skillHolder.skillList.Add(GetComponentInChildren<Skill_NyanCat>());
-        _skillHolder.skillList.Add(GetComponentInChildren<Skill_NyanPunch>());
-        _skillHolder.skillList.Add(GetComponentInChildren<Skill_Bong>());
-        _skillHolder.skillList.Add(GetComponentInChildren<Skill_Orb>());
+        _skillHolder.skillList[0].Level += 1;
+        // _skillHolder.skillList.Add(GetComponentInChildren<Skill_NyanPunch>());
+        // _skillHolder.skillList.Add(GetComponentInChildren<Skill_Bong>());
+        // _skillHolder.skillList.Add(GetComponentInChildren<Skill_Orb>());
         
         base.Start();
         SetHpUI();

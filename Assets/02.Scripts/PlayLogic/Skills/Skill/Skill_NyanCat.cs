@@ -12,9 +12,9 @@ public class Skill_NyanCat : Skill
         cloneProjectile.Add(ObjectPoolManager.GetObject(poolType).GetComponent<Projectile_NyanCat>());
         cloneProjectile.Add(ObjectPoolManager.GetObject(poolType).GetComponent<Projectile_NyanCat>());
         cloneProjectile.Add(ObjectPoolManager.GetObject(poolType).GetComponent<Projectile_NyanCat>());
-        cloneProjectile[0].Initialize(pos, rot * Quaternion.Euler(0,0,-30), damage, activeTime, poolType);
-        cloneProjectile[1].Initialize(pos, rot, damage, activeTime, poolType);
-        cloneProjectile[2].Initialize(pos, rot * Quaternion.Euler(0,0,30), damage, activeTime, poolType);
+        cloneProjectile[0].Initialize(pos, rot * Quaternion.Euler(0,0,-30), (int)(damage + (damage * Level * 0.5f)), activeTime, poolType);
+        cloneProjectile[1].Initialize(pos, rot, (int)(damage + (damage * Level * 0.5f)), activeTime, poolType);
+        cloneProjectile[2].Initialize(pos, rot * Quaternion.Euler(0,0,30), (int)(damage + (damage * Level * 0.5f)), activeTime, poolType);
         SoundManager.Instance.PlaySFXSound("Gun_Shot");
         yield break;
     }
