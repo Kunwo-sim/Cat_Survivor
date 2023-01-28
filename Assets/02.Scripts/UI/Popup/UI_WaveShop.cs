@@ -44,11 +44,11 @@ public class UI_WaveShop : UI_Popup
     public override void Init()
     {
         base.Init();
-        // Bind ÇÔ¼ö¿¡ ¸®ÇÃ·º¼ÇÀ¸·Î Enum ³Ñ±è
+        // Bind ï¿½Ô¼ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ã·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Enum ï¿½Ñ±ï¿½
         Bind<TextMeshProUGUI>(typeof(Texts));
         Bind<GameObject>(typeof(GameObjects));;
 
-        // ÇÃ·¹ÀÌ¾îÀÇ ´É·ÂÄ¡¸¦ °¡Á®¿Í ¼ÂÆÃ
+        // ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ï¿½ï¿½ ï¿½É·ï¿½Ä¡ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
         _player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
         Get<TextMeshProUGUI>((int)Texts.MaxHp).text = ((int)_player.MaxHp).ToString();
         Get<TextMeshProUGUI>((int)Texts.HpRegen).text = _player.HpRegen.ToString();
@@ -65,7 +65,7 @@ public class UI_WaveShop : UI_Popup
 
         SetItemPanels();
         _reRollCost = 10;
-        Get<TextMeshProUGUI>((int)Texts.ReRollButtonText).text = $"ÃÊ±âÈ­ - {_reRollCost}";
+        Get<TextMeshProUGUI>((int)Texts.ReRollButtonText).text = $"ì´ˆê¸°í™” - {_reRollCost}";
 
         Get<GameObject>((int)GameObjects.NextButton).BindEvent(OnNextButtonClicked, Define.UIEvent.Click);
         Get<GameObject>((int)GameObjects.ReRollButton).BindEvent(OnReRollButtonClicked, Define.UIEvent.Click);
@@ -116,7 +116,7 @@ public class UI_WaveShop : UI_Popup
         InGameManager.Instance.Money -= _reRollCost;
         SetItemPanels();
         _reRollCost += 2;
-        Get<TextMeshProUGUI>((int)Texts.ReRollButtonText).text = $"ÃÊ±âÈ­ - {_reRollCost}";
+        Get<TextMeshProUGUI>((int)Texts.ReRollButtonText).text = $"ì´ˆê¸°í™” - {_reRollCost}";
         Get<TextMeshProUGUI>((int)Texts.CoinText).text = InGameManager.Instance.Money.ToString();
     }
 }

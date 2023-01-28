@@ -40,11 +40,11 @@ public class UI_AbilityUpgrade : UI_Popup
     public override void Init()
     {
         base.Init();
-        // Bind ÇÔ¼ö¿¡ ¸®ÇÃ·º¼ÇÀ¸·Î Enum ³Ñ±è
+        // Bind ï¿½Ô¼ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ã·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Enum ï¿½Ñ±ï¿½
         Bind<TextMeshProUGUI>(typeof(Texts));
         Bind<GameObject>(typeof(GameObjects));
 
-        // ÇÃ·¹ÀÌ¾îÀÇ ´É·ÂÄ¡¸¦ °¡Á®¿Í ¼ÂÆÃ
+        // ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ï¿½ï¿½ ï¿½É·ï¿½Ä¡ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
         _player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
         Get<TextMeshProUGUI>((int)Texts.MaxHp).text = ((int)_player.MaxHp).ToString();
         Get<TextMeshProUGUI>((int)Texts.HpRegen).text = _player.HpRegen.ToString();
@@ -62,7 +62,7 @@ public class UI_AbilityUpgrade : UI_Popup
         AbilityPanels = Get<GameObject>((int)GameObjects.AbilityPanels);
         SetAbilityPanels();
         _reRollCost = 5;
-        Get<TextMeshProUGUI>((int)Texts.ReRollButtonText).text = $"ÃÊ±âÈ­ : {_reRollCost}";
+        Get<TextMeshProUGUI>((int)Texts.ReRollButtonText).text = $"ì´ˆê¸°í™” : {_reRollCost}";
     }
     void SetAbilityPanels()
     {
@@ -70,7 +70,7 @@ public class UI_AbilityUpgrade : UI_Popup
         {
             Destroy(child.gameObject);
         }
-        // 4°³ÀÇ ¹«ÀÛÀ§ ¾îºô¸®Æ¼¸¦ °¡Á®¿À°í ÃÊ±âÈ­
+        // 4ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Æ¼ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê±ï¿½È­
         List<AbilityData> data = AbilityGetter.GetRandomAbility();
         for (int i = 0; i < 4; i++)
         {
@@ -90,6 +90,6 @@ public class UI_AbilityUpgrade : UI_Popup
         InGameManager.Instance.Money -= _reRollCost;
         SetAbilityPanels();
         _reRollCost += 2;
-        Get<TextMeshProUGUI>((int)Texts.ReRollButtonText).text = $"ÃÊ±âÈ­ : {_reRollCost}";
+        Get<TextMeshProUGUI>((int)Texts.ReRollButtonText).text = $"ì´ˆê¸°í™” : {_reRollCost}";
     }
 }

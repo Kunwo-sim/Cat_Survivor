@@ -57,7 +57,7 @@ public class UI_ItemPanel : UI_Base
         Get<TextMeshProUGUI>((int)Texts.ItemName).text = data.Name;
         Get<TextMeshProUGUI>((int)Texts.ItemKind).text = data.Kind;
         Get<TextMeshProUGUI>((int)Texts.ItemDescription).text = data.Description;
-        Get<TextMeshProUGUI>((int)Texts.CostText).text = $"��� : {data.Cost}";
+        Get<TextMeshProUGUI>((int)Texts.CostText).text = $"비용 : {data.Cost}";
         _functionName = data.FunctionName;
         _cost = data.Cost;
         _grade = data.Grade;
