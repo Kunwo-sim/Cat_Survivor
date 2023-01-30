@@ -137,8 +137,8 @@ public class UI_ItemPanel : UI_Base
     public void Item11()
     {
         SkillHolder holder = _player.GetComponentInChildren<SkillHolder>(); 
-        if(holder.skillData[0].Level == 0) holder.skillList.Add(holder.skillData[0]);
-        holder.skillData[0].Level += 1;
+        if(holder.skillData[2].Level == 0) holder.skillList.Add(holder.skillData[2]);
+        holder.skillData[2].Level += 1;
     }
     public void Item12()
     {
@@ -149,14 +149,14 @@ public class UI_ItemPanel : UI_Base
     public void Item13()
     {
         SkillHolder holder = _player.GetComponentInChildren<SkillHolder>(); 
-        if(holder.skillData[2].Level == 0) holder.skillList.Add(holder.skillData[2]);
-        holder.skillData[2].Level += 1;
-    }
+        if(holder.skillData[3].Level == 0) holder.skillList.Add(holder.skillData[3]);
+        holder.skillData[3].Level += 1;
+        }
     public void Item14()
     {
         SkillHolder holder = _player.GetComponentInChildren<SkillHolder>(); 
-        if(holder.skillData[3].Level == 0) holder.skillList.Add(holder.skillData[3]);
-        holder.skillData[3].Level += 1;
+        if(holder.skillData[0].Level == 0) holder.skillList.Add(holder.skillData[0]);
+        holder.skillData[0].Level += 1;
     }
     public void Item15()
     {
