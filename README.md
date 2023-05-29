@@ -17,7 +17,7 @@ HollyCat은 십이지신 소재로 한 로그라이크 액션 게임입니다.
 CSV 파일에서 아이템 정보와 능력치 정보를 가져옵니다.  
 ![image](https://user-images.githubusercontent.com/77709696/232678192-a8cd1388-34d1-484f-abf1-e56ad8238e24.png)  
 가져온 정보를 Dictionary로 저장하여 필요시 key 값으로 가져올 수 있게 하였습니다.  
-![image](https://user-images.githubusercontent.com/77709696/232678779-157bbf47-8646-434b-b840-66af6398a9d0.png)
+![image](https://user-images.githubusercontent.com/77709696/232678779-157bbf47-8646-434b-b840-66af6398a9d0.png)  
 로딩 화면을 구현해 검은 화면에서 바로 인게임 화면으로 넘어갈 수 있게 구현하였습니다.
 ![image](https://user-images.githubusercontent.com/77709696/232680158-eefe005c-3d8c-4ff5-8b8d-ae059cfe0233.png)  
 DOTween을 활용해 로고 애니메이션 효과를 주었습니다.
